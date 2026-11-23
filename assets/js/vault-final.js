@@ -41,7 +41,7 @@ function resize(){if(!renderer)return;const w=Math.max(1,stage.clientWidth),h=Ma
 function pose(p){
  const align=range(p,.04,.33),insert=range(p,.34,.69),turn=range(p,.70,.83),open=range(p,.84,1);
  if(key){key.position.set(1.9-2.45*align,-.64,3.5-2.08*insert);key.rotation.set(0,-.23*(1-align),-.13*(1-align)+turn*(Math.PI/2))}
- if(shackle){shackle.position.y=.71*open;shackle.rotation.z=-.24*open}
+ if(shackle){shackle.position.y=.95*open;shackle.rotation.z=.25*open}
  if(slotRing){slotRing.material.emissive=new THREE.Color(0x3f3020);slotRing.material.emissiveIntensity=.12+.5*open}
  if(glow)glow.material.opacity=.25*open;
  fallback?.style.setProperty('--key-align',String(align));fallback?.style.setProperty('--key-insert',String(insert));fallback?.style.setProperty('--key-turn',String(turn));fallback?.style.setProperty('--shackle-open',String(open))

@@ -47,7 +47,7 @@
 .lock-fallback[hidden]{display:none}
 .lock-fallback svg{width:min(90%,380px);height:90%;overflow:visible}
 .lock-fallback .fallback-key{transform-box:fill-box;transform-origin:center;transform:translateX(calc(32px - 25px * var(--key-align,0) - 32px * var(--key-insert,0))) rotate(calc(80deg * var(--key-turn,0)));transition:transform .06s linear}
-.lock-fallback .fallback-shackle{transform:translateY(calc(-40px * var(--shackle-open,0)));transition:transform .06s linear}
+.lock-fallback .fallback-shackle{transform-box:view-box;transform-origin:113px 142px;transform:translateY(calc(-18px * var(--shackle-open,0))) rotate(calc(-16deg * var(--shackle-open,0)));transition:transform .06s linear}
 .lock-visual.is-unlocked{border-color:#a0e5bf66;box-shadow:0 0 60px #8ecfac0a inset}
 .work-section .section-heading-row{margin-bottom:26px}
 .work-controls .filter-chips{flex-wrap:wrap}
