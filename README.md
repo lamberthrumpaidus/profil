@@ -9,12 +9,20 @@
 </p>
 
 <p align="center">
+  <a href="https://lamberthrumpaidusprofile.netlify.app/"><strong>Website Portofolio</strong></a>
+  &nbsp;·&nbsp;
   <a href="https://github.com/lamberthrumpaidus"><strong>GitHub Profile</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/lamberthrumpaidus/profil"><strong>Portfolio Repository</strong></a>
 </p>
 
 ---
+
+## Website Resmi
+
+Portofolio ini tersedia secara online dan dapat dikunjungi melalui:
+
+**[lamberthrumpaidusprofile.netlify.app](https://lamberthrumpaidusprofile.netlify.app/)**
 
 ## Tentang Portofolio
 
