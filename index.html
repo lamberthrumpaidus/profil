@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <!-- ALL Create by LamberthRumpaidus -->
+  <meta property="og:locale" content="id_ID">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://lamberthrumpaidus.netlify.app/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081018">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="description"
+    content="Portofolio digital Lamberth Paulinus Rumpaidus. Eksplorasi proyek web, komputasi sains, antarmuka interaktif, dan studi kasus pengembangan perangkat lunak.">
+  <meta name="author" content="Lamberth Paulinus Rumpaidus">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="lamberthrumpaidus — Portfolio & Interactive Experiences">
+  <meta property="og:description" content="Bukan sekadar kode. Karya, proses, dan solusi yang bisa dieksplorasi.">
+  <meta property="og:image" content="assets/images/portrait.webp">
+  <title>lamberthrumpaidus | Creative Digital Portfolio</title>
+  <link rel="icon" type="image/png" href="assets/images/lr-credit-logo-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/immersive.css">
+  <link rel="stylesheet" href="assets/css/experience.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script type="module" src="assets/js/scene.js"></script>
+  <script type="module" src="assets/js/vault3d.js"></script>
+  <script src="assets/js/experience.js" defer></script>
+  <script src="assets/js/assistant.js" defer></script>
+
+  <style>
+    /* Logo update */
+    .brand-mark{padding:0;overflow:hidden;display:grid;place-items:center;background:rgba(255,255,255,.02)}
+    .brand-logo-img{display:block;width:92%;height:92%;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,0,0,.18))}
+    .art-core{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px}
+    .art-core-logo{display:block;width:min(78%,300px);height:auto;object-fit:contain;filter:drop-shadow(0 8px 26px rgba(0,0,0,.22))}
+    .art-core>small{letter-spacing:.18em;text-align:center}
+    .footer-logo{display:inline-flex;align-items:center;justify-content:center}
+    .footer-logo-img{display:block;height:48px;width:auto;object-fit:contain}
+    .dialog-logo{display:inline-flex;align-items:center;gap:10px}
+    .dialog-logo-img{display:block;height:28px;width:auto;object-fit:contain}
+    @media (max-width:720px){
+      .brand-mark{width:44px;height:44px;flex:0 0 44px}
+      .brand-logo-img{width:88%;height:88%}
+      .art-core{padding:14px;gap:6px}
+      .art-core-logo{width:min(82%,220px)}
+      .footer-logo-img{height:40px}
+      .dialog-logo-img{height:24px}
+    }
+  
+/* 2026 L/R design refinement */
+.lr-monogram{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 16px rgba(3,224,178,.25))}.lr-brand-badge{display:inline-flex;align-items:center;justify-content:center;max-width:180px;min-width:90px;min-height:48px;padding:7px 12px;border:1px solid rgba(36,222,193,.24);border-radius:16px;background:linear-gradient(130deg,rgba(6,34,42,.77),rgba(6,16,28,.68));backdrop-filter:blur(10px);box-shadow:0 12px 30px #0005;transition:transform .2s,border-color .2s}.lr-brand-badge:hover{transform:translateY(-2px);border-color:#0fe5c8}.lr-brand-badge:focus-visible{outline:2px solid #30eac9;outline-offset:3px}@media(prefers-reduced-motion:reduce){.lr-brand-badge{transition:none!important}}.brand-mark,.footer-logo,.art-core{background:linear-gradient(145deg,rgba(24,57,62,.34),rgba(8,23,36,.28));border-color:rgba(33,224,189,.13)}.brand-logo-img,.footer-logo-img,.art-core-logo{filter:drop-shadow(0 0 18px rgba(0,213,182,.28))}.nav-shell{backdrop-filter:blur(18px)}.brand-mark{border-radius:13px}.hero-art{filter:drop-shadow(0 25px 65px rgba(0,194,170,.12))}a:focus-visible,button:focus-visible{outline:2px solid #16dfc5;outline-offset:3px}.work-card,.process-card{transition:transform .2s,box-shadow .2s}.work-card:hover,.process-card:hover{transform:translateY(-4px);box-shadow:0 20px 55px #0002}@media(prefers-reduced-motion:reduce){.work-card,.process-card{transition:none!important}} </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Langsung ke konten</a>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="pointer-aura" id="pointerAura" aria-hidden="true"></div>
+  <div id="readingProgress" class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-shell wrap">
+      <a class="brand" href="#top" aria-label="Lamberth — Beranda">
+        <span class="brand-mark" aria-hidden="true"><img class="brand-logo-img" src="assets/images/lr-credit-logo-v2.png" alt=""></span>
+        <span class="brand-copy"><strong>lamberthrumpaidus</strong><small>PORTFOLIO & DIGITAL EXPERIENCES</small></span>
+      </a>
+      <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama">
+        <a href="#unlock" class="nav-unlock">3D Vault</a>
+        <a href="#about" data-i18n="nav.about">Tentang</a>
+        <a href="#work" data-i18n="nav.work">Karya</a>
+        <a href="#documentation" class="nav-docs">Dokumentasi</a>
+        <a href="#expertise" data-i18n="nav.expertise">Keahlian</a>
+        <a href="#process" data-i18n="nav.process">Proses</a>
+        <a href="#playground" data-i18n="nav.playground">Lab</a>
+        <a href="#contact" data-i18n="nav.contact">Kontak</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-button" id="searchBtn" type="button" aria-label="Buka pencarian cepat"
+          title="Cari halaman / ⌘K"><svg class="ico">
+            <use href="#ico-search"></use>
+          </svg><span class="keycap">⌘ K</span></button>
+        <button class="language-switch" type="button" id="languageBtn" aria-label="Ganti bahasa"><span
+            class="lang-indicator" aria-hidden="true"></span><span id="languageLabel">ID</span><svg class="ico tiny">
+            <use href="#ico-chevron"></use>
+          </svg></button>
+        <button class="icon-button" type="button" id="themeBtn" aria-label="Ubah tema" title="Ubah tema"><svg
+            class="ico">
+            <use href="#ico-moon"></use>
+          </svg></button>
+        <a class="nav-contact" href="#contact" data-i18n="nav.cta">Diskusi proyek <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menuBtn" type="button" aria-label="Buka menu" aria-expanded="false"
+          aria-controls="primaryNav"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ONE BRAND / ONE WEBSITE: the interactive world is the portfolio entrance, not a separate site. -->
+    <section class="hero section immersive-hero" id="top" aria-labelledby="heroHeading">
+      <div class="scene-frame" id="worldFrame" data-scene="dusk">
+        <canvas id="gardenCanvas" aria-hidden="true"></canvas>
+        <div class="scene-fallback" id="worldFallback" aria-hidden="true" hidden></div>
+        <div class="scene-vignette" aria-hidden="true"></div>
+      </div>
+      <div class="hero-film" aria-hidden="true"></div>
+      <div class="world-meta">
+        <span class="meta-live"><i></i> INTERACTIVE PORTFOLIO / 2026</span>
+        <span id="worldTime">GOLDEN HOUR / 01</span>
+      </div>
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span class="hero-superscript">01 / YOUR PORTAL TO MY WORK</span><span class="hero-hairline"></span></div>
+          <p class="hero-intro">HELLO, I'M <strong>LAMBERTH RUMPAIDUS</strong></p>
+          <h1 id="heroHeading"><span data-i18n="hero.line1">Menciptakan</span><br><span class="headline-gradient" data-i18n="hero.line2">dunia digital</span><br><em data-i18n="hero.line3">bermakna.</em></h1>
+          <p class="hero-lede" data-i18n="hero.desc">Portofolio interaktif Lamberth Paulinus Rumpaidus. Saya menggabungkan desain, engineering, dan eksperimen 3D menjadi pengalaman web yang hidup.</p>
+          <div class="hero-actions">
+            <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Lihat karya saya</span><span aria-hidden="true">↗</span></a>
+            <button type="button" id="worldExploreBtn" class="button hero-explore" aria-expanded="false"><span class="play-caret">▷</span><span data-i18n="hero.explore">Buka mekanisme 3D</span></button>
+          </div>
+          <div class="hero-proof"><div class="proof-item"><strong>3D</strong><span>INTERACTIVE WORLD</span></div><i></i><div class="proof-item"><strong id="heroProjectCount">10+</strong><span>CURATED PROJECTS</span></div><i></i><div class="proof-item"><strong>100%</strong><span>CREATIVE CODE</span></div></div>
+        </div>
+      </div>
+      <div class="world-controller" id="worldController" aria-label="Kontrol pengalaman 3D">
+        <div class="scene-views" role="group" aria-label="Pilih sudut kamera">
+          <button type="button" data-world-view="arrival" aria-pressed="true">01 <span>ARRIVAL</span></button>
+          <button type="button" data-world-view="gate" aria-pressed="false">02 <span>TORII</span></button>
+          <button type="button" data-world-view="water" aria-pressed="false">03 <span>LAKE</span></button>
+          <button type="button" data-world-view="bamboo" aria-pressed="false">04 <span>GROVE</span></button>
+        </div>
+        <div class="scene-actions" role="group" aria-label="Tampilan dan kualitas">
+          <button type="button" id="worldDayBtn" aria-pressed="true" title="Senja" aria-label="Suasana senja">☀</button>
+          <button type="button" id="worldNightBtn" aria-pressed="false" title="Malam" aria-label="Suasana malam">☾</button>
+          <button type="button" id="worldQualityBtn" title="Ubah kualitas grafik" aria-label="Ubah kualitas grafik">HD</button>
+          <button type="button" id="worldMotionBtn" aria-pressed="true" title="Gerakan" aria-label="Aktifkan atau matikan animasi">Motion on</button>
+          <button type="button" id="worldPhotoBtn" title="Simpan gambar dunia" aria-label="Simpan gambar dunia">⌗</button>
+        </div>
+      </div>
+      <button type="button" id="worldExitBtn" class="world-exit" hidden>KELUAR DARI DUNIA 3D <span>×</span></button>
+      <span id="worldError" class="world-error" role="status" aria-live="polite"></span>
+      <a class="world-scroll" href="#unlock"><span>SCROLL TO UNLOCK</span><span class="scroll-line"></span></a>
+      <div class="world-side-name" aria-hidden="true">L / R — CREATIVE DEVELOPMENT</div>
+    </section>
+
+
+    <!-- ALL Create by LamberthRumpaidus — The same website, now with a genuine 3D navigation mechanism. -->
+    <section id="unlock" class="vault-story" aria-labelledby="vaultHeading">
+      <div class="vault-sticky">
+        <div class="vault-bg-grid" aria-hidden="true"></div>
+        <div class="vault-stage">
+          <div class="vault-stage-top"><span class="vault-signal"><i></i> INTERACTIVE OBJECT / 3D</span><span class="vault-top-number">OBJECT_001 — ACCESS DEVICE</span></div>
+          <canvas id="vaultCanvas" tabindex="0" role="img" aria-label="Model kunci 3D interaktif. Seret untuk memutar pandangan. Gunakan tombol Rakit, Pasang, dan Buka untuk mengoperasikan kunci."></canvas>
+          <div class="vault-css-fallback" id="vaultFallback" aria-hidden="true" hidden>
+            <div class="css-lock-wrap" id="cssLockWrap">
+              <div class="css-lock-loop"></div><div class="css-lock-body"><div class="css-lock-label">L / R<br>SECURED</div><div class="css-lock-slot"></div></div>
+            </div>
+            <div class="css-key-wrap" id="cssKeyWrap"><div class="css-key-ring"></div><div class="css-key-rod"></div><div class="css-key-teeth"></div></div>
+          </div>
+          <div class="vault-radial vault-radial-a" aria-hidden="true"></div>
+          <div class="vault-radial vault-radial-b" aria-hidden="true"></div>
+          <div class="vault-coordinate">45.8229° / ACCESS PROTOCOL<br>ASSEMBLE → INSERT → UNLOCK</div>
+          <div class="vault-stage-bottom"><span>ROTATE / EXPLORE / UNLOCK</span><span id="vaultStageLabel">01 — KOMPONEN TERPISAH</span></div>
+        </div>
+        <div class="vault-info">
+          <span class="micro-label"><span class="index-dot"></span> 00 / IMMERSIVE INTERACTION</span>
+          <h2 id="vaultHeading">Bukan cuma<br><em>dilihat.</em><br>Rasakan.</h2>
+          <p class="vault-description">Ini bukan video yang diputar ulang. Kunci di samping adalah objek 3D yang benar-benar dirakit, dimasukkan, dan diputar untuk membuka akses ke karya saya.</p>
+          <div class="vault-status" aria-live="polite"><span class="vault-status-icon">⌑</span><div><small>MECHANISM STATUS</small><strong id="vaultStatus">MENUNGGU PERAKITAN</strong></div></div>
+          <div class="vault-timeline" aria-label="Tahapan mekanisme"><span class="vault-timeline-track" id="vaultTimelineTrack"></span><span class="vault-timeline-dot" data-checkpoint="0"><b>01</b><small>ASSEMBLE</small></span><span class="vault-timeline-dot" data-checkpoint="1"><b>02</b><small>INSERT</small></span><span class="vault-timeline-dot" data-checkpoint="2"><b>03</b><small>UNLOCK</small></span></div>
+          <div class="vault-buttons"><button id="vaultAdvance" class="button vault-action" type="button">Rakit kunci <span>↗</span></button><button id="vaultReset" class="vault-reset" type="button" aria-label="Ulangi animasi kunci">↺ <span>Reset</span></button></div>
+          <p class="vault-help">Geser halaman untuk melihat mekanismenya, atau gunakan tombol. Geser objek ke kiri atau kanan untuk mengubah sudut pandang pada HP atau PC.</p>
+        </div>
+        <div class="vault-scrim" aria-hidden="true"></div>
+      </div>
+      <div class="vault-scroll-length" aria-hidden="true"><span>01</span><span>02</span><span>03</span></div>
+    </section>
+
+    <div class="ticker" aria-label="Bidang keahlian">
+      <div class="ticker-track" aria-hidden="true"><span>DESIGN SYSTEMS</span><b>✳</b><span>WEB
+          ENGINEERING</span><b>✳</b><span>INTERACTIVE EXPERIENCES</span><b>✳</b><span>SECURITY
+          THINKING</span><b>✳</b><span>CREATIVE CODE</span><b>✳</b><span>DESIGN SYSTEMS</span><b>✳</b><span>WEB
+          ENGINEERING</span><b>✳</b><span>INTERACTIVE EXPERIENCES</span><b>✳</b><span>SECURITY
+          THINKING</span><b>✳</b><span>CREATIVE CODE</span><b>✳</b></div>
+    </div>
+
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="wrap">
+        <div class="section-label reveal"><span>01 / <span data-i18n="about.label">TENTANG SAYA</span></span><span
+            class="section-label-rule"></span><span>PROFILE & DIRECTION</span></div>
+        <div class="about-layout">
+          <div class="about-main reveal">
+            <h2 class="section-title about-title" id="aboutTitle" data-i18n="about.title">Sebuah proses. <span
+                class="muted-title">Bukan sekadar hasil.</span></h2>
+            <p class="about-intro" data-i18n="about.intro">Bagi saya, website yang baik tidak hanya indah ketika
+              dilihat. Ia harus mudah digunakan, memiliki fondasi yang dapat dipahami, dan memberi manfaat bagi orang
+              yang menggunakannya.</p>
+            <p class="subtle-paragraph" data-i18n="about.desc">Saya mendalami pengembangan antarmuka, logika aplikasi,
+              komputasi interaktif, dan pendekatan keamanan web. Setiap proyek menjadi ruang eksperimen untuk merancang,
+              membangun, menguji, lalu memperbaiki ide menjadi karya nyata.</p>
+            <div class="about-metadata">
+              <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik
+                  Informatika · Universitas Papua</strong></div>
+              <div><span data-i18n="about.focusLabel">AREA MINAT</span><strong data-i18n="about.focus">Web Development /
+                  UI / Cybersecurity</strong></div>
+              <div><span data-i18n="about.basedLabel">BERBASIS DI</span><strong data-i18n="about.based">Manokwari ·
+                  Papua Barat</strong></div>
+            </div>
+          </div>
+          <figure class="portrait-wrap reveal">
+            <div class="portrait-frame"><img src="assets/images/portrait.webp" loading="lazy" width="700" height="700"
+                alt="Potret Lamberth di depan sebuah gedung"><span class="portrait-glare"></span></div>
+            <figcaption><span class="photo-num">01 / HUMAN SIDE</span><span data-i18n="about.caption">Di balik setiap
+                baris kode, selalu ada rasa ingin tahu.</span></figcaption>
+          </figure>
+        </div>
+        <div class="values-strip reveal">
+          <div><span class="value-glyph">01</span>
+            <h3 data-i18n="about.value1">Dokumentasi</h3>
+            <p data-i18n="about.value1desc">Karya dan proses tercatat, bukan hanya diklaim.</p>
+          </div>
+          <div><span class="value-glyph">02</span>
+            <h3 data-i18n="about.value2">Eksperimen</h3>
+            <p data-i18n="about.value2desc">Belajar melalui prototipe, iterasi, dan hasil.</p>
+          </div>
+          <div><span class="value-glyph">03</span>
+            <h3 data-i18n="about.value3">Refleksi</h3>
+            <p data-i18n="about.value3desc">Melihat apa yang berhasil dan dapat ditingkatkan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work-section" id="work" aria-labelledby="workTitle">
+      <div class="wrap">
+        <div class="section-label reveal"><span>02 / <span data-i18n="work.label">KARYA PILIHAN</span></span><span
+            class="section-label-rule"></span><span>FEATURED CASE STUDIES</span></div>
+        <div class="section-heading-row reveal">
+          <div>
+            <h2 class="section-title" id="workTitle" data-i18n="work.title">Dari tantangan <span class="muted-title">ke
+                solusi.</span></h2>
+            <p class="section-description" data-i18n="work.desc">Setiap proyek memiliki latar masalah, pendekatan
+              teknis, dan luaran yang dapat ditelusuri. Buka studi kasus untuk melihat prosesnya.</p>
+          </div>
+          <div class="section-index"><span>8</span><small data-i18n="work.count">PROYEK TERDOKUMENTASI</small></div>
+        </div>
+        <div id="featuredProjects" class="featured-stack" aria-label="Studi kasus utama"></div>
+        <div class="work-browser-head reveal">
+          <div><span class="eyebrow" data-i18n="work.archive">ARSIP KARYA / 2026</span>
+            <h3 data-i18n="work.browse">Jelajahi eksplorasi lainnya</h3>
+          </div><span class="work-total" id="workTotal">06 PROJECTS</span>
+        </div>
+        <div class="work-controls reveal">
+          <div class="filter-chips" aria-label="Kategori proyek"><button class="filter active" data-filter="all"
+              type="button" data-i18n="work.filterAll">Semua</button><button class="filter" data-filter="web"
+              type="button" data-i18n="work.filterWeb">Web & Tools</button><button class="filter" data-filter="science"
+              type="button" data-i18n="work.filterScience">Sains & Riset</button><button class="filter"
+              data-filter="creative" type="button" data-i18n="work.filterCreative">Kreatif & Interaktif</button></div>
+          <label class="project-search"><svg class="ico">
+              <use href="#ico-search"></use>
+            </svg><span class="sr-only">Cari proyek</span><input id="projectSearch" type="search" autocomplete="off"
+              placeholder="Cari proyek / teknologi..." data-placeholder-id="Cari proyek / teknologi..."
+              data-placeholder-en="Search projects / technology..."></label>
+        </div>
+        <div id="projectGrid" class="project-grid" aria-live="polite"></div>
+        <p id="noResults" class="no-results" hidden data-i18n="work.empty">Tidak ada proyek yang cocok. Coba kata kunci
+          lain.</p>
+      </div>
+    </section>
+
+
+    <!-- ALL Create by LamberthRumpaidus — Integrated interactive project documentation system. -->
+    <section id="documentation" class="documentation-section" aria-labelledby="documentationTitle">
+      <div class="wrap documentation-layout">
+        <div class="documentation-copy reveal">
+          <span class="micro-label"><span class="index-dot"></span> 03 / PROJECT DEPLOY SEQUENCE</span>
+          <h2 id="documentationTitle">Dokumentasi<br>yang <em>hidup.</em></h2>
+          <p>Bukan tautan yang hanya berubah warna. Pilih proyek, lalu saksikan modul dokumentasinya dibangun lapis demi lapis sebelum terbuka menjadi studi kasus yang dapat dibaca.</p>
+          <div class="documentation-select"><label for="documentationProject">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
+          <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> DEPLOY DOKUMENTASI <span>↗</span></button>
+          <p class="documentation-explain">Animasi deploy adalah visualisasi proses membuka dokumentasi; tidak melakukan deployment kode atau hosting sungguhan.</p>
+        </div>
+        <div class="documentation-machine reveal" id="documentationMachine" role="button" tabindex="0" aria-label="Jalankan animasi dokumentasi proyek terpilih">
+          <div class="machine-hud"><span>DOC ASSEMBLER / V2</span><span class="machine-live"><i></i> READY</span></div>
+          <div class="machine-orbit machine-orbit-1"></div><div class="machine-orbit machine-orbit-2"></div>
+          <div class="paper-scene"><div class="paper-shadow"></div><div class="paper-back paper-back-c"></div><div class="paper-back paper-back-b"></div><div class="paper-front"><div class="paper-top"><span>PROJECT / DOSSIER</span><span>01</span></div><div class="paper-symbol">{ }</div><div class="paper-heading">DESIGN<br>BUILD<br>DOCUMENT.</div><div class="paper-bars"><i></i><i></i><i></i></div><div class="paper-bottom"><span>LAMBERTH RUMPAIDUS</span><span>2026</span></div></div></div>
+          <div class="machine-preview" id="machinePreview"><img id="machinePreviewImage" alt="" src="assets/images/rubaka.webp"><span><small>SELECTED PROJECT</small><strong id="machineProjectTitle">Rubaka Action Platformer</strong></span></div><span class="machine-mark machine-mark-a">[ LAYER_01 ]</span><span class="machine-mark machine-mark-b">[ SOURCE_MAP ]</span>
+          <div class="machine-footer"><span>04 MODULES ONLINE</span><span>READY TO EXPLORE ↗</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section expertise" id="expertise" aria-labelledby="expertiseTitle">
+      <div class="wrap">
+        <div class="section-label reveal"><span>04 / <span data-i18n="skills.label">PETA KEAHLIAN</span></span><span
+            class="section-label-rule"></span><span>TOOLS & TECHNOLOGIES</span></div>
+        <div class="section-heading-row reveal">
+          <div>
+            <h2 class="section-title" id="expertiseTitle" data-i18n="skills.title">Fondasi yang <span
+                class="muted-title">terus berkembang.</span></h2>
+            <p class="section-description" data-i18n="skills.desc">Keterampilan disusun berdasarkan bidang praktik dan
+              perangkat yang digunakan dalam proyek, bukan angka persentase yang sulit diverifikasi.</p>
+          </div>
+        </div>
+        <div class="expertise-grid" id="expertiseGrid"></div>
+        <div class="tech-marquee"><span data-i18n="skills.bottom">BELAJAR · MEMBANGUN · MENGUJI · MEMPERBAIKI ·
+            MENGULANGI</span><span class="tech-pulse">✳</span></div>
+      </div>
+    </section>
+
+    <section class="section methodology" id="process" aria-labelledby="processTitle">
+      <div class="wrap">
+        <div class="section-label reveal"><span>05 / <span data-i18n="process.label">CARA BERPIKIR</span></span><span
+            class="section-label-rule"></span><span>FROM CONCEPT TO DELIVERY</span></div>
+        <div class="process-heading reveal">
+          <h2 class="section-title" id="processTitle" data-i18n="process.title">Proses di balik <span
+              class="muted-title">setiap pixel.</span></h2>
+          <p data-i18n="process.desc">Pendekatan sederhana agar solusi tidak berhenti pada tampilan, tetapi tetap masuk
+            akal ketika digunakan.</p>
+        </div>
+        <div class="process-grid" id="processGrid"></div>
+        <div class="process-note reveal">
+          <div class="note-icon">↗</div>
+          <p data-i18n="process.note">Kualitas produk adalah hasil dari iterasi. Dokumentasi proyek memuat masalah,
+            pendekatan, implementasi, dan evaluasi yang masih dapat dikembangkan.</p><a href="#work"
+            data-i18n="process.noteCta">Lihat penerapannya <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lab" id="playground" aria-labelledby="labTitle">
+      <div class="wrap">
+        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">LAB INTERAKTIF</span></span><span
+            class="section-label-rule"></span><span>EXPERIMENTAL SPACE</span></div>
+        <div class="lab-layout">
+          <div class="lab-copy reveal">
+            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Coba lihat <span class="muted-title">di balik
+                layar.</span></h2>
+            <p data-i18n="lab.desc">Terminal mini ini benar-benar dapat digunakan untuk menelusuri portofolio. Ketik
+              <code>help</code>, <code>projects</code>, <code>skills</code>, <code>contact</code>, atau
+              <code>theme</code>.
+            </p>
+            <div class="lab-small-tags"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>KEYBOARD FIRST</span></div>
+            <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
+                data-i18n="lab.try">Jalankan perintah contoh <span>↗</span></button></div>
+          </div>
+          <div class="terminal reveal" aria-label="Terminal portofolio interaktif">
+            <div class="terminal-top">
+              <div class="traffic"><i></i><i></i><i></i></div><strong>lamberth /
+                interactive-shell</strong><span>v1.0</span>
+            </div>
+            <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions">
+              <div><span class="term-accent">●</span> portfolio.shell <span class="term-muted">— ready</span></div>
+              <div class="term-muted" data-i18n="lab.hello">Ketik 'help' untuk daftar perintah yang tersedia.</div>
+            </div>
+            <form id="terminalForm" class="terminal-input"><span class="term-prompt">guest@portfolio:~$</span><label
+                for="terminalCommand" class="sr-only">Ketik perintah terminal</label><input id="terminalCommand"
+                autocomplete="off" spellcheck="false" aria-label="Perintah terminal" placeholder="help"><button
+                type="submit" aria-label="Jalankan perintah"><svg class="ico">
+                  <use href="#ico-arrow"></use>
+                </svg></button></form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="contact-glow"></div>
+      <div class="wrap">
+        <div class="section-label reveal"><span>07 / <span data-i18n="contact.label">HUBUNGI SAYA</span></span><span
+            class="section-label-rule"></span><span>LET'S CONNECT</span></div>
+        <div class="contact-layout">
+          <div class="contact-title-col reveal"><span class="eyebrow"><span class="status-light"></span><span
+                data-i18n="contact.available">TERBUKA UNTUK KOLABORASI</span></span>
+            <h2 id="contactTitle" data-i18n="contact.title">Punya ide?<br><em>Wujudkan bersama.</em></h2>
+            <p data-i18n="contact.desc">Kolaborasi, proyek, diskusi teknologi, atau sekadar menyapa. Saya senang
+              bertukar perspektif tentang produk digital.</p><a class="big-email"
+              href="mailto:lamberthrumpaidus@gmail.com">lamberthrumpaidus@gmail.com <svg class="ico">
+                <use href="#ico-arrow"></use>
+              </svg></a><button class="copy-email" type="button" id="copyEmail"><svg class="ico">
+                <use href="#ico-copy"></use>
+              </svg><span data-i18n="contact.copy">Salin alamat email</span></button>
+          </div>
+          <div class="contact-form-wrap reveal">
+            <form id="contactForm" class="contact-form">
+              <div class="form-top"><span class="form-number">MESSAGE_01</span><span data-i18n="contact.formTitle">Tulis
+                  pesan</span></div>
+              <div class="field-two"><label><span data-i18n="contact.name">Nama</span><input name="name" type="text"
+                    autocomplete="name" required maxlength="90" placeholder="Nama lengkap"></label><label><span
+                    data-i18n="contact.email">Email</span><input name="email" type="email" autocomplete="email" required
+                    maxlength="140" placeholder="nama@email.com"></label></div><label><span
+                  data-i18n="contact.subject">Keperluan</span><select name="subject">
+                  <option value="Kolaborasi proyek" data-i18n="contact.opt1">Kolaborasi proyek</option>
+                  <option value="Diskusi teknologi" data-i18n="contact.opt2">Diskusi teknologi</option>
+                  <option value="Pertanyaan lain" data-i18n="contact.opt3">Pertanyaan lain</option>
+                </select></label><label><span data-i18n="contact.message">Pesan</span><textarea name="message" rows="4"
+                  minlength="10" maxlength="3000" required placeholder="Ceritakan idemu..."></textarea></label><button
+                type="submit" class="button button-primary form-send"><span data-i18n="contact.send">Buka aplikasi
+                  email</span><svg class="ico">
+                  <use href="#ico-arrow"></use>
+                </svg></button>
+              <p class="form-disclaimer" data-i18n="contact.notice">Formulir membuka aplikasi email Anda untuk mengirim
+                pesan. Tidak ada pesan yang disimpan oleh situs ini.</p>
+            </form>
+          </div>
+        </div>
+        <div class="social-bar reveal"><span data-i18n="contact.find">TEMUKAN SAYA</span>
+          <div><a href="https://github.com/LamberthRumpaidus" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a
+              href="https://www.linkedin.com/in/lamberth-paulinus-rumpaidus-b60a2b298/" target="_blank"
+              rel="noopener noreferrer">LinkedIn ↗</a><a href="https://www.instagram.com/tech_vigilante/"
+              target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid"><a class="footer-logo" href="#top" aria-label="Kembali ke atas"><img class="footer-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"></a>
+      <div><strong data-i18n="footer.head">Dibuat dengan rasa ingin tahu.</strong>
+        <p data-i18n="footer.body">Dirancang dan dikembangkan sebagai portofolio digital. © 2026 Lamberth Paulinus
+          Rumpaidus.</p>
+      </div><a href="#top" class="back-top"><span data-i18n="footer.up">Kembali ke atas</span><svg class="ico">
+          <use href="#ico-arrow-up"></use>
+        </svg></a>
+    </div>
+  </footer>
+
+
+  <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployTitle">
+    <div class="deploy-shell">
+      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-glyph">◈</span><div><strong>lamberthrumpaidus</strong><small>PROJECT DOCUMENTATION ENGINE</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
+      <div class="deploy-workspace" id="deployWorkspace" role="status" aria-live="polite">
+        <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOCUMENT_PIPELINE / STAGE <span id="deployStageNumber">01</span></strong><small id="deployClock">INIT</small></div>
+        <div class="deploy-visual" id="deployVisual" aria-hidden="true">
+          <div class="deploy-circuits"></div><div class="deploy-wire deploy-wire-a"></div><div class="deploy-wire deploy-wire-b"></div>
+          <div class="deploy-object"><div class="deploy-layer layer-one"><span>00 — SOURCES</span><b>&lt; / &gt;</b></div><div class="deploy-layer layer-two"><span>01 — STRUCTURE</span><b>▥</b></div><div class="deploy-layer layer-three"><span>02 — COMPILE</span><b>⌘</b></div><div class="deploy-layer layer-four"><span>03 — PREVIEW</span><b>↗</b></div><div class="deploy-layer layer-final"><span>PROJECT<br>DOCUMENT</span><b>✓</b></div></div>
+          <div class="deploy-data deploy-data-l">[ LOAD / MODULES ]<br>STRUCTURE : 04<br>DATA : VERIFIED</div>
+          <div class="deploy-data deploy-data-r">X 0045 / Y 1806<br>PROCESSING QUEUE<br>MODULE STACK / V2</div>
+        </div>
+        <div class="deploy-caption"><span id="deployPhase">Memulai dokumentasi proyek...</span><span id="deployPercent">0%</span></div>
+        <div class="deploy-progress"><div id="deployProgressBar"></div></div>
+        <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>LOAD SOURCES</span></div><div data-deploy-step="1"><b>02</b><span>ASSEMBLE LAYERS</span></div><div data-deploy-step="2"><b>03</b><span>BUILD DOCUMENT</span></div><div data-deploy-step="3"><b>04</b><span>OPEN CASE STUDY</span></div></div>
+      </div>
+      <div class="deploy-document" id="deployDocument" hidden>
+        <div class="deploy-complete"><span>DOCUMENT READY <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay">↺ ULANGI ANIMASI</button></div>
+        <div id="deployResult"></div>
+        <div class="deploy-foot"><button id="deployPrev" type="button">← Proyek sebelumnya</button><button id="deployNext" type="button">Proyek berikutnya →</button></div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="case-dialog" id="projectDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-inner">
+      <div class="dialog-top"><span class="dialog-logo"><img class="dialog-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"><small>CASE STUDY</small></span><button
+          class="dialog-close icon-button" type="button" id="dialogClose" aria-label="Tutup detail proyek"><svg
+            class="ico">
+            <use href="#ico-x"></use>
+          </svg></button></div>
+      <div id="dialogContent"></div>
+      <div class="dialog-footer"><button class="text-button" type="button" id="prevProject"><svg class="ico">
+            <use href="#ico-arrow-left"></use>
+          </svg><span data-i18n="modal.prev">Sebelumnya</span></button><button class="text-button" type="button"
+          id="nextProject"><span data-i18n="modal.next">Berikutnya</span><svg class="ico">
+            <use href="#ico-arrow"></use>
+          </svg></button></div>
+    </div>
+  </dialog>
+
+  <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="command-wrap">
+      <div class="command-search"><svg class="ico">
+          <use href="#ico-search"></use>
+        </svg><label class="sr-only" for="commandInput">Cari halaman atau proyek</label><input id="commandInput"
+          type="search" autocomplete="off" placeholder="Cari halaman atau proyek..."
+          aria-describedby="commandHelp"><kbd>ESC</kbd></div>
+      <h2 id="commandTitle" class="sr-only">Pencarian cepat</h2>
+      <div id="commandResults" class="command-results"></div>
+      <div class="command-bottom" id="commandHelp"><span>↵ <span data-i18n="command.open">Buka
+            pilihan</span></span><span>ESC <span data-i18n="command.close">Tutup</span></span><span>↑↓ <span
+            data-i18n="command.navigate">Navigasi</span></span></div>
+    </div>
+  </dialog>
+
+  <aside class="music-widget" id="musicPanel" aria-label="Pemutar musik: Tanya Rasa &amp; Balik Arah dan Menepi">
+    <button class="music-toggle" id="musicToggle" type="button" aria-expanded="false" aria-controls="musicDetails"
+      title="Buka pemutar musik"><span class="music-equalizer">♫</span><span class="music-toggle-label">AUDIO</span></button>
+    <div class="music-details" id="musicDetails">
+      <div class="music-heading"><span class="music-vinyl">♫</span>
+        <div>
+          <small id="musicTrackNumber">TRACK 01</small>
+          <strong id="musicTrackTitle">Tanya Rasa</strong>
+          <span id="musicTrackSub" style="font-size:11px;color:#a5b7c5;">TANYA.mp3</span>
+        </div>
+      </div>
+      <div class="music-playlist" style="display:flex;gap:6px;margin:12px 0 6px;">
+        <button type="button" class="track-btn active" data-track="0" title="1. Tanya Rasa" style="flex:1;background:rgba(255,255,255,.12);border:1px solid #c2f87d;border-radius:8px;padding:6px 8px;font-size:10px;color:#fff;cursor:pointer;font-family:inherit;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1. Tanya Rasa</button>
+        <button type="button" class="track-btn" data-track="1" title="2. Balik Arah dan Menepi" style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:6px 8px;font-size:10px;color:#9db2bf;cursor:pointer;font-family:inherit;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">2. Balik Arah dan Menepi</button>
+      </div>
+      <p class="music-status" id="musicStatus" style="font-size:11px;color:#9db2bf;margin:6px 0 10px;line-height:1.4;">Klik putar untuk mendengarkan.</p>
+      <audio id="musicAudio" preload="metadata" src="TANYA.mp3"></audio>
+      <div class="music-controls">
+        <button type="button" id="musicPrev" aria-label="Lagu sebelumnya" title="Lagu sebelumnya" style="width:34px;height:34px;font-size:12px;">⏮</button>
+        <button type="button" id="musicPlay" aria-label="Putar lagu">▶</button>
+        <button type="button" id="musicNext" aria-label="Lagu berikutnya" title="Lagu berikutnya" style="width:34px;height:34px;font-size:12px;">⏭</button>
+        <div class="music-timeline"><input type="range" id="musicSeek" min="0" max="100" value="0"
+            aria-label="Posisi lagu"><span id="musicTime">0:00 / 0:00</span></div>
+      </div>
+      <div class="music-bottom"><label class="music-upload">+ Pilih audio<input type="file" id="musicFile"
+            accept="audio/*" hidden></label><label class="music-volume">Volume <input type="range" id="musicVolume"
+            min="0" max="1" step="0.05" value="0.65"></label></div>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="symbol-sprite">
+    <symbol id="ico-arrow" viewBox="0 0 24 24">
+      <path d="M4 12h16m-7-7 7 7-7 7" />
+    </symbol>
+    <symbol id="ico-arrow-left" viewBox="0 0 24 24">
+      <path d="M20 12H4m7 7-7-7 7-7" />
+    </symbol>
+    <symbol id="ico-arrow-down" viewBox="0 0 24 24">
+      <path d="M12 4v16m-7-7 7 7 7-7" />
+    </symbol>
+    <symbol id="ico-arrow-up" viewBox="0 0 24 24">
+      <path d="M12 20V4M5 11l7-7 7 7" />
+    </symbol>
+    <symbol id="ico-search" viewBox="0 0 24 24">
+      <circle cx="10.8" cy="10.8" r="7.1" />
+      <path d="m16 16 5 5" />
+    </symbol>
+    <symbol id="ico-chevron" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6" />
+    </symbol>
+    <symbol id="ico-moon" viewBox="0 0 24 24">
+      <path d="M20.8 15.1A8.7 8.7 0 0 1 8.9 3.2 8.9 8.9 0 1 0 20.8 15Z" />
+    </symbol>
+    <symbol id="ico-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19" />
+    </symbol>
+    <symbol id="ico-x" viewBox="0 0 24 24">
+      <path d="M5 5 19 19M19 5 5 19" />
+    </symbol>
+    <symbol id="ico-copy" viewBox="0 0 24 24">
+      <rect x="8" y="8" width="13" height="13" rx="2" />
+      <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+    </symbol>
+    <symbol id="ico-check" viewBox="0 0 24 24">
+      <path d="m4 12 5 5 11-11" />
+    </symbol>
+    <symbol id="ico-code" viewBox="0 0 24 24">
+      <path d="m8 4-6 8 6 8m8-16 6 8-6 8m-3-19-2 22" />
+    </symbol>
+    <symbol id="ico-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2c-5 6-5 14 0 20m0-20c5 6 5 14 0 20" />
+    </symbol>
+    <symbol id="ico-layers" viewBox="0 0 24 24">
+      <path d="m12 2 10 6-10 6L2 8l10-6Zm-10 12 10 6 10-6M2 18l10 6 10-6" />
+    </symbol>
+    <symbol id="ico-terminal" viewBox="0 0 24 24">
+      <rect x="2.5" y="4" width="19" height="16" rx="2" />
+      <path d="m6 9 3 3-3 3m6 0h6" />
+    </symbol>
+  </svg>
+  <aside class="portfolio-assistant" id="assistantShell" aria-label="Asisten portofolio">
+    <button type="button" class="assistant-trigger" id="assistantTrigger" aria-expanded="false" aria-controls="assistantPanel"><span class="assistant-glyph">✳</span><span>ASK LAM AI</span><span class="assistant-online"></span></button>
+    <section class="assistant-panel" id="assistantPanel" aria-labelledby="assistantTitle" hidden>
+      <header class="assistant-heading"><div><small>PORTFOLIO INTELLIGENCE</small><h2 id="assistantTitle">Meet Lam AI <span>✳</span></h2></div><button type="button" id="assistantClose" aria-label="Tutup asisten">×</button></header>
+      <div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message assistant-bot">Halo! Saya asisten portofolio Lamberth. Mau tahu proyek, keahlian, pengalaman 3D, atau cara menghubungi Lamberth?</div></div>
+      <div class="assistant-chips" id="assistantChips"><button type="button" data-ask="Proyek apa saja yang dibuat?">Lihat proyek</button><button type="button" data-ask="Keahlian Lamberth apa?">Keahlian</button><button type="button" data-ask="Bagaimana cara menghubungi Lamberth?">Kontak</button></div>
+      <form class="assistant-form" id="assistantForm"><label for="assistantInput" class="sr-only">Tanya portofolio</label><input id="assistantInput" name="question" maxlength="700" autocomplete="off" placeholder="Tanyakan tentang karya..." required><button type="submit" aria-label="Kirim pertanyaan">↗</button></form>
+      <p class="assistant-disclosure" id="assistantDisclosure">Gratis. Mode lokal menjawab berdasarkan isi portofolio; jawaban generatif tersedia jika API server dikonfigurasi.</p>
+    </section>
+  </aside>
+</body>
+
+</html>

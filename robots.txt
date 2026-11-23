@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lamberthrumpaidus.netlify.app/sitemap.xml
