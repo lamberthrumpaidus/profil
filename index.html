@@ -5,7 +5,7 @@
   <!-- ALL Create by LamberthRumpaidus -->
   <meta property="og:locale" content="id_ID">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://lamberthrumpaidus.netlify.app/">
+  <link rel="canonical" href="https://lamberthrumpaidusprofile.netlify.app/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#081018">
@@ -27,10 +27,11 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/immersive.css">
   <link rel="stylesheet" href="assets/css/experience.css">
+  <link rel="stylesheet" href="assets/css/final-clean.css">
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script type="module" src="assets/js/scene.js"></script>
-  <script type="module" src="assets/js/vault3d.js"></script>
+  <script type="module" src="assets/js/vault-final.js"></script>
   <script src="assets/js/experience.js" defer></script>
   <script src="assets/js/assistant.js" defer></script>
 
@@ -71,24 +72,21 @@
         <span class="brand-copy"><strong>lamberthrumpaidus</strong><small>PORTFOLIO & DIGITAL EXPERIENCES</small></span>
       </a>
       <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama">
-        <a href="#unlock" class="nav-unlock">3D Vault</a>
         <a href="#about" data-i18n="nav.about">Tentang</a>
         <a href="#work" data-i18n="nav.work">Karya</a>
         <a href="#documentation" class="nav-docs">Dokumentasi</a>
         <a href="#expertise" data-i18n="nav.expertise">Keahlian</a>
-        <a href="#process" data-i18n="nav.process">Proses</a>
-        <a href="#playground" data-i18n="nav.playground">Lab</a>
         <a href="#contact" data-i18n="nav.contact">Kontak</a>
+        <button class="language-switch" type="button" id="languageBtn" aria-label="Ganti bahasa"><span
+            class="lang-indicator" aria-hidden="true"></span><span id="languageLabel">ID</span><svg class="ico tiny">
+            <use href="#ico-chevron"></use>
+          </svg></button>
       </nav>
       <div class="nav-actions">
         <button class="icon-button" id="searchBtn" type="button" aria-label="Buka pencarian cepat"
           title="Cari halaman / ⌘K"><svg class="ico">
             <use href="#ico-search"></use>
           </svg><span class="keycap">⌘ K</span></button>
-        <button class="language-switch" type="button" id="languageBtn" aria-label="Ganti bahasa"><span
-            class="lang-indicator" aria-hidden="true"></span><span id="languageLabel">ID</span><svg class="ico tiny">
-            <use href="#ico-chevron"></use>
-          </svg></button>
         <button class="icon-button" type="button" id="themeBtn" aria-label="Ubah tema" title="Ubah tema"><svg
             class="ico">
             <use href="#ico-moon"></use>
@@ -123,7 +121,6 @@
             <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Lihat karya saya</span><span aria-hidden="true">↗</span></a>
             <button type="button" id="worldExploreBtn" class="button hero-explore" aria-expanded="false"><span class="play-caret">▷</span><span data-i18n="hero.explore">Buka mekanisme 3D</span></button>
           </div>
-          <div class="hero-proof"><div class="proof-item"><strong>3D</strong><span>INTERACTIVE WORLD</span></div><i></i><div class="proof-item"><strong id="heroProjectCount">10+</strong><span>CURATED PROJECTS</span></div><i></i><div class="proof-item"><strong>100%</strong><span>CREATIVE CODE</span></div></div>
         </div>
       </div>
       <div class="world-controller" id="worldController" aria-label="Kontrol pengalaman 3D">
@@ -149,35 +146,29 @@
 
 
     <!-- ALL Create by LamberthRumpaidus — The same website, now with a genuine 3D navigation mechanism. -->
-    <section id="unlock" class="vault-story" aria-labelledby="vaultHeading">
-      <div class="vault-sticky">
-        <div class="vault-bg-grid" aria-hidden="true"></div>
-        <div class="vault-stage">
-          <div class="vault-stage-top"><span class="vault-signal"><i></i> INTERACTIVE OBJECT / 3D</span><span class="vault-top-number">OBJECT_001 — ACCESS DEVICE</span></div>
-          <canvas id="vaultCanvas" tabindex="0" role="img" aria-label="Model kunci 3D interaktif. Seret untuk memutar pandangan. Gunakan tombol Rakit, Pasang, dan Buka untuk mengoperasikan kunci."></canvas>
-          <div class="vault-css-fallback" id="vaultFallback" aria-hidden="true" hidden>
-            <div class="css-lock-wrap" id="cssLockWrap">
-              <div class="css-lock-loop"></div><div class="css-lock-body"><div class="css-lock-label">L / R<br>SECURED</div><div class="css-lock-slot"></div></div>
-            </div>
-            <div class="css-key-wrap" id="cssKeyWrap"><div class="css-key-ring"></div><div class="css-key-rod"></div><div class="css-key-teeth"></div></div>
+    <section id="unlock" class="lock-feature" aria-labelledby="vaultHeading">
+      <div class="lock-feature-inner wrap">
+        <div class="lock-visual" id="lockStage">
+          <div class="lock-visual-caption">01 <span> / THE KEY</span></div>
+          <canvas id="vaultCanvas" role="img" aria-label="Gembok dan kunci 3D. Tekan Buka Kunci untuk melihat kunci masuk, berputar, dan membuka gembok."></canvas>
+          <div class="lock-fallback" id="vaultFallback" hidden aria-hidden="true">
+            <svg viewBox="0 0 380 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="lockmetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#769d99"/><stop offset="1" stop-color="#163138"/></linearGradient></defs>
+              <g class="fallback-shackle"><path d="M113 144V102C113 16 269 16 269 102V144" fill="none" stroke="#91c0b7" stroke-width="22" stroke-linecap="round"/></g>
+              <rect x="96" y="124" width="190" height="175" rx="28" fill="url(#lockmetal)" stroke="#b4d1c7" stroke-width="3"/>
+              <circle cx="190" cy="218" r="28" fill="#122a2e" stroke="#d6bd8e" stroke-width="6"/><rect x="184" y="214" width="12" height="31" rx="4" fill="#0b191b"/>
+              <g class="fallback-key"><circle cx="325" cy="218" r="20" fill="none" stroke="#e1bd89" stroke-width="10"/><path d="M302 218H236V232H223V216H210" stroke="#e1bd89" stroke-width="9" fill="none" stroke-linecap="round"/></g>
+            </svg>
           </div>
-          <div class="vault-radial vault-radial-a" aria-hidden="true"></div>
-          <div class="vault-radial vault-radial-b" aria-hidden="true"></div>
-          <div class="vault-coordinate">45.8229° / ACCESS PROTOCOL<br>ASSEMBLE → INSERT → UNLOCK</div>
-          <div class="vault-stage-bottom"><span>ROTATE / EXPLORE / UNLOCK</span><span id="vaultStageLabel">01 — KOMPONEN TERPISAH</span></div>
         </div>
-        <div class="vault-info">
-          <span class="micro-label"><span class="index-dot"></span> 00 / IMMERSIVE INTERACTION</span>
-          <h2 id="vaultHeading">Bukan cuma<br><em>dilihat.</em><br>Rasakan.</h2>
-          <p class="vault-description">Ini bukan video yang diputar ulang. Kunci di samping adalah objek 3D yang benar-benar dirakit, dimasukkan, dan diputar untuk membuka akses ke karya saya.</p>
-          <div class="vault-status" aria-live="polite"><span class="vault-status-icon">⌑</span><div><small>MECHANISM STATUS</small><strong id="vaultStatus">MENUNGGU PERAKITAN</strong></div></div>
-          <div class="vault-timeline" aria-label="Tahapan mekanisme"><span class="vault-timeline-track" id="vaultTimelineTrack"></span><span class="vault-timeline-dot" data-checkpoint="0"><b>01</b><small>ASSEMBLE</small></span><span class="vault-timeline-dot" data-checkpoint="1"><b>02</b><small>INSERT</small></span><span class="vault-timeline-dot" data-checkpoint="2"><b>03</b><small>UNLOCK</small></span></div>
-          <div class="vault-buttons"><button id="vaultAdvance" class="button vault-action" type="button">Rakit kunci <span>↗</span></button><button id="vaultReset" class="vault-reset" type="button" aria-label="Ulangi animasi kunci">↺ <span>Reset</span></button></div>
-          <p class="vault-help">Geser halaman untuk melihat mekanismenya, atau gunakan tombol. Geser objek ke kiri atau kanan untuk mengubah sudut pandang pada HP atau PC.</p>
+        <div class="lock-copy">
+          <span class="micro-label">01 / INTERAKSI 3D</span>
+          <h2 id="vaultHeading">Satu kunci.<br><em>Banyak karya.</em></h2>
+          <p class="lock-intro">Dari sebuah ide menuju karya nyata. Lihat cara kunci masuk, berputar, dan membuka gembok sebelum menjelajahi portofolio.</p>
+          <span class="lock-status" id="vaultStatus" role="status">Siap dibuka</span>
+          <button class="button lock-action" type="button" id="vaultAdvance">Buka kunci <span aria-hidden="true">↗</span></button>
         </div>
-        <div class="vault-scrim" aria-hidden="true"></div>
       </div>
-      <div class="vault-scroll-length" aria-hidden="true"><span>01</span><span>02</span><span>03</span></div>
     </section>
 
     <div class="ticker" aria-label="Bidang keahlian">

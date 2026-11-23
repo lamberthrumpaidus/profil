@@ -220,3 +220,6 @@ expBtn.addEventListener('click',()=>document.getElementById('unlock')?.scrollInt
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.immersive)setImmersive(false);if(state.immersive&&['1','2','3','4'].includes(e.key))setPreset(['arrival','gate','water','bamboo'][+e.key-1])});
 window.addEventListener('resize',resize,{passive:true});
 init();
+function synchronizeSceneWithPage(){const light=document.documentElement.dataset.theme==='light';changeSceneTheme(light?'dusk':'night')}
+new MutationObserver(synchronizeSceneWithPage).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+synchronizeSceneWithPage();
