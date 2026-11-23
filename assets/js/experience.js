@@ -6,6 +6,36 @@ const d=$('#deployDialog'), workspace=$('#deployWorkspace'), result=$('#deployRe
 const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let active=0,timers=[],runID=0,lastFocus=null;
+
+/* Documentation now reveals real project text incrementally, rather than flashing abstract layers. */
+const durations=[3500,5000,5500,5200],allDuration=durations.reduce((x,y)=>x+y,0);
+const docParts=[
+ {heading:'MEMUAT SUMBER',value:p=>p.title+' — '+p.type+'\nTeknologi: '+(p.stack||[]).join(', '),terminal:'SOURCE LOADED'},
+ {heading:'MENGANALISIS TANTANGAN',value:p=>content(p,'problem'),terminal:'PROBLEM ANALYSIS'},
+ {heading:'MENYUSUN PENDEKATAN',value:p=>content(p,'approach'),terminal:'METHOD ASSEMBLY'},
+ {heading:'MERANGKUM HASIL',value:p=>content(p,'outcome')+'\n\nRefleksi: '+content(p,'reflection'),terminal:'FINAL DOCUMENT'}
+];
+let frameId=0;
+function showProgress(p,time){
+ let since=0,index=docParts.length-1,ratio=1;
+ for(let i=0;i<durations.length;i++){if(time<since+durations[i]){index=i;ratio=(time-since)/durations[i];break}since+=durations[i]}
+ const part=docParts[index],full=String(part.value(p)),count=Math.round(full.length*Math.min(1,ratio*1.28));
+ workspace.dataset.phase=String(index);
+ $('#deployStageNumber').textContent=String(index+1).padStart(2,'0');
+ $('#deployClock').textContent=part.terminal;
+ $('#docBuildTopic').textContent=part.heading;
+ $('#deployPhase').textContent=part.heading;
+ $('#docBuildText').textContent=full.slice(0,count)+(ratio<.8?'▍':'');
+ $('#docBuildSkeleton').style.opacity=String(1-Math.min(1,ratio*1.7));
+ const percent=Math.min(100,Math.floor(100*time/allDuration));
+ $('#deployPercent').textContent=percent+'%';
+ $('#deployProgressBar').style.width=percent+'%';
+ $('[data-deploy-step]').forEach((x,i)=>x.classList.toggle('is-active',i<=index));
+ const log=$('#docBuildLines');log.replaceChildren();
+ for(let i=0;i<index;i++){const el=document.createElement('p');el.textContent='✓ '+docParts[i].heading;el.className='doc-log-complete';log.append(el)}
+ const row=document.createElement('p');row.textContent='→ '+part.heading;row.className='doc-log-active';log.append(row);
+}
+
 const steps=[
   {label:'Memuat sumber dan metadata proyek',terminal:'SOURCE LOADER',pct:16},
   {label:'Menyusun lapisan arsitektur dan media',terminal:'STRUCTURE MAP',pct:43},
@@ -14,24 +44,25 @@ const steps=[
 ];
 function getLang(){return document.documentElement.lang==='en'?'en':'id'}
 const content=(p,k)=>getLang()==='en'&&p.en?.[k]?p.en[k]:p[k];
-function clearTimers(){timers.forEach(clearTimeout);timers=[];runID++}
+function clearTimers(){timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(frameId);frameId=0;runID++}
 function schedule(fn,delay){timers.push(setTimeout(fn,delay))}
 function phase(i){const s=steps[i];workspace.dataset.phase=String(i);$('#deployStageNumber').textContent='0'+(i+1);$('#deployClock').textContent=s.terminal;$('#deployPhase').textContent=s.label;$('#deployPercent').textContent=s.pct+'%';$('#deployProgressBar').style.width=s.pct+'%';$$('[data-deploy-step]').forEach((e,j)=>e.classList.toggle('is-active',j<=i))}
 function render(p){
   const labels=getLang()==='en'?[['01','The Challenge','problem'],['02','Our Approach','approach'],['03','The Outcome','outcome'],['04','Reflection','reflection']]:[['01','Tantangan','problem'],['02','Pendekatan','approach'],['03','Hasil','outcome'],['04','Refleksi','reflection']];
   result.innerHTML=`<article class="deploy-result-hero"><img class="deploy-result-img" src="${safe(p.image)}" alt="Pratinjau proyek ${safe(p.title)}"><div class="deploy-result-intro"><small>${safe(p.type)} / PROJECT ${safe(p.number)}</small><h2 id="deployTitle">${safe(p.title)}</h2><p>${safe(content(p,'summary'))}</p><div class="deploy-tech">${p.stack.map(s=>`<span>${safe(s)}</span>`).join('')}</div></div></article><div class="deploy-dossier">${labels.map(([num,heading,key],i)=>`<section style="--n:${i}"><span>${num} / ${heading.toUpperCase()}</span><h3>${safe(heading)}</h3><p>${safe(content(p,key))}</p></section>`).join('')}</div>`;
 }
-function finish(){workspace.classList.add('is-done');schedule(()=>{workspace.hidden=true;documentPanel.hidden=false;documentPanel.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});d.scrollTop=0;},reduced?1:340)}
+function finish(){workspace.classList.add('is-done');schedule(()=>{workspace.hidden=true;documentPanel.hidden=false;documentPanel.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});d.scrollTop=0;},reduced?1:650)}
 function run(){
   clearTimers();const p=projects[active];if(!p)return;
-  workspace.hidden=false;workspace.classList.remove('is-done');workspace.dataset.phase='-1';documentPanel.hidden=true;
-  $('#deployPhase').textContent='Menginisialisasi dokumentasi…';$('#deployPercent').textContent='0%';$('#deployProgressBar').style.width='0%';$$('[data-deploy-step]').forEach(el=>el.classList.remove('is-active'));
-  $('#deployClock').textContent='INIT';$('#deployStageNumber').textContent='00';
+  workspace.hidden=false;workspace.classList.remove('is-done');workspace.dataset.phase='0';documentPanel.hidden=true;
+  $('#docBuildTitle').textContent=p.title;$('#docBuildPaperNum').textContent=p.number;
+  $('#docBuildSource').textContent=(p.stack||[]).slice(0,2).join(' / ');
   d.scrollTop=0;render(p);
-  const seq=runID;
-  if(reduced){phase(3);finish();return}
-  [120,800,1550,2300].forEach((ms,i)=>schedule(()=>{if(seq===runID)phase(i)},ms));
-  schedule(()=>{if(seq===runID)finish()},3220);
+  const current=runID;
+  if(reduced){showProgress(p,allDuration);finish();return}
+  const start=performance.now();
+  function draw(now){if(current!==runID||!d.open)return;const elapsed=Math.min(allDuration,Math.max(0,now-start));showProgress(p,elapsed);if(elapsed>=allDuration)finish();else frameId=requestAnimationFrame(draw)}
+  frameId=requestAnimationFrame(draw);
 }
 function openDocs(id){const idx=projects.findIndex(p=>p.id===id);if(idx<0)return;active=idx;lastFocus=document.activeElement;const caseDialog=$('#projectDialog');if(caseDialog?.open)caseDialog.close();if(!d.open)d.showModal();run()}
 selector?.replaceChildren(...projects.map(p=>{const el=document.createElement('option');el.value=p.id;el.textContent=`${p.number} / ${p.title}`;return el}));
@@ -39,7 +70,7 @@ selector?.replaceChildren(...projects.map(p=>{const el=document.createElement('o
 function previewProject(){
   const p=projects.find(item=>item.id===selector?.value)||projects[0];if(!p)return;
   const img=$('#machinePreviewImage'),label=$('#machineProjectTitle'),machine=$('#documentationMachine');
-  if(img)img.src=p.image;
+  if(img){img.src=p.image;img.onerror=()=>{if(p.imageFallback){img.onerror=null;img.src=p.imageFallback}}}
   if(label)label.textContent=p.title;
   if(machine)machine.setAttribute('aria-label',`Deploy dokumentasi proyek ${p.title}`);
 }
@@ -50,6 +81,7 @@ $('#documentationMachine')?.addEventListener('keydown',e=>{if(e.key==='Enter'||e
 
 $('#documentationLaunch')?.addEventListener('click',()=>openDocs(selector?.value||projects[0]?.id));
 $('#deployReplay')?.addEventListener('click',run);
+$('#deploySkip')?.addEventListener('click',finish);
 $('#deployClose')?.addEventListener('click',()=>d.close());
 d?.addEventListener('click',e=>{if(e.target===d)d.close()});
 d?.addEventListener('close',()=>{clearTimers();if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true})});

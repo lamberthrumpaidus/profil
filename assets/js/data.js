@@ -1,11 +1,15 @@
 window.PORTFOLIO_PROJECTS = [
+  {"id":"landlord","number":"01","title":"LANDLORD","type":"3D BROWSER GAME","category":"creative","image":"https://raw.githubusercontent.com/lamberthrumpaidus/LANDLORD/main/docs/preview-desktop-ingame.png","imageFallback":"assets/images/cyberpunk.webp","repository":"https://github.com/lamberthrumpaidus/LANDLORD","summary":"Game petualangan 3D berbasis browser dengan dunia eksplorasi, navigasi, dan interaksi pemain.","problem":"Mengembangkan eksplorasi tiga dimensi yang dapat dimainkan lewat browser.","approach":"Menggunakan Three.js, sistem kontrol lintas perangkat, dan lingkungan permainan interaktif.","outcome":"Game 3D dengan dokumentasi tampilan gameplay, menu, dan kontrol mobile maupun desktop.","reflection":"Optimalisasi performa dan kontrol lintas perangkat penting untuk pengembangan 3D web.","stack":["JavaScript","Three.js","WebGL","Game Design"],"accent":"#a9cbb4","badge":"Interactive 3D Game"},
+
   {
     "id": "rubaka",
     "number": "01",
     "title": "Rubaka Action Platformer",
     "type": "GAME ENGINEERING",
     "category": "creative",
-    "image": "assets/images/rubaka.webp",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Rubaka/main/Screenshot.png",
+    "imageFallback": "assets/images/rubaka.webp",
+    "repository": "https://github.com/lamberthrumpaidus/Rubaka",
     "summary": "Game platformer 2D berbasis HTML5 Canvas dengan mekanisme tabrakan, fisika sederhana, dan audio sintetis.",
     "problem": "Membangun permainan interaktif yang ringan, tanpa bergantung pada game engine pihak ketiga.",
     "approach": "Memisahkan state permainan, pembaruan fisika, dan proses menggambar ke dalam loop Canvas. Efek audio dirancang melalui Web Audio API.",
@@ -32,7 +36,9 @@ window.PORTFOLIO_PROJECTS = [
     "title": "Omni-Science Computing Lab",
     "type": "SCIENTIFIC COMPUTING",
     "category": "science",
-    "image": "assets/images/omni.webp",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Omni_Science/main/Screenshot.png",
+    "imageFallback": "assets/images/omni.webp",
+    "repository": "https://github.com/lamberthrumpaidus/Omni_Science",
     "summary": "Laboratorium komputasi ilmiah berbasis web untuk menjelajahi kalkulus numerik, fisika, dan formula interaktif.",
     "problem": "Membuat perhitungan ilmiah yang kompleks lebih mudah digunakan dan dipahami di dalam antarmuka web.",
     "approach": "Menggabungkan metode Simpson 1/3, pendekatan turunan numerik, katalog rumus, dan antarmuka berbasis data.",
@@ -195,7 +201,9 @@ window.PORTFOLIO_PROJECTS = [
     "title": "20-in-1 Arcade Collection",
     "type": "JAVASCRIPT GAMES",
     "category": "creative",
-    "image": "assets/images/arcade.webp",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Arcade_Collection_Game/main/Screenshot.png",
+    "imageFallback": "assets/images/arcade.webp",
+    "repository": "https://github.com/lamberthrumpaidus/Arcade_Collection_Game",
     "summary": "Koleksi konsep game klasik dalam satu portal dengan sistem perpindahan antarpermainan.",
     "problem": "Ketika banyak permainan digabung, event listener dan timer harus dibersihkan saat berpindah game.",
     "approach": "Merancang pengelola lifecycle untuk memulai dan menghentikan permainan, memisahkan state, dan menyimpan skor lokal.",
@@ -342,3 +350,5 @@ window.PORTFOLIO_STEPS = [
     ]
   }
 ];
+
+window.PORTFOLIO_PROJECTS.forEach((p,i)=>p.number=String(i+1).padStart(2,'0'));
