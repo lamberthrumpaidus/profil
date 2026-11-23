@@ -248,3 +248,9 @@ main{background:#081720}
 #musicPanel{display:none!important}
 @media(max-width:720px){.documentation-showcase{height:355px;padding:14px}.doc-showcase-details{padding-top:10px}.doc-showcase-details h3{font-size:20px}.deploy-dialog{max-width:calc(100% - 12px);max-height:95dvh}.deploy-workspace{padding:0 11px 45px;margin:10px auto}.deploy-visual.doc-build-area{height:auto;min-height:465px;grid-template-columns:1fr;grid-template-rows:135px minmax(285px,auto);gap:12px;padding:12px}.doc-build-terminal{padding:10px;gap:5px}.doc-build-top{font-size:9px}.doc-build-top small{font-size:7px}.doc-build-lines{padding-top:6px;gap:4px}.doc-build-lines p{font-size:10px}.doc-build-asset{padding-top:4px;font-size:8px}.doc-build-asset strong{font-size:8px}.doc-build-paper{padding:18px 19px 30px}.doc-build-paper h3{font-size:21px;margin:16px 0}.doc-build-paper p{font-size:12px;line-height:1.5}.doc-build-paper footer{left:19px;right:19px;font-size:7px}.doc-build-skeleton{left:19px;right:19px}.doc-build-controls small{font-size:9px}.doc-build-controls button{font-size:9px;white-space:nowrap}.deploy-steps{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.doc-build-paper{transition:none}}
+
+/* Honest project previews and screenshot fallback */
+.image-origin{position:absolute;bottom:12px;left:12px;z-index:4;max-width:85%;border:1px solid #9fe4bd73;background:#0a261edb;color:#dbf5e7;border-radius:7px;padding:7px 10px;backdrop-filter:blur(8px);font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+.image-origin.is-archive{color:#edd8b9;background:#32241ad6;border-color:#b99a6570}
+.project-source-link{display:inline-flex;margin:10px 8px;padding:11px 13px;border-radius:8px;border:1px solid var(--lineStrong);text-decoration:none;color:var(--text);font-size:12px;font-weight:700}
+.project-visual img{height:100%;width:100%;object-fit:contain!important}
