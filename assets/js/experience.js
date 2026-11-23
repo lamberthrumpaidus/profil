@@ -51,7 +51,7 @@ function render(p){
   const labels=getLang()==='en'?[['01','The Challenge','problem'],['02','Our Approach','approach'],['03','The Outcome','outcome'],['04','Reflection','reflection']]:[['01','Tantangan','problem'],['02','Pendekatan','approach'],['03','Hasil','outcome'],['04','Refleksi','reflection']];
   result.innerHTML=`<article class="deploy-result-hero"><img class="deploy-result-img" src="${safe(p.image)}" alt="Pratinjau proyek ${safe(p.title)}"><div class="deploy-result-intro"><small>${safe(p.type)} / PROJECT ${safe(p.number)}</small><h2 id="deployTitle">${safe(p.title)}</h2><p>${safe(content(p,'summary'))}</p><div class="deploy-tech">${p.stack.map(s=>`<span>${safe(s)}</span>`).join('')}</div></div></article><div class="deploy-dossier">${labels.map(([num,heading,key],i)=>`<section style="--n:${i}"><span>${num} / ${heading.toUpperCase()}</span><h3>${safe(heading)}</h3><p>${safe(content(p,key))}</p></section>`).join('')}</div>`;
 }
-function finish(){workspace.classList.add('is-done');schedule(()=>{workspace.hidden=true;documentPanel.hidden=false;documentPanel.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});d.scrollTop=0;},reduced?1:650)}
+function finish(){cancelAnimationFrame(frameId);frameId=0;runID++;workspace.classList.add('is-done');schedule(()=>{workspace.hidden=true;documentPanel.hidden=false;documentPanel.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});d.scrollTop=0;},reduced?1:650)}
 function run(){
   clearTimers();const p=projects[active];if(!p)return;
   workspace.hidden=false;workspace.classList.remove('is-done');workspace.dataset.phase='0';documentPanel.hidden=true;
