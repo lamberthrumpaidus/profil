@@ -86,7 +86,11 @@ function progress(time){
      line.textContent=(i===phase?'→ ':'✓ ')+ch.console;
      $log.append(line);
    });
-   paper.scrollTop=Math.max(0,htmlParts[phase].node.offsetTop-paper.offsetTop-16);
+   if(!reduce.matches){
+     const target=Math.max(0,htmlParts[phase].node.offsetTop-paper.offsetTop-10);
+     if(typeof paper.scrollTo==='function')paper.scrollTo({top:target,behavior:'smooth'});
+     else paper.scrollTop=target;
+   }
  }
  const percentage=Math.min(100,Math.round(100*time/duration));
  $percent.textContent=percentage+'%';$bar.style.width=percentage+'%';
@@ -99,16 +103,18 @@ function progress(time){
 function complete(){
  if(done)return;done=true;
  cancelAnimationFrame(frame);frame=0;last=0;
- progress(duration);$status.textContent='Dokumentasi selesai disusun';if($announce)$announce.textContent='Dokumentasi selesai. Studi kasus siap dibaca.';
+ progress(duration);$status.textContent='Dokumentasi selesai disusun';
+ if($announce)$announce.textContent='Dokumentasi selesai. Studi kasus siap dibaca.';
+ // The result is revealed during the outgoing paper transition, never after a blank gap.
  work.classList.add('is-done');
+ out.hidden=false;out.classList.remove('doc-result-enter');
+ void out.offsetWidth;out.classList.add('doc-result-enter');
+ dialog.scrollTop=0;
  const thisRun=runId;
  timeout=setTimeout(()=>{
    if(thisRun!==runId||!dialog.open)return;
-   work.hidden=true;out.hidden=false;
-   out.classList.add('doc-result-enter');
-   dialog.scrollTop=0;
-   $('#deployClose')?.focus({preventScroll:true});
- },reduce.matches?0:850);
+   work.hidden=true;$('#deployClose')?.focus({preventScroll:true});
+ },reduce.matches?0:760);
 }
 function tick(now){
  frame=0;if(!dialog.open||done)return;

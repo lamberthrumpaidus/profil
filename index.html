@@ -29,17 +29,17 @@
   <link rel="stylesheet" href="assets/css/experience.css">
   <link rel="stylesheet" href="assets/css/final-clean.css">
   <link rel="stylesheet" href="assets/css/creative.css">
-  <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-studio">
+  <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261124-studio"></script>
   <script type="module" src="assets/js/vault-final.js"></script>
-  <script src="assets/js/experience.js?v=20261124-studio" defer></script>
+  <script src="assets/js/experience.js?v=20261124-lr-studio" defer></script>
   <script src="assets/js/assistant.js" defer></script>
   <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/creative.js?v=20261124-studio"></script>
+  <script defer src="assets/js/creative.js?v=20261124-lr-studio"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
 
   <style>
@@ -401,9 +401,7 @@
       <div><strong data-i18n="footer.head">Dibuat dengan rasa ingin tahu.</strong>
         <p data-i18n="footer.body">Dirancang dan dikembangkan sebagai portofolio digital. © 2026 Lamberth Paulinus
           Rumpaidus.</p>
-      </div><a href="#top" class="back-top"><span data-i18n="footer.up">Kembali ke atas</span><svg class="ico">
-          <use href="#ico-arrow-up"></use>
-        </svg></a>
+      </div>
     </div>
   </footer>
 
@@ -411,7 +409,7 @@
   <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployDialogTitle">
     <div class="deploy-shell">
       <span class="sr-only" id="deployDialogTitle">Dokumentasi proyek</span>
-      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-glyph">◈</span><div><strong>lamberthrumpaidus</strong><small>PROJECT DOCUMENTATION ENGINE</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
+      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-brand-logo-shell"><img class="deploy-brand-logo" src="assets/images/logo-lr-web.png?v=20261124-lr-studio" alt="Logo resmi L/R Lamberth Rumpaidus" width="78" height="52"></span><div><strong>lamberthrumpaidus</strong><small>DOKUMENTASI PROYEK</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
       <div class="deploy-workspace" id="deployWorkspace" role="region" aria-label="Proses penyusunan dokumentasi">
         <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOCUMENT_PIPELINE / STAGE <span id="deployStageNumber">01</span></strong><small id="deployClock">INIT</small></div>
         <div class="deploy-visual doc-build-area" id="deployVisual">
@@ -423,7 +421,7 @@
         <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>SUMBER PROYEK</span></div><div data-deploy-step="1"><b>02</b><span>ANALISIS MASALAH</span></div><div data-deploy-step="2"><b>03</b><span>METODE & HASIL</span></div><div data-deploy-step="3"><b>04</b><span>DOKUMEN SIAP</span></div></div>
       </div>
       <div class="deploy-document" id="deployDocument" hidden>
-        <div class="deploy-complete"><span>DOCUMENT READY <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay">↺ ULANGI ANIMASI</button></div>
+        <div class="deploy-complete"><span>DOKUMENTASI SELESAI <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay">↺ Putar ulang</button></div>
         <div id="deployResult"></div>
         <div class="deploy-foot"><button id="deployPrev" type="button">← Proyek sebelumnya</button><button id="deployNext" type="button">Proyek berikutnya →</button></div>
       </div>

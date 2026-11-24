@@ -14,7 +14,7 @@ function scrollMotion(){
  if(reduce.matches||!G||!ST)return;
  try{
    G.registerPlugin(ST);
-   const words=$('#heroHeading > span,#heroHeading > em');
+   const words=$$('#heroHeading > span,#heroHeading > em');
    if(words.length)G.fromTo(words,{y:18,opacity:.94},{y:0,opacity:1,duration:.8,stagger:.11,ease:'power2.out',clearProps:'transform,opacity'});
    const docs=$('#documentationTitle');
    if(docs)G.fromTo(docs,{y:15,opacity:.92},{y:0,opacity:1,duration:.75,ease:'power2.out',scrollTrigger:{trigger:docs,start:'top 92%',once:true},clearProps:'transform,opacity'});
@@ -43,6 +43,8 @@ function transitions(){
    const button=event.target.closest('[data-project],[data-docs]');
    if(!button)return;
    const project=button.dataset.project,docs=button.dataset.docs;
+   // No dark curtain while opening the documentation: the paper itself provides its transition.
+   if(docs)return;
    const handler=project?window.portfolioOpenProject:window.openProjectDocumentation;
    if(typeof handler!=='function')return;
    event.preventDefault();event.stopImmediatePropagation();
