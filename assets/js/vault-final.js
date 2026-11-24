@@ -5,7 +5,8 @@ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=t=>{const x=clamp(t);return x*x*(3-2*x)};
 const range=(t,a,b)=>smooth((t-a)/(b-a));
-let renderer,scene,camera,lock,key,shackle,slotRing,glow;
+let renderer,scene,camera,lock,key,shackle,slotRing,glow,portal,portalLight;
+const pointer={x:0,y:0};
 let visible=true,running=false,unlocked=false,progress=0,start=0,animationFrame=0;
 function rounded(x,y,w,h,r){const s=new THREE.Shape();s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s}
 function add(parent,geo,material,x=0,y=0,z=0){const m=new THREE.Mesh(geo,material);m.position.set(x,y,z);parent.add(m);return m}
@@ -14,6 +15,11 @@ function build(){
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,innerWidth<700?1.2:1.6));
  renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;
  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.1,60);
+ portal=new THREE.LOD();const auraMat=new THREE.MeshBasicMaterial({color:0x88c7b7,transparent:true,opacity:.24,depthWrite:false,side:THREE.DoubleSide});
+ portal.addLevel(new THREE.Mesh(new THREE.TorusGeometry(1.8,.035,12,100),auraMat),0);
+ portal.addLevel(new THREE.Mesh(new THREE.TorusGeometry(1.8,.045,5,24),auraMat),7);
+ portal.position.set(-.55,.2,-1.35);scene.add(portal);
+ portalLight=new THREE.PointLight(0x9de5c9,1.1,12,2);portalLight.position.set(1.2,1.5,3.5);scene.add(portalLight);
  scene.add(new THREE.HemisphereLight(0xc9f6e6,0x10232a,2));
  const keylight=new THREE.DirectionalLight(0xe3e9db,3.2);keylight.position.set(-4,7,7);scene.add(keylight);
  const rim=new THREE.DirectionalLight(0xd2a878,2.9);rim.position.set(6,3,-4);scene.add(rim);
@@ -46,16 +52,21 @@ function pose(p){
  if(glow)glow.material.opacity=.25*open;
  fallback?.style.setProperty('--key-align',String(align));fallback?.style.setProperty('--key-insert',String(insert));fallback?.style.setProperty('--key-turn',String(turn));fallback?.style.setProperty('--shackle-open',String(open))
 }
-function render(t){animationFrame=requestAnimationFrame(render);if(document.hidden)return;
+function startLoop(){if(!animationFrame&&!document.hidden&&visible)animationFrame=requestAnimationFrame(render)}
+function render(t){animationFrame=0;if(document.hidden||!visible)return;
  if(running){progress=clamp((t-start)/3900);pose(smooth(progress));if(progress>=1){running=false;unlocked=true;status.textContent='Akses terbuka';button.textContent='Lihat karya ↗';button.setAttribute('aria-label','Lihat karya portofolio');button.disabled=false;stage.classList.add('is-unlocked');window.dispatchEvent(new CustomEvent('portfolio:vault-unlocked'))}}
- if(renderer&&visible)renderer.render(scene,camera)
+ if(renderer){if(!reduce){const w=stage.clientWidth<540;camera.position.set((w?2.05:2.9)+pointer.x*.4,2.1+pointer.y*.23,w?8:8.5);camera.lookAt(0,.27,0);if(portal)portal.rotation.z+=.0008;if(portalLight)portalLight.position.set(1.0+pointer.x*3,1.65+pointer.y*2,3.5)}renderer.render(scene,camera)}
+ if(visible)animationFrame=requestAnimationFrame(render)
 }
 function unlock(){if(unlocked){document.getElementById('work')?.scrollIntoView({behavior:reduce?'instant':'smooth'});return}if(running)return;
- if(reduce){progress=1;pose(1);running=false;unlocked=true;status.textContent='Akses terbuka';button.textContent='Lihat karya ↗';stage.classList.add('is-unlocked');return}
- start=performance.now();running=true;status.textContent='Kunci sedang dipasang…';button.textContent='Membuka…';button.disabled=true
+ if(reduce){progress=1;pose(1);running=false;unlocked=true;status.textContent='Akses terbuka';button.textContent='Lihat karya ↗';stage.classList.add('is-unlocked');window.dispatchEvent(new CustomEvent('portfolio:vault-unlocked'));return}
+ start=performance.now();running=true;startLoop();status.textContent='Kunci sedang dipasang…';button.textContent='Membuka…';button.disabled=true
 }
 button?.addEventListener('click',unlock);
 canvas?.addEventListener('webglcontextlost',e=>{e.preventDefault();renderer=null;canvas.hidden=true;fallback.hidden=false});
-try{build();fallback.hidden=true;new ResizeObserver(resize).observe(stage);new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting)},{threshold:.01}).observe(stage);animationFrame=requestAnimationFrame(render)}
-catch(e){console.warn('3D key unavailable; enabling 2D mechanical fallback',e);canvas.hidden=true;fallback.hidden=false;renderer=null;animationFrame=requestAnimationFrame(render)}
+try{build();fallback.hidden=true;new ResizeObserver(resize).observe(stage);new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);if(visible)startLoop()},{threshold:.01}).observe(stage);startLoop()}
+catch(e){console.warn('3D key unavailable; enabling 2D mechanical fallback',e);canvas.hidden=true;fallback.hidden=false;renderer=null;startLoop()}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(animationFrame);animationFrame=0}else startLoop()});
+stage?.addEventListener('pointermove',e=>{if(reduce||e.pointerType==='touch')return;const b=stage.getBoundingClientRect();pointer.x=((e.clientX-b.left)/b.width-.5)*2;pointer.y=-((e.clientY-b.top)/b.height-.5)*2},{passive:true});
+stage?.addEventListener('pointerleave',()=>{pointer.x=0;pointer.y=0});
 window.portfolioVault={next:unlock,get progress(){return progress}};

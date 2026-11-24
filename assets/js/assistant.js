@@ -30,7 +30,7 @@
   async function send(question){
     const own=append(question,true);own.dataset.question='true';
     const waiting=append('Sedang mencari jawaban...');
-    busy=true;form.querySelector('button').disabled=true;
+    busy=true;shell.classList.add('is-thinking');form.querySelector('button').disabled=true;
     let answer;
     if(remote){
       try{const c=new AbortController();const t=setTimeout(()=>c.abort(),9000);
@@ -38,7 +38,7 @@
         const result=await r.json();if(!r.ok||typeof result.answer!=='string')throw Error('Service unavailable');answer=result.answer;
       }catch{answer=localAnswer(question)+'\n\n(Mode lokal aktif: layanan AI generatif tidak tersedia.)'}
     }else answer=localAnswer(question);
-    waiting.textContent=answer;busy=false;form.querySelector('button').disabled=false;messages.scrollTop=messages.scrollHeight;
+    waiting.textContent=answer;busy=false;shell.classList.remove('is-thinking');form.querySelector('button').disabled=false;messages.scrollTop=messages.scrollHeight;
   }
   form.addEventListener('submit',e=>{e.preventDefault();if(busy)return;const q=input.value.trim();if(!q)return;input.value='';void send(q)});
   // GET is a lightweight capability check; 404 on static hosting is expected and handled silently.

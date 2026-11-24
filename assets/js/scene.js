@@ -11,7 +11,8 @@ const cameras = {
   water: { position: [9.5, 4.5, 3.2], target: [3.3, 0.8, -15] },
   bamboo: { position: [-8.8, 4.6, 3], target: [-4.1, 2.8, -17] }
 };
-let renderer, scene, camera, clock, keyLight, hemi, water, fireflies, petals, glow, bloomTrees=[];
+let renderer, scene, camera, clock, keyLight, hemi, water, fireflies, petals, glow, heroSpot, bloomTrees=[];
+let qualityScale=1,slowFrameCount=0;
 let pose = new THREE.Vector3(...cameras.arrival.position), look = new THREE.Vector3(...cameras.arrival.target);
 const mouse = {x:0,y:0}; const targets = {x:0,y:0};
 let raf = null; let visible = true;
@@ -174,11 +175,13 @@ function changeSceneTheme(next){
   document.getElementById('worldDayBtn').setAttribute('aria-pressed',String(next==='dusk'));
   document.getElementById('worldNightBtn').setAttribute('aria-pressed',String(next==='night'));
 }
-function resize(){if(!renderer)return;const w=Math.max(1,frame.clientWidth),h=Math.max(1,frame.clientHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,state.detail==='low'?1:innerWidth<700?1.25:1.65));renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<700?67:w<1100?62:54;camera.updateProjectionMatrix()}
+function resize(){if(!renderer)return;const w=Math.max(1,frame.clientWidth),h=Math.max(1,frame.clientHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,state.detail==='low'?1:(innerWidth<700?1.25:1.65)*qualityScale));renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<700?67:w<1100?62:54;camera.updateProjectionMatrix()}
+function startLoop(){if(!raf&&renderer&&!document.hidden&&(visible||state.immersive)){clock?.getDelta();raf=requestAnimationFrame(tick)}}
 function tick(){
-  raf=requestAnimationFrame(tick);
+  raf=null;
   if(document.hidden||(!visible&&!state.immersive)||!renderer)return;
   const dt=Math.min(clock.getDelta(),.05),time=performance.now()*.001;
+  if(dt>.035&&qualityScale===1&&++slowFrameCount>28){qualityScale=.75;resize()}else if(dt<.029)slowFrameCount=Math.max(0,slowFrameCount-1);
   if(state.motion){
     const preset=state.wanted||cameras[state.preset];
     const pos=v(...preset.position);const tar=v(...preset.target);
@@ -190,7 +193,9 @@ function tick(){
     petals.rotation.y=Math.sin(time*.10)*.012;
   }
   camera.position.copy(pose);camera.lookAt(look);
+  if(heroSpot){heroSpot.position.x+=(mouse.x*5-heroSpot.position.x)*.08;heroSpot.position.y+=(4+mouse.y*2-heroSpot.position.y)*.08;heroSpot.intensity=state.motion?1.12+Math.abs(mouse.x)*.25:.6}
   renderer.render(scene,camera);
+  raf=requestAnimationFrame(tick);
 }
 function setPreset(id){if(!cameras[id])return;state.preset=id;document.querySelectorAll('[data-world-view]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.worldView===id)))}
 function saveFrame(){if(!renderer)return;try{renderer.render(scene,camera);const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='lamberthrumpaidus-immersive-garden.png';a.click()}catch{document.getElementById('worldError').textContent='Gambar tidak dapat disimpan di browser ini.'}}
@@ -198,7 +203,7 @@ function init(){
   try{
     renderer=new THREE.WebGLRenderer({canvas,antialias:innerWidth>=720,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:true});
     renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.32;
-    scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(54,1,.08,210);clock=new THREE.Clock();createGarden();resize();tick();
+    scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(54,1,.08,210);clock=new THREE.Clock();createGarden();heroSpot=new THREE.PointLight(0xffd8ac,1.1,26,1.65);heroSpot.position.set(2,4,4);scene.add(heroSpot);resize();startLoop();
     fallback.hidden=true;
   }catch(error){console.warn('3D mode unavailable, using accessible fallback.',error);canvas.style.display='none';fallback.hidden=false;frame.classList.add('world-unavailable');document.getElementById('worldPhotoBtn').disabled=true;document.getElementById('worldQualityBtn').disabled=true;document.getElementById('worldMotionBtn').disabled=true;document.querySelectorAll('[data-world-view]').forEach(b=>{b.disabled=true;b.title='Kamera 3D memerlukan WebGL'});document.getElementById('worldError').textContent='Mode 3D tidak didukung pada perangkat ini. Seluruh portofolio tetap bisa digunakan.'}
 }
@@ -207,7 +212,9 @@ frame.addEventListener('pointermove',e=>{if(!state.motion)return;const r=frame.g
 frame.addEventListener('pointerleave',()=>{mouse.x=0;mouse.y=0});
 frame.addEventListener('touchmove',e=>{const t=e.touches[0];if(!t||!state.motion)return;const r=frame.getBoundingClientRect();mouse.x=Math.max(-1,Math.min(1,((t.clientX-r.left)/r.width-.5)*2));mouse.y=-Math.max(-1,Math.min(1,((t.clientY-r.top)/r.height-.5)*2))},{passive:true});
 new ResizeObserver(resize).observe(frame);
-new IntersectionObserver(e=>{visible=e[0].isIntersecting},{threshold:.01}).observe(frame);
+new IntersectionObserver(e=>{visible=!!e[0]?.isIntersecting;if(visible)startLoop()},{threshold:.01}).observe(frame);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&raf){cancelAnimationFrame(raf);raf=null}else startLoop()});
+canvas?.addEventListener('webglcontextlost',e=>{e.preventDefault();if(raf)cancelAnimationFrame(raf);raf=null;renderer=null;canvas.hidden=true;fallback.hidden=false});
 document.querySelectorAll('[data-world-view]').forEach(btn=>btn.addEventListener('click',()=>setPreset(btn.dataset.worldView)));
 document.getElementById('worldDayBtn').addEventListener('click',()=>changeSceneTheme('dusk'));
 document.getElementById('worldNightBtn').addEventListener('click',()=>changeSceneTheme('night'));
