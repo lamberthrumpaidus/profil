@@ -8,23 +8,17 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const fine=matchMedia('(hover: hover) and (pointer: fine)');
 let lenis=null, gsapActive=false;
 function scrollMotion(){
+ // Use native mouse-wheel, touch and keyboard scrolling for consistent behavior.
+ // Only animate short offsets; avoid competing CSS, Lenis, and GSAP transforms.
  const G=window.gsap,ST=window.ScrollTrigger;
- if(!reduce.matches && G&&ST){
-   G.registerPlugin(ST);gsapActive=true;
-   const lines=$$('#heroHeading > span,#heroHeading > em');
-   G.fromTo(lines,{y:48,opacity:0,filter:'blur(8px)'},{y:0,opacity:1,filter:'blur(0px)',duration:1.05,stagger:.15,ease:'power3.out',clearProps:'filter'});
-   $$('.section-title,#documentationTitle,.lock-copy h2').forEach(el=>G.fromTo(el,{y:30,opacity:.35,clipPath:'inset(15% 0 0 0)'},{y:0,opacity:1,clipPath:'inset(0% 0 0 0)',duration:.95,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
-   G.utils.toArray('.section-label').forEach(el=>G.fromTo(el,{y:13,opacity:.2},{y:0,opacity:1,duration:.65,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 95%',once:true}}));
- }
- if(!reduce.matches && typeof window.Lenis==='function' && fine.matches){
-   try{
-     lenis=new window.Lenis({duration:1.12,autoRaf:!gsapActive,smoothWheel:true,wheelMultiplier:.85,touchMultiplier:1,anchors:{offset:-86}});
-     if(gsapActive){
-       lenis.on('scroll',ST.update);G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0);
-     }
-     window.portfolioSmoothScroll=lenis;
-   }catch(e){console.warn('Native scroll fallback:',e)}
- }
+ if(reduce.matches||!G||!ST)return;
+ try{
+   G.registerPlugin(ST);
+   const words=$('#heroHeading > span,#heroHeading > em');
+   if(words.length)G.fromTo(words,{y:18,opacity:.94},{y:0,opacity:1,duration:.8,stagger:.11,ease:'power2.out',clearProps:'transform,opacity'});
+   const docs=$('#documentationTitle');
+   if(docs)G.fromTo(docs,{y:15,opacity:.92},{y:0,opacity:1,duration:.75,ease:'power2.out',scrollTrigger:{trigger:docs,start:'top 92%',once:true},clearProps:'transform,opacity'});
+ }catch(e){console.warn('Scroll enhancement fallback:',e)}
 }
 function magnetic(){
  if(!fine.matches||reduce.matches)return;
@@ -143,6 +137,6 @@ function assistant(){
  panel.classList.add('ai-glass');
  const avatar=$('.assistant-glyph',shell);avatar?.setAttribute('aria-hidden','true');
 }
-scrollMotion();magnetic();transitions();shell();music();assistant();
+scrollMotion();transitions();shell();music();assistant();
 window.addEventListener('beforeunload',()=>lenis?.destroy());
 })();

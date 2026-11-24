@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="assets/css/experience.css">
   <link rel="stylesheet" href="assets/css/final-clean.css">
   <link rel="stylesheet" href="assets/css/creative.css">
+  <link rel="stylesheet" href="assets/css/documentation-studio.css">
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script type="module" src="assets/js/scene.js"></script>
@@ -38,7 +39,6 @@
   <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
   <script defer src="assets/js/creative.js"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
 
@@ -126,7 +126,7 @@
           <p class="hero-lede" data-i18n="hero.desc">Portofolio interaktif Lamberth Paulinus Rumpaidus. Saya menggabungkan desain, engineering, dan eksperimen 3D menjadi pengalaman web yang hidup.</p>
           <div class="hero-actions">
             <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Lihat karya saya</span><span aria-hidden="true">↗</span></a>
-            <button type="button" id="worldExploreBtn" class="button hero-explore" aria-expanded="false"><span class="play-caret">▷</span><span data-i18n="hero.explore">Buka mekanisme 3D</span></button>
+            
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@
       </div>
       <button type="button" id="worldExitBtn" class="world-exit" hidden>KELUAR DARI DUNIA 3D <span>×</span></button>
       <span id="worldError" class="world-error" role="status" aria-live="polite"></span>
-      <a class="world-scroll" href="#unlock"><span>SCROLL TO UNLOCK</span><span class="scroll-line"></span></a>
+
       <div class="world-side-name" aria-hidden="true">L / R — CREATIVE DEVELOPMENT</div>
     </section>
 
@@ -262,12 +262,12 @@
         <div class="documentation-copy reveal">
           <span class="micro-label"><span class="index-dot"></span> 03 / DOKUMENTASI PROYEK</span>
           <h2 id="documentationTitle">Dokumentasi<br>yang <em>hidup.</em></h2>
-          <p>Pilih satu karya dan lihat ringkasannya tersusun perlahan, dari tujuan hingga hasil. Dokumentasi disajikan dalam ruang tersendiri, terpisah dari foto profil.</p>
+          <p>Pilih karya untuk melihat ringkasan, tantangan, pendekatan, dan hasilnya terbentuk bagian demi bagian. Dokumen dapat dibaca setelah proses selesai.</p>
           <div class="documentation-select"><label for="documentationProject">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
           <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> LIHAT PROSES DOKUMENTASI <span>↗</span></button>
-          <p class="documentation-explain">Pratinjau ini menyusun data proyek secara visual; bukan proses AI atau deployment hosting sungguhan.</p>
+          <p class="documentation-explain">Dokumen disusun dari data proyek yang tersedia, bukan pembuatan AI atau deployment sungguhan.</p>
         </div>
-        <div class="documentation-machine documentation-showcase reveal" id="documentationMachine" role="button" tabindex="0" aria-label="Buka proses dokumentasi proyek terpilih">
+        <div class="documentation-machine documentation-showcase reveal" id="documentationMachine">
           <div class="doc-showcase-header"><span>PROJECT / DOCUMENTATION</span><span><i></i> SIAP</span></div>
           <div class="doc-showcase-image"><img id="machinePreviewImage" src="assets/images/rubaka.webp" alt="Pratinjau proyek terpilih"></div>
           <div class="doc-showcase-details"><span>PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p>Tujuan → Pendekatan → Hasil → Refleksi</p><strong>LIHAT PROSES PENYUSUNAN ↗</strong></div>
@@ -410,17 +410,18 @@
   </footer>
 
 
-  <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployTitle">
+  <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployDialogTitle">
     <div class="deploy-shell">
+      <span class="sr-only" id="deployDialogTitle">Dokumentasi proyek</span>
       <header class="deploy-header"><div class="deploy-brand"><span class="deploy-glyph">◈</span><div><strong>lamberthrumpaidus</strong><small>PROJECT DOCUMENTATION ENGINE</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
-      <div class="deploy-workspace" id="deployWorkspace" role="status" aria-live="polite">
+      <div class="deploy-workspace" id="deployWorkspace" role="region" aria-label="Proses penyusunan dokumentasi">
         <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOCUMENT_PIPELINE / STAGE <span id="deployStageNumber">01</span></strong><small id="deployClock">INIT</small></div>
         <div class="deploy-visual doc-build-area" id="deployVisual">
           <div class="doc-build-terminal"><div class="doc-build-top"><span class="live-dot"></span><strong>PROJECT WORKSPACE</strong><small>BUILD SEQUENCE</small></div><div id="docBuildLines" class="doc-build-lines"><p>→ Menyiapkan proyek...</p></div><div class="doc-build-asset"><span>SUMBER</span><strong id="docBuildSource">—</strong></div></div>
-          <div class="doc-build-paper"><div class="doc-build-paper-header"><span>PROJECT / CASE STUDY</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><span class="doc-build-topic" id="docBuildTopic">MENYIAPKAN</span><p id="docBuildText">Informasi proyek sedang disusun...</p><div id="docBuildSkeleton" class="doc-build-skeleton"><i></i><i></i><i></i></div><footer>PORTFOLIO · LAMBERTH RUMPAIDUS</footer></div>
+          <div class="doc-build-paper"><div class="doc-build-paper-header"><span>PROJECT / CASE STUDY</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><div class="doc-build-collection" id="docBuildCollection" aria-label="Isi dokumen yang sedang disusun"></div><footer>PORTFOLIO · LAMBERTH RUMPAIDUS</footer></div>
         </div>
         <div class="deploy-caption"><span id="deployPhase">Memulai dokumentasi proyek...</span><span id="deployPercent">0%</span></div>
-        <div class="deploy-progress"><div id="deployProgressBar"></div></div><div class="doc-build-controls"><small>Proses disusun bertahap agar dapat diikuti.</small><button type="button" id="deploySkip">LEWATI ANIMASI ↗</button></div>
+        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Proses disusun bertahap agar dapat diikuti.</small><button type="button" id="deploySkip">Lihat hasil ↗</button></div>
         <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>SUMBER PROYEK</span></div><div data-deploy-step="1"><b>02</b><span>ANALISIS MASALAH</span></div><div data-deploy-step="2"><b>03</b><span>METODE & HASIL</span></div><div data-deploy-step="3"><b>04</b><span>DOKUMEN SIAP</span></div></div>
       </div>
       <div class="deploy-document" id="deployDocument" hidden>

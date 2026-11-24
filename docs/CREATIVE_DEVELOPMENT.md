@@ -132,3 +132,7 @@ Measure production builds separately on mobile and desktop with **Lighthouse Per
 ## Deployment
 
 This is a static Netlify site. Changes to `main` trigger deployment **only if** Netlify continuous deployment is connected to this repository and branch. No GitHub commit alone proves a successful Netlify publish. Observe the Netlify deploy log and run Lighthouse against the published domain before claiming a score or award readiness.
+
+## Scroll and Documentation Studio (November 2026)
+
+Scroll is native: mouse wheel, trackpad, touchscreen swipe and keyboard work without a dedicated scroll button. The optional Lenis dependency is no longer loaded. `assets/css/documentation-studio.css` and `assets/js/experience.js` implement an additive four-chapter documentation sequence that preserves completed sections, pauses on inactive tabs, and supports reduced-motion and skip. The process displays provided project content, not live AI generation.

@@ -222,8 +222,8 @@ document.getElementById('worldPhotoBtn').addEventListener('click',saveFrame);
 document.getElementById('worldQualityBtn').addEventListener('click',()=>{state.detail=state.detail==='high'?'low':'high';document.getElementById('worldQualityBtn').textContent=state.detail==='high'?'HD':'ECO';resize()});
 document.getElementById('worldMotionBtn').addEventListener('click',()=>{state.motion=!state.motion;document.getElementById('worldMotionBtn').setAttribute('aria-pressed',String(state.motion));document.getElementById('worldMotionBtn').textContent=state.motion?'Motion on':'Motion off'});
 const expBtn=document.getElementById('worldExploreBtn'),exitBtn=document.getElementById('worldExitBtn');
-function setImmersive(enabled){state.immersive=enabled;document.body.classList.toggle('world-immersive',enabled);expBtn.setAttribute('aria-expanded',String(enabled));exitBtn.hidden=!enabled; if(enabled){frame.scrollIntoView({block:'start'});setPreset('gate')}else{setPreset('arrival');mouse.x=0;mouse.y=0}resize()}
-expBtn.addEventListener('click',()=>document.getElementById('unlock')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));exitBtn.addEventListener('click',()=>setImmersive(false));
+function setImmersive(enabled){state.immersive=enabled;document.body.classList.toggle('world-immersive',enabled);expBtn?.setAttribute('aria-expanded',String(enabled));exitBtn.hidden=!enabled; if(enabled){frame.scrollIntoView({block:'start'});setPreset('gate')}else{setPreset('arrival');mouse.x=0;mouse.y=0}resize()}
+exitBtn.addEventListener('click',()=>setImmersive(false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.immersive)setImmersive(false);if(state.immersive&&['1','2','3','4'].includes(e.key))setPreset(['arrival','gate','water','bamboo'][+e.key-1])});
 window.addEventListener('resize',resize,{passive:true});
 init();
