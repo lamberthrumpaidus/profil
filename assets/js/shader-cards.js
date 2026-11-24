@@ -69,7 +69,7 @@ void main(){
  });
  document.addEventListener('pointerout',e=>{
    const holder=e.target.closest('.project-card .project-visual,.feature-card .project-visual');
-   if(holder&&!holder.contains(e.relatedTarget)&&active?.holder===holder)stop();
+   if(holder&&!holder.contains(e.relatedTarget))stop();
  });
  document.addEventListener('pointermove',e=>{
    if(!active)return;const r=active.holder.getBoundingClientRect();

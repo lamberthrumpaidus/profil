@@ -79,6 +79,7 @@ function transitions(){
 }
 function shell(){
  const terminal=$('.terminal'),form=$('#terminalForm'),out=$('#terminalDisplay');
+ const announce=document.createElement('span');announce.className='sr-only';announce.setAttribute('role','status');announce.setAttribute('aria-live','polite');terminal?.append(announce);
  if(!terminal||!form)return;
  const header=$('.terminal-top',terminal);
  const toggle=document.createElement('button');toggle.type='button';toggle.className='shell-sound-toggle';toggle.textContent='SFX OFF';toggle.setAttribute('aria-pressed','false');toggle.setAttribute('aria-label','Aktifkan suara ketikan terminal');header.append(toggle);
@@ -104,7 +105,7 @@ function shell(){
    if(!el||typeof full!=='string'||full.length>650)return;
    el.textContent='';el.classList.add('shell-typing');out.setAttribute('aria-live','off');
    let pos=0;function update(){if(!el.isConnected)return;pos=Math.min(full.length,pos+Math.max(2,Math.ceil(full.length/28)));el.textContent=full.slice(0,pos)+(pos<full.length?'▋':'');out.scrollTop=out.scrollHeight;
-     if(pos<full.length)requestAnimationFrame(update);else{el.classList.remove('shell-typing');out.setAttribute('aria-live','polite')}
+     if(pos<full.length)requestAnimationFrame(update);else{el.classList.remove('shell-typing');out.setAttribute('aria-live','polite');announce.textContent=full}
    }requestAnimationFrame(update);
  });
 }
