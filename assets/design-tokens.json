@@ -87,12 +87,12 @@
         "usage": "Kategori, penanda bagian, dan keterangan."
       },
       {
-        "element": "Terminal & kode",
+        "element": "Cuplikan kode",
         "family": "Consolas / ui-monospace",
         "weight": "Regular · 400",
         "size": "13 px",
         "lineHeight": "1,6",
-        "usage": "Cuplikan kode dan perintah terminal."
+        "usage": "Cuplikan kode sumber."
       }
     ]
   },
