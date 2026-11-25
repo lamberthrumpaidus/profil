@@ -7,7 +7,7 @@
  function append(text,kind='normal',url){const el=document.createElement('div');el.className='shell-line shell-'+kind;if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=text+' ↗';el.append(a)}else el.textContent=text||' ';out.append(el);while(out.children.length>450)out.firstElementChild.remove();}
  function bottom(){out.scrollTop=out.scrollHeight}
  let welcomeNodes=[];
- function welcomeText(){return ['Portfolio Shell · '+engine.commands.length+' '+tr('perintah tersedia','available commands'),tr('Sistem berkas virtual dengan akses baca saja.','Read-only virtual filesystem.'),tr('Jalankan perintah help untuk menampilkan panduan.','Run help to view the command reference.'),tr('Contoh: ','Examples: ')+'ls  ·  cd projects  ·  github  ·  search WebGL  ·  mean 10 20 30']}
+ function welcomeText(){return [tr('Sesi terminal','Terminal session'),tr('Sistem berkas virtual dengan akses baca saja.','Read-only virtual filesystem.'),tr('Jalankan perintah help untuk menampilkan panduan.','Run help to view the command reference.'),tr('Contoh: ','Examples: ')+'ls  ·  cd projects  ·  github  ·  search WebGL  ·  mean 10 20 30']}
  function welcome(){out.replaceChildren();const labels=welcomeText();labels.forEach((label,i)=>append(label,['accent','muted','normal','muted'][i]));welcomeNodes=Array.from(out.children);bottom()}
  function syncWelcome(){const labels=welcomeText();welcomeNodes.forEach((node,i)=>{if(node.isConnected&&node.textContent!==labels[i])node.textContent=labels[i]})}
  function sync(){prompt.textContent=engine.prompt;input.setAttribute('aria-label',tr('Perintah terminal','Terminal command'));out.setAttribute('aria-label',tr('Keluaran terminal','Terminal output'));}
