@@ -35,9 +35,9 @@
   <link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell">
   <link rel="stylesheet" href="assets/css/terminal.css?v=20261125-shell">
   <script src="assets/js/data.js?v=20261125-github" defer></script>
-  <script src="assets/js/app.js?v=20261125-formal-shell" defer></script>
-  <script src="assets/js/terminal-engine.js?v=20261125-formal-shell" defer></script>
-  <script src="assets/js/terminal-ui.js?v=20261125-formal-shell" defer></script>
+  <script src="assets/js/app.js?v=20261125-terminal" defer></script>
+  <script src="assets/js/terminal-engine.js?v=20261125-terminal" defer></script>
+  <script src="assets/js/terminal-ui.js?v=20261125-terminal" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261125-torii"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
 
@@ -338,20 +338,20 @@
 
     <section class="section lab" id="playground" aria-labelledby="labTitle">
       <div class="wrap">
-        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">TERMINAL INTERAKTIF</span></span><span
+        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">TERMINAL</span></span><span
             class="section-label-rule"></span><span data-i18n="lab.subtitle">ANTARMUKA BARIS PERINTAH</span></div>
         <div class="lab-layout">
           <div class="lab-copy reveal">
-            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Terminal interaktif</h2>
-            <p data-i18n="lab.desc">Terminal interaktif menyediakan 100 perintah untuk penelusuran direktori virtual, pengolahan teks, komputasi numerik, dan akses ke repositori proyek. Seluruh perintah dijalankan secara lokal di peramban tanpa akses ke sistem operasi atau server.</p>
+            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Terminal</h2>
+            <p data-i18n="lab.desc">Antarmuka baris perintah untuk penelusuran proyek, pengolahan teks, dan perhitungan. Perintah dijalankan dalam lingkungan virtual dengan akses baca saja.</p>
             <div class="lab-small-tags"><span data-i18n="lab.vfs">SISTEM BERKAS VIRTUAL</span><span data-i18n="lab.cli">BARIS PERINTAH</span><span>GITHUB</span></div>
             <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
                 data-i18n="lab.try">Panduan perintah ↗</button></div>
           </div>
-          <div class="terminal reveal" aria-label="Terminal portofolio interaktif">
-            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>Portfolio Shell</strong></div><span class="shell-mode" data-i18n="lab.count">100 PERINTAH</span></div>
+          <div class="terminal reveal" aria-label="Terminal">
+            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>Terminal</strong></div></div>
             <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Keluaran terminal">
-              <div class="shell-line shell-muted">Portfolio Shell · Lingkungan virtual</div><div class="shell-line" data-i18n="lab.hello">Jalankan perintah help untuk menampilkan panduan.</div>
+              <div class="shell-line shell-muted">Sesi terminal</div><div class="shell-line" data-i18n="lab.hello">Jalankan perintah help untuk menampilkan panduan.</div>
             </div>
             <form id="terminalForm" class="terminal-input"><span class="term-prompt" id="terminalPrompt" aria-hidden="true">guest@portfolio:~$</span><label
                 for="terminalCommand" class="sr-only">Masukkan perintah terminal</label><input id="terminalCommand"
