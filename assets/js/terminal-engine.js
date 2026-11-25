@@ -32,11 +32,92 @@ function createShell(options={}){
  const lookup=id=>projects.find(p=>p.id.toLowerCase()===String(id).toLowerCase())||projects.find(p=>title(p).toLowerCase()===String(id).toLowerCase());
  function readFile(p){const n=nodes.get(pathOf(p));return n?.kind==='file'?String(n.content()):null}
  function treeText(path){const result=[path];function visit(p,prefix){const list=children(p);list.forEach((child,i)=>{const last=i===list.length-1,n=nodes.get(child);result.push(prefix+(last?'└── ':'├── ')+basename(child)+(n.kind==='dir'?'/':''));if(n.kind==='dir')visit(child,prefix+(last?'    ':'│   '))})}visit(path,'');return result.join('\n')}
+
+ const extra=Object.create(null);
+ const add=(name,syntax,id,en,fn)=>{commands[name]=name+(syntax?' '+syntax:'');explanations[name]=[id,en];extra[name]=fn};
+ const bad=()=>err(tr('Argumen tidak valid. Lihat help.','Invalid arguments. See help.'));
+ const txt=(a,f)=>a.length?ok(String(f(a.join(' ')))):bad();
+ const fileOp=(a,f)=>{if(!a.length)return bad();const s=readFile(a[0]);return s===null?err(tr('Berkas tidak ditemukan: ','File not found: ')+a[0]):ok(String(f(s)))};
+ const row=s=>s.split('\n'),num=(x,l,h)=>/^-?\d+$/.test(String(x))&&Number(x)>=l&&Number(x)<=h?Number(x):null;
+ const utf8=s=>{const r=[];for(const c of String(s)){let n=c.codePointAt(0);if(n>=0xd800&&n<=0xdfff)n=0xfffd;if(n<128)r.push(n);else if(n<2048)r.push(192|n>>6,128|n&63);else if(n<65536)r.push(224|n>>12,128|n>>6&63,128|n&63);else r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|n&63)}return r};
+ const bytes=s=>utf8(s).length,under=p=>[...nodes.keys()].filter(x=>x===p||x.startsWith(p==='/'?'/':p+'/'));
+ const nodeOp=(a,f)=>{const p=pathOf(a[0]||'.'),n=nodes.get(p);return n?ok(String(f(p,n))):err(tr('Jalur tidak ditemukan: ','Path not found: ')+p)};
+ const projectOp=(a,f)=>{const p=lookup(a.join(' '));return p?f(p):err(tr('Proyek tidak ditemukan.','Project not found.'))};
+ const fileCmd=(n,id,en,f)=>add(n,'<file>',id,en,a=>fileOp(a,f));
+ for(const [n,id,en,last] of [['head','Baca baris awal.','Read first lines.',false],['tail','Baca baris akhir.','Read last lines.',true]])add(n,'[-n N] <file>',id,en,a=>{const k=a[0]==='-n'?num(a[1],0,1000):10,p=a[0]==='-n'?a[2]:a[0];return k===null||!p?bad():fileOp([p],s=>(last?(k?row(s).slice(-k):[]):row(s).slice(0,k)).join('\n'))});
+ fileCmd('wc','Hitung baris, kata, dan byte.','Count lines, words and bytes.',s=>row(s).length+' lines · '+(s.trim()?s.trim().split(/\s+/).length:0)+' words · '+bytes(s)+' bytes');
+ fileCmd('sort','Urutkan baris.','Sort lines.',s=>row(s).sort((a,b)=>a.localeCompare(b)).join('\n'));
+ fileCmd('uniq','Hapus duplikasi baris berurutan.','Remove adjacent duplicates.',s=>row(s).filter((v,i,a)=>!i||v!==a[i-1]).join('\n'));
+ fileCmd('nl','Nomori baris.','Number lines.',s=>row(s).map((v,i)=>(i+1)+'  '+v).join('\n'));
+ for(const [n,id,en,f] of [['rev','Balik karakter.','Reverse characters.',s=>Array.from(s).reverse().join('')],['upper','Huruf kapital.','Uppercase text.',s=>s.toUpperCase()],['lower','Huruf kecil.','Lowercase text.',s=>s.toLowerCase()],['trim','Hapus spasi tepi.','Trim whitespace.',s=>s.trim()],['chars','Hitung karakter Unicode.','Count Unicode characters.',s=>Array.from(s).length],['words','Hitung kata.','Count words.',s=>s.trim()?s.trim().split(/\s+/).length:0]])add(n,'<text>',id,en,a=>txt(a,f));
+ add('cut','<start> <end> <text>','Potong karakter berdasarkan indeks nol.','Extract zero-based character range.',a=>{const x=num(a[0],0,1000),y=num(a[1],0,1000);return x===null||y===null||y<x||a.length<3?bad():ok(Array.from(a.slice(2).join(' ')).slice(x,y).join(''))});
+ add('replace','<old> <new> <text>','Ganti teks literal.','Replace literal text.',a=>a.length<3||!a[0]?bad():ok(a.slice(2).join(' ').split(a[0]).join(a[1])));
+ add('split','<separator> <text>','Pisahkan teks menjadi baris.','Split text into lines.',a=>a.length<2||!a[0]?bad():ok(a.slice(1).join(' ').split(a[0]).join('\n')));
+ add('join','<separator> <item...>','Gabungkan nilai.','Join values.',a=>a.length<2?bad():ok(a.slice(1).join(a[0])));
+ add('count','<needle> <text>','Hitung kemunculan literal.','Count literal occurrences.',a=>a.length<2||!a[0]?bad():ok(String(a.slice(1).join(' ').split(a[0]).length-1)));
+ add('wrap','<width> <text>','Pecah teks menurut lebar karakter.','Wrap text by character width.',a=>{const n=num(a[0],1,200);if(n===null||a.length<2)return bad();const s=Array.from(a.slice(1).join(' ')),r=[];for(let i=0;i<s.length;i+=n)r.push(s.slice(i,i+n).join(''));return ok(r.join('\n'))});
+ add('indent','<spaces> <text>','Tambahkan indentasi.','Indent text.',a=>{const n=num(a[0],0,80);return n===null||a.length<2?bad():ok(row(a.slice(1).join(' ')).map(s=>' '.repeat(n)+s).join('\n'))});
+ add('diff','<file1> <file2>','Bandingkan baris dua berkas.','Compare file lines.',a=>{if(a.length!==2)return bad();const x=readFile(a[0]),y=readFile(a[1]);if(x===null||y===null)return bad();const u=row(x),v=row(y),r=[];for(let i=0;i<Math.max(u.length,v.length);i++)if(u[i]!==v[i]){if(u[i]!==undefined)r.push('- '+(i+1)+': '+u[i]);if(v[i]!==undefined)r.push('+ '+(i+1)+': '+v[i])}return ok(r.join('\n')||tr('Berkas identik.','Files are identical.'))});
+ add('stat','<path>','Jenis, izin virtual, ukuran.','Type, virtual permissions, size.',a=>nodeOp(a,(p,n)=>p+'\n'+(n.kind==='dir'?'Directory · r-x · '+children(p).length+' entries':'File · r-- · '+bytes(n.content())+' bytes')));
+ add('file','<path>','Identifikasi jenis berkas.','Identify file type.',a=>nodeOp(a,(p,n)=>n.kind==='dir'?'directory':p.endsWith('.md')?'Markdown text':p.endsWith('.cs')?'C# source text':'UTF-8 text'));
+ for(const [n,id,en,f] of [['realpath','Jalur absolut.','Absolute path.',p=>p],['basename','Nama terakhir jalur.','Final path component.',p=>basename(p)],['dirname','Direktori induk.','Parent directory.',p=>p.split('/').slice(0,-1).join('/')||'/']])add(n,'<path>',id,en,a=>a.length?ok(f(pathOf(a[0]))):bad());
+ add('du','[path]','Ukuran isi berkas rekursif.','Recursive content bytes.',a=>nodeOp(a,p=>under(p).filter(x=>nodes.get(x).kind==='file').reduce((n,x)=>n+bytes(nodes.get(x).content()),0)+' bytes'));
+ for(const [n,k,id,en] of [['files','file','Daftar berkas rekursif.','List files recursively.'],['dirs','dir','Daftar direktori rekursif.','List directories recursively.']])add(n,'[path]',id,en,a=>nodeOp(a,p=>under(p).filter(x=>nodes.get(x).kind===k).sort().join('\n')));
+ add('extensions','[path]','Hitung ekstensi berkas.','Count file extensions.',a=>nodeOp(a,p=>{const m=new Map();under(p).filter(x=>nodes.get(x).kind==='file').forEach(x=>{const n=basename(x),e=n.includes('.')?n.slice(n.lastIndexOf('.')):'(none)';m.set(e,(m.get(e)||0)+1)});return [...m].sort().map(([k,v])=>k+'  '+v).join('\n')}));
+ fileCmd('size','Ukuran byte UTF-8.','UTF-8 byte size.',bytes);
+ add('exists','<path>','Periksa keberadaan jalur.','Check path existence.',a=>a.length?ok(String(nodes.has(pathOf(a[0])))):bad());
+ fileCmd('preview','Pratinjau 160 karakter.','Preview 160 characters.',s=>Array.from(s).slice(0,160).join('')+(Array.from(s).length>160?'…':''));
+ fileCmd('checksum','Checksum FNV-1a 32-bit nonkriptografis.','Non-cryptographic FNV-1a 32-bit checksum.',s=>{let h=2166136261;for(const b of utf8(s))h=Math.imul(h^b,16777619)>>>0;return h.toString(16).padStart(8,'0')});
+ add('json','<project-id>','Metadata proyek dalam JSON.','Project metadata as JSON.',a=>projectOp(a,p=>ok(JSON.stringify({id:p.id,title:title(p),category:p.category,summary:val(p,'summary'),technologies:p.stack,github:p.repository,archive:p.repositoryKind==='archive'},null,2))));
+ const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){const r=a%b;a=b;b=r}return a};
+ const ints=n=>n.every(Number.isSafeInteger);
+ const maths=[
+ ['add','Penjumlahan.','Addition.',n=>n[0]+n[1],2,2],
+ ['sub','Pengurangan.','Subtraction.',n=>n[0]-n[1],2,2],
+ ['mul','Perkalian.','Multiplication.',n=>n[0]*n[1],2,2],
+ ['div','Pembagian.','Division.',n=>n[0]/n[1],2,2],
+ ['mod','Sisa pembagian.','Remainder.',n=>n[0]%n[1],2,2],
+ ['pow','Pangkat.','Power.',n=>Math.pow(...n),2,2],
+ ['sqrt','Akar kuadrat.','Square root.',n=>Math.sqrt(n[0]),1,1],
+ ['abs','Nilai absolut.','Absolute value.',n=>Math.abs(n[0]),1,1],
+ ['round','Pembulatan terdekat.','Nearest integer.',n=>Math.round(n[0]),1,1],
+ ['floor','Pembulatan bawah.','Round down.',n=>Math.floor(n[0]),1,1],
+ ['ceil','Pembulatan atas.','Round up.',n=>Math.ceil(n[0]),1,1],
+ ['min','Nilai minimum.','Minimum.',n=>Math.min(...n),1,100],
+ ['max','Nilai maksimum.','Maximum.',n=>Math.max(...n),1,100],
+ ['sum','Jumlah nilai.','Sum.',n=>n.reduce((a,b)=>a+b,0),1,100],
+ ['mean','Rata-rata.','Arithmetic mean.',n=>n.reduce((a,b)=>a+b,0)/n.length,1,100],
+ ['median','Nilai tengah.','Median.',n=>{n.sort((a,b)=>a-b);let i=Math.floor(n.length/2);return n.length%2?n[i]:(n[i-1]+n[i])/2},1,100],
+ ['range','Rentang nilai.','Numerical range.',n=>Math.max(...n)-Math.min(...n),1,100],
+ ['percent','Persentase terhadap total.','Percentage of total.',n=>100*n[0]/n[1],2,2],
+ ['gcd','FPB.','Greatest common divisor.',n=>ints(n)?gcd(...n):NaN,2,2],
+ ['lcm','KPK.','Least common multiple.',n=>ints(n)?(!n[0]||!n[1]?0:Math.abs(n[0]/gcd(...n)*n[1])):NaN,2,2],
+ ['factorial','Faktorial 0–170.','Factorial 0–170.',n=>{if(!ints(n)||n[0]<0||n[0]>170)return NaN;let r=1;for(let i=2;i<=n[0];i++)r*=i;return r},1,1],
+ ['fib','Fibonacci indeks 0–78.','Fibonacci index 0–78.',n=>{if(!ints(n)||n[0]<0||n[0]>78)return NaN;let a=0,b=1;for(let i=0;i<n[0];i++)[a,b]=[b,a+b];return a},1,1],
+ ['clamp','Batasi nilai dalam interval.','Clamp to interval.',n=>n[1]<=n[2]?Math.min(n[2],Math.max(n[1],n[0])):NaN,3,3],
+ ['radians','Derajat ke radian.','Degrees to radians.',n=>n[0]*Math.PI/180,1,1],
+ ['degrees','Radian ke derajat.','Radians to degrees.',n=>n[0]*180/Math.PI,1,1],
+ ['hypot','Hipotenusa.','Hypotenuse.',n=>Math.hypot(...n),2,100]];
+ for(const [n,id,en,f,min,max] of maths)add(n,min===max?Array.from({length:min},(_,i)=>'<'+String.fromCharCode(97+i)+'>').join(' '):'<number...>',id,en,a=>{if(a.length<min||a.length>max||a.some(x=>!x.trim()||!Number.isFinite(Number(x))))return bad();const r=f(a.map(Number));return Number.isFinite(r)?ok(String(r)):err(tr('Hasil tidak terdefinisi atau di luar batas.','Undefined or out-of-range result.'))});
+ add('categories','','Jumlah proyek per kategori.','Count projects by category.',()=>{const m=new Map();projects.forEach(p=>m.set(p.category,(m.get(p.category)||0)+1));return ok([...m].sort().map(([k,v])=>k+'  '+v).join('\n'))});
+ add('technologies','','Teknologi unik proyek.','Unique project technologies.',()=>ok([...new Set(projects.flatMap(p=>p.stack||[]))].sort().join('\n')));
+ add('related','<project-id>','Proyek dengan teknologi bersama.','Projects with shared technology.',a=>projectOp(a,p=>{const t=new Set((p.stack||[]).map(x=>x.toLowerCase()));return output(projects.filter(q=>q!==p).map(q=>[q,(q.stack||[]).filter(x=>t.has(x.toLowerCase())).length]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]).map(([q,n])=>link(title(q)+' · '+n+' shared','documentation.html?project='+encodeURIComponent(q.id))))}));
+ add('info','<project-id>','Ringkasan proyek.','Project overview.',a=>projectOp(a,p=>ok(title(p)+'\n'+val(p,'summary')+'\n'+(p.stack||[]).join(' · '))));
+ add('stats','','Statistik katalog.','Catalog statistics.',()=>ok(projects.length+' projects\n'+projects.filter(p=>p.repository&&p.repositoryKind!=='archive').length+' source destinations\n'+projects.filter(p=>p.repositoryKind==='archive').length+' archives'));
+ const repoRows=a=>output(a.filter(p=>p.repository).map(p=>link(title(p),p.repository)));
+ add('sources','','Tujuan kode sumber.','Source destinations.',()=>repoRows(projects.filter(p=>p.repositoryKind!=='archive')));
+ add('archives','','Arsip studi kasus GitHub.','GitHub case-study archives.',()=>repoRows(projects.filter(p=>p.repositoryKind==='archive')));
+ add('academic','','Proyek akademik.','Academic projects.',()=>repoRows(projects.filter(p=>p.category==='academic')));
+ add('demos','','Demonstrasi tercatat dalam katalog.','Demos recorded in the catalog.',()=>output(projects.filter(p=>p.demo).map(p=>link(title(p),p.demo))));
+ add('links','','Tautan halaman portofolio.','Portfolio page links.',()=>output([link(tr('Beranda','Home'),'index.html'),link(tr('Karya','Projects'),'index.html#work'),link(tr('Dokumentasi','Documentation'),'documentation.html'),link(tr('Sistem desain','Design system'),'design-system.html'),link(tr('Kontak','Contact'),'index.html#contact')]));
+ for(const [n,k,id,en] of [['role','role','Peran proyek.','Project role.'],['challenge','problem','Tantangan proyek.','Project challenge.'],['approach','approach','Pendekatan teknis.','Technical approach.'],['outcome','outcome','Hasil implementasi.','Implementation outcome.'],['reflection','reflection','Refleksi pengembangan.','Development reflection.']])add(n,'<project-id>',id,en,a=>projectOp(a,p=>ok(val(p,k)||tr('Belum dicatat.','Not recorded.'))));
+
  function run(input){
  const raw=String(input??'').trim();if(!raw)return ok();if(raw.length>1000)return err(tr('Perintah terlalu panjang.','Command too long.'));history.push(raw);if(history.length>200)history.shift();
  let args;try{args=tokenize(raw)}catch(e){return err(e.message)}
  const cmd=(args.shift()||'').toLowerCase(),a=args[0],rest=args.join(' ');
  const notFound=p=>err(tr('Tidak ditemukan: ','Not found: ')+p);
+ if(Object.hasOwn(extra,cmd))return extra[cmd](args);
  switch(cmd){
  case 'help':case 'man':{if(a){if(!Object.hasOwn(commands,a))return notFound(a);return ok(commands[a]+'\n'+tr(...explanations[a]))}if(cmd==='man')return usage(cmd);return ok(tr('PERINTAH TERSEDIA','AVAILABLE COMMANDS')+'\n'+Object.keys(commands).map(k=>k.padEnd(10)+tr(...explanations[k])).join('\n')+'\n\n'+tr('Contoh: cd projects  ·  ls  ·  cat rubaka/README.md  ·  open rubaka','Example: cd projects  ·  ls  ·  cat rubaka/README.md  ·  open rubaka'))}
  case 'pwd':return ok(cwd);
@@ -64,8 +145,8 @@ function createShell(options={}){
  case 'echo':return ok(rest);
  default:return err(tr('Perintah tidak dikenal: ','Command not found: ')+cmd+'\n'+tr('Masukkan help untuk panduan.','Enter help for guidance.'));
  }}
- function complete(input){const raw=String(input),parts=raw.trimStart().split(/\s+/),command=parts[0]||'';if(parts.length===1&&!/\s$/.test(raw))return Object.keys(commands).filter(x=>x.startsWith(command));const last=/\s$/.test(raw)?'':parts.at(-1);if(['github','docs','open','search'].includes(command)){return [...projects.map(p=>p.id),...(command==='open'?['github','docs','about','work','contact','design']:[])].filter(x=>x.startsWith(last))}if(!['cd','ls','cat','tree','find','grep'].includes(command))return [];const slash=last.lastIndexOf('/'),prefix=slash>=0?last.slice(0,slash+1):'',stem=slash>=0?last.slice(slash+1):last,parent=pathOf(prefix||'.');return children(parent).filter(p=>basename(p).startsWith(stem)&&(!['cd','tree'].includes(command)||nodes.get(p).kind==='dir')).map(p=>prefix+basename(p)+(nodes.get(p).kind==='dir'?'/':''))}
- return {run,complete,tokenize,get cwd(){return cwd},get history(){return history.slice()},get prompt(){return 'guest@portfolio:'+(cwd==='/'?'~':cwd)+'$'}};
+ function complete(input){const raw=String(input),parts=raw.trimStart().split(/\s+/),command=parts[0]||'';if(parts.length===1&&!/\s$/.test(raw))return Object.keys(commands).filter(x=>x.startsWith(command));const last=/\s$/.test(raw)?'':parts.at(-1);if(['github','docs','open','search','json','related','info','role','challenge','approach','outcome','reflection'].includes(command)){return [...projects.map(p=>p.id),...(command==='open'?['github','docs','about','work','contact','design']:[])].filter(x=>x.startsWith(last))}if(!['cd','ls','cat','tree','find','grep','head','tail','wc','sort','uniq','nl','diff','stat','file','realpath','basename','dirname','du','files','dirs','extensions','size','exists','preview','checksum'].includes(command))return [];const slash=last.lastIndexOf('/'),prefix=slash>=0?last.slice(0,slash+1):'',stem=slash>=0?last.slice(slash+1):last,parent=pathOf(prefix||'.');return children(parent).filter(p=>basename(p).startsWith(stem)&&(!['cd','tree'].includes(command)||nodes.get(p).kind==='dir')).map(p=>prefix+basename(p)+(nodes.get(p).kind==='dir'?'/':''))}
+ return {run,complete,tokenize,get commands(){return Object.keys(commands)},get cwd(){return cwd},get history(){return history.slice()},get prompt(){return 'guest@portfolio:'+(cwd==='/'?'~':cwd)+'$'}};
 }
 root.PortfolioShell={createShell};
 })(typeof window!=='undefined'?window:globalThis);

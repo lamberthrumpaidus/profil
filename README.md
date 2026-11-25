@@ -61,4 +61,4 @@ Temukan profil, repositori, dan proyek lainnya melalui akun GitHub resmi:
 
 ## Terminal portofolio
 
-Terminal menyediakan sistem berkas virtual hanya-baca, perintah navigasi, pencarian teks, riwayat, pelengkapan otomatis, serta akses langsung ke repositori dan dokumentasi proyek. Terminal berjalan sepenuhnya di browser dan tidak menjalankan perintah sistem operasi atau server.
+Terminal menyediakan 100 perintah untuk sistem berkas virtual hanya-baca, pengolahan teks, perhitungan numerik, analisis katalog, riwayat, pelengkapan otomatis, serta akses ke repositori dan dokumentasi proyek. Terminal berjalan sepenuhnya di browser dan tidak menjalankan perintah sistem operasi atau server.
