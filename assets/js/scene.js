@@ -237,7 +237,7 @@ function createGarden(){
 function changeSceneTheme(next){
   state.theme=next;const c=colors[next];
   frame.dataset.scene=next;document.getElementById('worldTime').textContent=next==='night'?'MOONLIT / 02':'GOLDEN HOUR / 01';
-  if(scene){scene.background.set(c.sky);scene.fog.color.set(c.fog);keyLight.color.set(c.light);keyLight.intensity=next==='night'?1.3:2.9;hemi.intensity=next==='night'?.94:1.8;riverUniforms.uWater.value.set(c.water);riverUniforms.uFog.value.set(c.fog);riverUniforms.uNight.value=next==='night'?1:0;startLoop();}
+  if(scene&&keyLight&&hemi&&riverUniforms){scene.background.set(c.sky);scene.fog.color.set(c.fog);keyLight.color.set(c.light);keyLight.intensity=next==='night'?1.3:2.9;hemi.intensity=next==='night'?.94:1.8;riverUniforms.uWater.value.set(c.water);riverUniforms.uFog.value.set(c.fog);riverUniforms.uNight.value=next==='night'?1:0;startLoop();}
   updateControls();
 }
 function resize(){if(!renderer)return;const w=Math.max(1,frame.clientWidth),h=Math.max(1,frame.clientHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,state.detail==='low'?1:(innerWidth<700?1.25:1.65)*qualityScale));renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<700?67:w<1100?62:54;camera.updateProjectionMatrix();startLoop()}
