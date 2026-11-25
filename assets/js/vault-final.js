@@ -13,7 +13,7 @@ function add(parent,geo,material,x=0,y=0,z=0){const m=new THREE.Mesh(geo,materia
 function build(){
  renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:innerWidth>680,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,innerWidth<700?1.2:1.6));
- renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;
+ renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.13;
  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,1,.1,60);
  portal=new THREE.LOD();const auraMat=new THREE.MeshBasicMaterial({color:0x88c7b7,transparent:true,opacity:.24,depthWrite:false,side:THREE.DoubleSide});
  portal.addLevel(new THREE.Mesh(new THREE.TorusGeometry(1.8,.035,12,100),auraMat),0);
@@ -23,7 +23,7 @@ function build(){
  scene.add(new THREE.HemisphereLight(0xc9f6e6,0x10232a,2));
  const keylight=new THREE.DirectionalLight(0xe3e9db,3.2);keylight.position.set(-4,7,7);scene.add(keylight);
  const rim=new THREE.DirectionalLight(0xd2a878,2.9);rim.position.set(6,3,-4);scene.add(rim);
- const metal=new THREE.MeshStandardMaterial({color:0x7daba6,metalness:.79,roughness:.27}),darkMetal=new THREE.MeshStandardMaterial({color:0x254248,metalness:.72,roughness:.32}),gold=new THREE.MeshStandardMaterial({color:0xe4bc80,metalness:.78,roughness:.24}),hole=new THREE.MeshStandardMaterial({color:0x09171d,roughness:.4});
+ const metal=new THREE.MeshStandardMaterial({color:0x8fa6a1,metalness:.79,roughness:.27}),darkMetal=new THREE.MeshStandardMaterial({color:0x254248,metalness:.72,roughness:.32}),gold=new THREE.MeshStandardMaterial({color:0xd8ba91,metalness:.78,roughness:.24}),hole=new THREE.MeshStandardMaterial({color:0x09171d,roughness:.4});
  lock=new THREE.Group();scene.add(lock);lock.position.set(-.55,-.30,0);
  const bodyGeo=new THREE.ExtrudeGeometry(rounded(-1.25,-1,2.5,2.25,.28),{depth:.58,steps:1,bevelEnabled:true,bevelThickness:.07,bevelSize:.075,bevelSegments:3,curveSegments:10});
  add(lock,bodyGeo,darkMetal,0,0,-.44);add(lock,new THREE.BoxGeometry(2.0,.055,.05),metal,0,-.61,.215);
@@ -40,7 +40,7 @@ function build(){
  add(key,new THREE.BoxGeometry(.19,.09,.13),gold,.10,0,-1.38);
  add(key,new THREE.CylinderGeometry(.14,.14,.16,24),darkMetal,0,0,.07).rotation.x=Math.PI/2;
  const floor=new THREE.Mesh(new THREE.CircleGeometry(2.55,64),new THREE.MeshBasicMaterial({color:0x86bdb0,transparent:true,opacity:.055,depthWrite:false}));floor.position.set(0,-1.56,-.7);floor.rotation.x=-Math.PI/2;scene.add(floor);
- glow=new THREE.Mesh(new THREE.RingGeometry(.57,.61,56),new THREE.MeshBasicMaterial({color:0x9debc3,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide}));glow.position.set(-.55,-.64,.41);scene.add(glow);
+ glow=new THREE.Mesh(new THREE.RingGeometry(.57,.61,56),new THREE.MeshBasicMaterial({color:0xb4cbb4,transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide}));glow.position.set(-.55,-.64,.41);scene.add(glow);
  resize();pose(0)
 }
 function resize(){if(!renderer)return;const w=Math.max(1,stage.clientWidth),h=Math.max(1,stage.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<540?57:42;camera.position.set(w<540?2.05:2.9,2.1,w<540?8:8.5);camera.lookAt(0,.27,0);camera.updateProjectionMatrix()}

@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://lamberthrumpaidusprofile.netlify.app/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#081018">
+  <meta name="theme-color" content="#202d32">
   <link rel="manifest" href="site.webmanifest">
   <meta name="description"
     content="Portofolio digital Lamberth Paulinus Rumpaidus. Eksplorasi proyek web, komputasi sains, antarmuka interaktif, dan studi kasus pengembangan perangkat lunak.">
@@ -31,17 +31,18 @@
   <link rel="stylesheet" href="assets/css/creative.css">
   <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
   <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
+  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-canvas">
   <script src="assets/js/data.js?v=20261125" defer></script>
   <script src="assets/js/app.js?v=20261125-noaudio" defer></script>
-  <script type="module" src="assets/js/scene.js?v=20261124-studio"></script>
-  <script type="module" src="assets/js/vault-final.js"></script>
+  <script type="module" src="assets/js/scene.js?v=20261125-canvas"></script>
+  <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
   <script src="assets/js/experience.js?v=20261124-lr-studio" defer></script>
-  <script src="assets/js/assistant.js" defer></script>
   <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/creative.js?v=20261125-noaudio"></script>
+  <script defer src="assets/js/creative.js?v=20261125-canvas"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
+  <script src="assets/js/atelier-motion.js?v=20261125-canvas" defer></script>
 
   <style>
     /* Logo update */
@@ -115,6 +116,7 @@
         <div class="scene-fallback" id="worldFallback" aria-hidden="true" hidden></div>
         <div class="scene-vignette" aria-hidden="true"></div>
       </div>
+      <canvas id="atmosphereCanvas" class="atmosphere-canvas" aria-hidden="true"></canvas>
       <div class="hero-film" aria-hidden="true"></div>
       <div class="world-meta">
         <span class="meta-live"><i></i> INTERACTIVE PORTFOLIO / 2026</span>
@@ -134,16 +136,16 @@
       </div>
       <div class="world-controller" id="worldController" aria-label="Kontrol pengalaman 3D">
         <div class="scene-views" role="group" aria-label="Pilih sudut kamera">
-          <button type="button" data-world-view="arrival" aria-pressed="true">01 <span>ARRIVAL</span></button>
+          <button type="button" data-world-view="arrival" aria-pressed="true">01 <span>GERBANG</span></button>
           <button type="button" data-world-view="gate" aria-pressed="false">02 <span>TORII</span></button>
-          <button type="button" data-world-view="water" aria-pressed="false">03 <span>LAKE</span></button>
-          <button type="button" data-world-view="bamboo" aria-pressed="false">04 <span>GROVE</span></button>
+          <button type="button" data-world-view="water" aria-pressed="false">03 <span>DANAU</span></button>
+          <button type="button" data-world-view="bamboo" aria-pressed="false">04 <span>BAMBU</span></button>
         </div>
         <div class="scene-actions" role="group" aria-label="Tampilan dan kualitas">
           <button type="button" id="worldDayBtn" aria-pressed="true" title="Senja" aria-label="Suasana senja">☀</button>
           <button type="button" id="worldNightBtn" aria-pressed="false" title="Malam" aria-label="Suasana malam">☾</button>
           <button type="button" id="worldQualityBtn" title="Ubah kualitas grafik" aria-label="Ubah kualitas grafik">HD</button>
-          <button type="button" id="worldMotionBtn" aria-pressed="true" title="Gerakan" aria-label="Aktifkan atau matikan animasi">Motion on</button>
+          <button type="button" id="worldMotionBtn" aria-pressed="true" title="Gerakan" aria-label="Aktifkan atau matikan animasi">Animasi aktif</button>
           <button type="button" id="worldPhotoBtn" title="Simpan gambar dunia" aria-label="Simpan gambar dunia">⌗</button>
         </div>
       </div>
@@ -541,16 +543,6 @@
       <path d="m6 9 3 3-3 3m6 0h6" />
     </symbol>
   </svg>
-  <aside class="portfolio-assistant" id="assistantShell" aria-label="Asisten portofolio">
-    <button type="button" class="assistant-trigger" id="assistantTrigger" aria-expanded="false" aria-controls="assistantPanel"><span class="assistant-glyph">✳</span><span>ASK LAM AI</span><span class="assistant-online"></span></button>
-    <section class="assistant-panel" id="assistantPanel" aria-labelledby="assistantTitle" hidden>
-      <header class="assistant-heading"><div><small>PORTFOLIO INTELLIGENCE</small><h2 id="assistantTitle">Meet Lam AI <span>✳</span></h2></div><button type="button" id="assistantClose" aria-label="Tutup asisten">×</button></header>
-      <div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message assistant-bot">Selamat datang. Saya dapat membantu Anda menemukan informasi tentang proyek, keahlian, dan kanal kontak Lamberth.</div></div>
-      <div class="assistant-chips" id="assistantChips"><button type="button" data-ask="Proyek apa saja yang dibuat?">Lihat proyek</button><button type="button" data-ask="Keahlian Lamberth apa?">Keahlian</button><button type="button" data-ask="Bagaimana cara menghubungi Lamberth?">Kontak</button></div>
-      <form class="assistant-form" id="assistantForm"><label for="assistantInput" class="sr-only">Tanya portofolio</label><input id="assistantInput" name="question" maxlength="700" autocomplete="off" placeholder="Tanyakan tentang karya..." required><button type="submit" aria-label="Kirim pertanyaan">↗</button></form>
-      <p class="assistant-disclosure" id="assistantDisclosure">Asisten memberikan informasi berdasarkan portofolio. Untuk penawaran proyek, hubungi saya secara langsung.</p>
-    </section>
-  </aside>
-</body>
+  </body>
 
 </html>

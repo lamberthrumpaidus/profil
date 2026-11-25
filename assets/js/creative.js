@@ -1,6 +1,6 @@
 /* ALL Create by LamberthRumpaidus
  * Progressive enhancement: GSAP+Lenis, FLIP-like case transitions, cursor,
- * mechanical shell SFX, intelligent audio, and animation a11y.
+ * mechanical shell SFX and animation accessibility.
  */
 (()=>{'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -26,7 +26,7 @@ function magnetic(){
  let x=-100,y=-100,tx=-100,ty=-100,active=false,raf=0;
  document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(draw)},{passive:true});
  function draw(){raf=0;x+=(tx-x)*.27;y+=(ty-y)*.27;ring.style.transform='translate3d('+x+'px,'+y+'px,0) translate(-50%,-50%)';if(Math.abs(x-tx)+Math.abs(y-ty)>.5)raf=requestAnimationFrame(draw)}
- const targets='.hero-primary,.hero-explore,.lock-action,.doc-launch,.assistant-trigger,.form-send';
+ const targets='.hero-primary,.hero-explore,.lock-action,.doc-launch,.form-send';
  document.addEventListener('pointerover',e=>{if(e.target.closest(targets)){ring.classList.add('is-active');active=true}});
  document.addEventListener('pointerout',e=>{if(e.target.closest(targets)){ring.classList.remove('is-active');active=false}});
  document.addEventListener('pointermove',e=>{
@@ -105,11 +105,6 @@ function shell(){
    }requestAnimationFrame(update);
  });
 }
-function assistant(){
- const shell=$('#assistantShell'),panel=$('#assistantPanel');if(!shell||!panel)return;
- panel.classList.add('ai-glass');
- const avatar=$('.assistant-glyph',shell);avatar?.setAttribute('aria-hidden','true');
-}
-scrollMotion();transitions();shell();assistant();
+scrollMotion();transitions();shell();
 window.addEventListener('beforeunload',()=>lenis?.destroy());
 })();

@@ -19,15 +19,13 @@ assets/
     creative.css              new creative enhancement layer
   js/
     data.js                   portfolio data
-    app.js                    navigation, terminal, cards, music
+    app.js                    navigation, terminal, cards
     scene.js                  persistent hero Three.js world
     vault-final.js            key/lock storytelling Three.js
     experience.js             progressive documentation case study
-    assistant.js              Lam AI: local or configured Netlify function
     creative.js               GSAP, Lenis, transitions, SFX, analyser
     shader-cards.js           lazy WebGL hover shader, one shared context
     lib/three.module.js       existing vendored Three.js runtime
-netlify/functions/chat.mjs    server-side AI endpoint, no exposed API key
 docs/CREATIVE_DEVELOPMENT.md  this reference
 ```
 
@@ -110,16 +108,13 @@ The current project/detail system already uses native HTML dialogs without reloa
 
 Supported browsers use the View Transitions API; others open the original dialog with no hard navigation and no blank page. Avoid applying two matching `view-transition-name` values at the same time.
 
-## 4. Interactive shell + Lam AI
+## 4. Interactive shell
 
 The Terminal accepts real existing commands. Optional SFX is **off by default** and only activated by a specific user click. The typing sound is short, synthesized locally through Web Audio API (no sound file or autoplay). Output is progressively revealed if motion is allowed.
 
-Lam AI retains safe text-only local answers and an optional server function. The avatar's halo animates only while a question is being processed. Its server secret (`GEMINI_API_KEY`) must stay in Netlify environment variables, never committed to client JavaScript.
 
 ## 5. Audio, accessibility, and performance
 
-- Audio only starts after a user gesture. A single Web Audio `AnalyserNode` reads the existing `<audio>` element and drives eleven frequency bars in the footer.
-- The music widget belongs to the footer rather than covering the hero or other content on mobile.
 - Every effect has `prefers-reduced-motion` / CSS / plain-DOM fallbacks.
 - Shader rendering is hover-only; the Three.js worlds are visibility-limited; the site remains keyboard navigable.
 - Keep real project screenshots and alt text. Avoid fake AI generation indicators or misleading deploy progress.
@@ -136,3 +131,7 @@ This is a static Netlify site. Changes to `main` trigger deployment **only if** 
 ## Scroll and Documentation Studio (November 2026)
 
 Scroll is native: mouse wheel, trackpad, touchscreen swipe and keyboard work without a dedicated scroll button. The optional Lenis dependency is no longer loaded. `assets/css/documentation-studio.css` and `assets/js/experience.js` implement an additive four-chapter documentation sequence that preserves completed sections, pauses on inactive tabs, and supports reduced-motion and skip. The process displays provided project content, not live AI generation.
+
+## Cinematic Canvas and color system
+
+The hero uses a visibility-limited WebGL garden with procedural animated water, fish, foliage, petals and lantern glow. A lightweight 2D Canvas layer adds depth and atmospheric motion. Camera controls support immediate positioning with reduced motion, while the normal mode uses time-based damping. UI colors follow a muted slate/sage/sand palette with light and dark variants. The assistant and its server endpoint have been removed. Browser and device benchmarking is required before making performance claims.
