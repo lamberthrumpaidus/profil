@@ -6,9 +6,12 @@
  let cursor=0,draft='';
  function append(text,kind='normal',url){const el=document.createElement('div');el.className='shell-line shell-'+kind;if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=text+' ↗';el.append(a)}else el.textContent=text||' ';out.append(el);while(out.children.length>450)out.firstElementChild.remove();}
  function bottom(){out.scrollTop=out.scrollHeight}
- function welcome(){out.replaceChildren();append('Portfolio Shell · '+engine.commands.length+' '+tr('perintah','commands'),'accent');append(tr('Sistem berkas virtual hanya-baca.','Read-only virtual filesystem.'),'muted');append(tr('Masukkan help untuk melihat perintah.','Enter help to view commands.'));append('ls  ·  cd projects  ·  github  ·  search WebGL  ·  mean 10 20 30','muted');bottom()}
+ let welcomeNodes=[];
+ function welcomeText(){return ['Portfolio Shell · '+engine.commands.length+' '+tr('perintah tersedia','available commands'),tr('Sistem berkas virtual dengan akses baca saja.','Read-only virtual filesystem.'),tr('Jalankan perintah help untuk menampilkan panduan.','Run help to view the command reference.'),tr('Contoh: ','Examples: ')+'ls  ·  cd projects  ·  github  ·  search WebGL  ·  mean 10 20 30']}
+ function welcome(){out.replaceChildren();const labels=welcomeText();labels.forEach((label,i)=>append(label,['accent','muted','normal','muted'][i]));welcomeNodes=Array.from(out.children);bottom()}
+ function syncWelcome(){const labels=welcomeText();welcomeNodes.forEach((node,i)=>{if(node.isConnected&&node.textContent!==labels[i])node.textContent=labels[i]})}
  function sync(){prompt.textContent=engine.prompt;input.setAttribute('aria-label',tr('Perintah terminal','Terminal command'));out.setAttribute('aria-label',tr('Keluaran terminal','Terminal output'));}
- function run(raw){if(!raw.trim())return;append(engine.prompt+' '+raw,'command');let result;try{result=engine.run(raw)}catch{append(tr('Perintah tidak dapat diproses.','Unable to process command.'),'error');bottom();return}if(result.clear)out.replaceChildren();for(const row of result.rows)append(row.text,row.kind,row.url);if(result.theme){root.dataset.theme=result.theme;try{localStorage.setItem('portfolio-theme',result.theme)}catch{}}if(result.language&&result.language!==lang())$('languageBtn')?.click();if(result.open){try{window.open(result.open,'_blank','noopener,noreferrer')}catch{}}cursor=engine.history.length;draft='';sync();bottom()}
+ function run(raw){if(!raw.trim())return;append(engine.prompt+' '+raw,'command');let result;try{result=engine.run(raw)}catch{append(tr('Perintah tidak dapat diproses. Periksa sintaks atau jalankan help.','Unable to process command.'),'error');bottom();return}if(result.clear)out.replaceChildren();for(const row of result.rows)append(row.text,row.kind,row.url);if(result.theme){root.dataset.theme=result.theme;try{localStorage.setItem('portfolio-theme',result.theme)}catch{}}if(result.language&&result.language!==lang())$('languageBtn')?.click();if(result.open){try{window.open(result.open,'_blank','noopener,noreferrer')}catch{}}cursor=engine.history.length;draft='';sync();bottom()}
  form.addEventListener('submit',e=>{e.preventDefault();run(input.value);input.value='';input.focus({preventScroll:true})});
  $('terminalHint')?.addEventListener('click',()=>{run('help');input.focus({preventScroll:true})});
  input.addEventListener('keydown',e=>{
@@ -17,5 +20,5 @@
    else if(e.ctrlKey&&e.key.toLowerCase()==='l'){e.preventDefault();out.replaceChildren();bottom()}
    else if(e.ctrlKey&&e.key.toLowerCase()==='c'&&input.selectionStart===input.selectionEnd){e.preventDefault();append(engine.prompt+' '+input.value+' ^C','muted');input.value='';cursor=engine.history.length;bottom()}
  });
- new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang']});welcome();sync();
+ new MutationObserver(()=>{sync();syncWelcome()}).observe(root,{attributes:true,attributeFilter:['lang']});welcome();sync();
 })();
