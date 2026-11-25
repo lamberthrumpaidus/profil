@@ -32,15 +32,19 @@
 
 <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
   <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-torii">
+  <link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell">
+  <link rel="stylesheet" href="assets/css/terminal.css?v=20261125-shell">
   <script src="assets/js/data.js?v=20261125-github" defer></script>
-  <script src="assets/js/app.js?v=20261125-github" defer></script>
+  <script src="assets/js/app.js?v=20261125-shell" defer></script>
+  <script src="assets/js/terminal-engine.js?v=20261125-shell" defer></script>
+  <script src="assets/js/terminal-ui.js?v=20261125-shell" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261125-torii"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
 
 <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/creative.js?v=20261125-navigation"></script>
+  <script defer src="assets/js/creative.js?v=20261125-shell"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
   <script src="assets/js/atelier-motion.js?v=20261125-torii" defer></script>
 
@@ -316,26 +320,22 @@
         <div class="lab-layout">
           <div class="lab-copy reveal">
             <h2 class="section-title" id="labTitle" data-i18n="lab.title">Laboratorium interaktif</h2>
-            <p data-i18n="lab.desc">Terminal interaktif menyediakan akses ke daftar karya, keahlian, profil, dan informasi kontak. Gunakan perintah help untuk melihat seluruh pilihan.</p>
-            <div class="lab-small-tags"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>NAVIGASI PAPAN KETIK</span></div>
+            <p data-i18n="lab.desc">Jelajahi portofolio melalui terminal berbasis perintah. Telusuri direktori virtual, baca dokumentasi, cari proyek, dan buka repositori GitHub. Masukkan help untuk melihat perintah yang tersedia.</p>
+            <div class="lab-small-tags"><span>VIRTUAL FILE SYSTEM</span><span>COMMAND LINE</span><span>GITHUB</span></div>
             <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
                 data-i18n="lab.try">Lihat daftar perintah ↗</button></div>
           </div>
           <div class="terminal reveal" aria-label="Terminal portofolio interaktif">
-            <div class="terminal-top">
-              <div class="traffic"><i></i><i></i><i></i></div><strong>lamberth /
-                interactive-shell</strong><span>v1.0</span>
+            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>lamberth / portfolio-shell</strong></div><span class="shell-mode">WEB SHELL</span></div>
+            <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Keluaran terminal">
+              <div class="shell-line shell-muted">Portfolio Shell · Web sandbox</div><div class="shell-line" data-i18n="lab.hello">Masukkan help untuk menampilkan daftar perintah.</div>
             </div>
-            <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions">
-              <div><span class="term-accent">●</span> portfolio.shell <span class="term-muted">— ready</span></div>
-              <div class="term-muted" data-i18n="lab.hello">Masukkan help untuk menampilkan daftar perintah.</div>
-            </div>
-            <form id="terminalForm" class="terminal-input"><span class="term-prompt">guest@portfolio:~$</span><label
+            <form id="terminalForm" class="terminal-input"><span class="term-prompt" id="terminalPrompt" aria-hidden="true">guest@portfolio:~$</span><label
                 for="terminalCommand" class="sr-only">Ketik perintah terminal</label><input id="terminalCommand"
-                autocomplete="off" spellcheck="false" aria-label="Perintah terminal" placeholder="help"><button
+                autocomplete="off" spellcheck="false" autocapitalize="off" enterkeyhint="go" maxlength="1000" aria-label="Perintah terminal" placeholder="help"><button
                 type="submit" aria-label="Jalankan perintah"><svg class="ico">
                   <use href="#ico-arrow"></use>
-                </svg></button></form>
+                </svg></button></form><div class="shell-footer"><span data-i18n="lab.sandbox">Lingkungan virtual hanya-baca</span><span data-i18n="lab.keys">↑ ↓ Riwayat · Tab Pelengkapan</span></div>
           </div>
         </div>
       </div>

@@ -73,38 +73,6 @@ function transitions(){
    }
  },true);
 }
-function shell(){
- const terminal=$('.terminal'),form=$('#terminalForm'),out=$('#terminalDisplay');
- const announce=document.createElement('span');announce.className='sr-only';announce.setAttribute('role','status');announce.setAttribute('aria-live','polite');terminal?.append(announce);
- if(!terminal||!form)return;
- const header=$('.terminal-top',terminal);
- const toggle=document.createElement('button');toggle.type='button';toggle.className='shell-sound-toggle';toggle.textContent='SFX OFF';toggle.setAttribute('aria-pressed','false');toggle.setAttribute('aria-label','Aktifkan suara ketikan terminal');header.append(toggle);
- let enabled=false,ctx=null,lastClick=0;
- toggle.addEventListener('click',()=>{
-   enabled=!enabled;toggle.textContent=enabled?'SFX ON':'SFX OFF';toggle.setAttribute('aria-pressed',String(enabled));
-   if(enabled){const C=window.AudioContext||window.webkitAudioContext;try{if(C){ctx??=new C();ctx.resume()}}catch{}}
- });
- const input=$('#terminalCommand');
- input?.addEventListener('keydown',e=>{
-   if(!enabled||reduce.matches||e.repeat||e.key.length!==1||!ctx||performance.now()-lastClick<48)return;
-   lastClick=performance.now();
-   try{const osc=ctx.createOscillator(),gain=ctx.createGain(),now=ctx.currentTime;
-     osc.type='triangle';osc.frequency.setValueAtTime(190,now);
-     osc.frequency.exponentialRampToValueAtTime(83,now+.028);
-     gain.gain.setValueAtTime(.013,now);gain.gain.exponentialRampToValueAtTime(.0001,now+.035);
-     osc.connect(gain).connect(ctx.destination);osc.start(now);osc.stop(now+.036);
-   }catch{}
- });
- window.addEventListener('portfolio:shell-output',e=>{
-   if(reduce.matches||!out)return;
-   const el=e.detail?.element,full=e.detail?.text;
-   if(!el||typeof full!=='string'||full.length>650)return;
-   el.textContent='';el.classList.add('shell-typing');out.setAttribute('aria-live','off');
-   let pos=0;function update(){if(!el.isConnected)return;pos=Math.min(full.length,pos+Math.max(2,Math.ceil(full.length/28)));el.textContent=full.slice(0,pos)+(pos<full.length?'▋':'');out.scrollTop=out.scrollHeight;
-     if(pos<full.length)requestAnimationFrame(update);else{el.classList.remove('shell-typing');out.setAttribute('aria-live','polite');announce.textContent=full}
-   }requestAnimationFrame(update);
- });
-}
-scrollMotion();shell();
+scrollMotion();
 window.addEventListener('beforeunload',()=>lenis?.destroy());
 })();

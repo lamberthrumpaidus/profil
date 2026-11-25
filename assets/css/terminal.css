@@ -1,0 +1,17 @@
+/* ALL Create by LamberthRumpaidus — command-line interface. */
+.lab-layout{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(20px,5vw,70px)}
+.lab .terminal{display:flex;flex-direction:column;min-width:0;width:100%;min-height:0;max-width:none;background:#1b292e!important;box-shadow:0 16px 44px #14212835;overflow:hidden;border:1px solid #526564!important;border-radius:14px;color:#e8e7df}
+.lab .terminal::before,.lab .terminal::after{display:none!important}
+.lab .terminal-top{display:flex;justify-content:space-between;align-items:center;min-height:49px;padding:12px 16px;background:#26363a!important;border-bottom:1px solid #526564;gap:10px;color:#d2ded3}
+.terminal-brand{display:flex;align-items:center;gap:10px;min-width:0}.terminal-brand strong{font:600 12px "DM Sans",Arial,sans-serif;letter-spacing:.015em;overflow-wrap:anywhere}
+.lab .terminal-top .shell-mode{display:inline-block!important;font:600 9px "DM Sans",Arial,sans-serif;color:#b9c6c3;white-space:nowrap;letter-spacing:.06em}
+.lab .terminal-display{display:block;flex:1;min-height:0;height:clamp(260px,40vh,400px);max-height:none;overflow-y:auto;overflow-x:hidden;overscroll-behavior:auto;scroll-behavior:auto!important;padding:18px 20px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;font:13px/1.55 Consolas,ui-monospace,monospace;color:#e8e7df}
+.lab .terminal-display>div.shell-line{display:block;min-height:1.55em;margin:0!important;padding:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.shell-command{color:#b7cbb5;font-weight:600;margin-top:6px!important}.shell-accent{color:#ddc5a4;font-weight:600}.shell-muted{color:#b9c6c3}.shell-error{color:#f0b3a6}.shell-link a{color:#b7cbb5;text-decoration:underline;text-underline-offset:3px}
+.lab .terminal-input{display:flex;align-items:center;gap:10px;min-width:0;padding:12px 16px;background:#233238;border-top:1px solid #526564;font:13px/1.5 Consolas,ui-monospace,monospace}.lab .terminal-input .term-prompt{color:#b7cbb5;max-width:46%;overflow-wrap:anywhere;font-size:12px;flex:0 1 auto}
+.lab .terminal-input input{min-width:0;flex:1;width:100%;padding:7px 3px;background:transparent;border:0;color:#e8e7df;outline:none!important;box-shadow:none;font:inherit;caret-color:#ddc5a4}
+.lab .terminal-input:focus-within{box-shadow:inset 0 -2px #b7cbb5}.lab .terminal-input input::placeholder{color:#9baaa9}
+.lab .terminal-input button{flex:0 0 32px;width:32px;height:32px;border-radius:7px;color:#b7cbb5;background:transparent}.lab .terminal-input button:hover{background:#35454a}
+.shell-footer{display:flex;justify-content:space-between;align-items:center;gap:6px 12px;flex-wrap:wrap;padding:8px 16px;background:#26363a;border-top:1px solid #526564;font:11px/1.4 "DM Sans",Arial,sans-serif;color:#b9c6c3}
+@media(max-width:960px){.lab-layout{grid-template-columns:1fr}.lab .terminal{max-width:850px}}
+@media(max-width:480px){.lab .terminal-display{padding:13px;font-size:12px;height:300px}.lab .terminal-input{padding:10px;gap:6px}.lab .terminal-input .term-prompt{font-size:10px;max-width:40%}.lab .terminal-input input{font-size:16px}.lab .terminal-top{padding:10px 12px}.shell-footer{padding:8px 12px;font-size:10px}.terminal-brand strong{font-size:11px}}
