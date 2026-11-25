@@ -20,7 +20,7 @@ Portofolio pribadi Lamberth Paulinus Rumpaidus menyajikan profil, karya, dokumen
 | [Dokumentasi proyek](https://lamberthrumpaidusprofile.netlify.app/documentation.html) | Studi kasus dan dokumentasi teknis |
 | [Sistem desain](https://lamberthrumpaidusprofile.netlify.app/design-system.html) | Identitas visual, tipografi, warna, dan komponen |
 
-Terminal interaktif menyediakan 100 perintah untuk navigasi sistem berkas virtual hanya-baca, pengolahan teks, perhitungan, dan akses dokumentasi. Terminal berjalan di browser dan tidak mengeksekusi perintah sistem operasi maupun server.
+Terminal menyediakan antarmuka baris perintah untuk penelusuran proyek, pengolahan teks, perhitungan, dan akses dokumentasi. Terminal berjalan di peramban tanpa akses ke sistem operasi atau server.
 
 ## Struktur
 
