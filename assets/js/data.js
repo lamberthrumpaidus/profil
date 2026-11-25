@@ -352,3 +352,67 @@ window.PORTFOLIO_STEPS = [
 ];
 
 window.PORTFOLIO_PROJECTS.forEach((p,i)=>p.number=String(i+1).padStart(2,'0'));
+
+// Professional project catalog — source-backed links.
+window.PORTFOLIO_PROJECTS.push(...[
+  {
+    "id": "ilai",
+    "title": "Indie Legends Arcade Island",
+    "type": "BROWSER GAME PLATFORM",
+    "category": "creative",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Indie-Legends-Arcade-Island/main/icon-512.png",
+    "imageKind": "logo",
+    "repository": "https://github.com/lamberthrumpaidus/Indie-Legends-Arcade-Island",
+    "demo": "https://indielegendsarcadeisland.netlify.app/",
+    "summary": "Portal permainan browser dengan katalog lintas genre dan koleksi permainan yang dapat diakses secara gratis.",
+    "problem": "Menyatukan berbagai permainan dalam satu akses tanpa menyulitkan pencarian dan perpindahan permainan.",
+    "approach": "Menyusun katalog, navigasi permainan, dukungan offline, serta integrasi permainan unggulan dalam satu platform web.",
+    "outcome": "Portal publik dengan katalog permainan, termasuk RUBAKA, LANDLORD, dan LAST ASYLUM, sebagaimana didokumentasikan pada repositori.",
+    "reflection": "Pengelolaan aset, kompatibilitas perangkat, dan pengujian setiap permainan menjadi prioritas pengembangan.",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "WebGL"
+    ],
+    "accent": "#78d8bd",
+    "badge": "Game Platform",
+    "en": {
+      "summary": "A browser game portal with a cross-genre catalog and free access.",
+      "problem": "Unify games without making discovery and navigation difficult.",
+      "approach": "Build a catalog, game navigation, offline support and featured game integration.",
+      "outcome": "A public portal with documented featured games, including RUBAKA, LANDLORD and LAST ASYLUM.",
+      "reflection": "Asset management, device compatibility and game testing remain priorities."
+    }
+  },
+  {
+    "id": "lastasylum",
+    "title": "LAST ASYLUM",
+    "type": "3D SURVIVAL GAME",
+    "category": "creative",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Last-Asylum/main/LAST_ASYLUM_logo.png",
+    "imageKind": "logo",
+    "repository": "https://github.com/lamberthrumpaidus/Last-Asylum",
+    "demo": "https://lastasylumgame.netlify.app/",
+    "summary": "Permainan survival 3D berbasis browser dengan eksplorasi hutan, perburuan, memasak, perdagangan, dan pengembangan markas.",
+    "problem": "Menghubungkan kegiatan bertahan hidup dan pengelolaan sumber daya dalam satu siklus permainan.",
+    "approach": "Menyusun sistem perburuan, bahan makanan, pelanggan, koin, peningkatan karakter, serta kontrol komputer dan perangkat seluler.",
+    "outcome": "Versi web yang dapat dibuka melalui tautan permainan; fitur dan mekanik didokumentasikan di repositori.",
+    "reflection": "Keseimbangan ekonomi permainan, umpan balik visual, dan kontrol merupakan fokus iterasi berikutnya.",
+    "stack": [
+      "JavaScript",
+      "WebGL",
+      "Game Design"
+    ],
+    "accent": "#e1b083",
+    "badge": "3D Survival",
+    "en": {
+      "summary": "A 3D browser survival game featuring forest exploration, hunting, cooking, trading, and base development.",
+      "problem": "Connect survival and resource management into a coherent game loop.",
+      "approach": "Build hunting, ingredients, customers, coins, character upgrades, and cross-device controls.",
+      "outcome": "A web version with documented features and mechanics.",
+      "reflection": "Game economy balance, visual feedback, and controls remain iterative priorities."
+    }
+  }
+]);
+window.PORTFOLIO_PROJECTS.forEach((p,i)=>{p.number=String(i+1).padStart(2,'0');if(p.id==='rubaka')p.demo='https://rubaka.netlify.app/';if(p.id==='omni')p.demo='https://omn1sc1ence.netlify.app/';if(p.id==='landlord')delete p.imageFallback;});

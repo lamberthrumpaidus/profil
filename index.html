@@ -15,7 +15,7 @@
   <meta name="author" content="Lamberth Paulinus Rumpaidus">
   <meta property="og:type" content="website">
   <meta property="og:title" content="lamberthrumpaidus — Portfolio & Interactive Experiences">
-  <meta property="og:description" content="Bukan sekadar kode. Karya, proses, dan solusi yang bisa dieksplorasi.">
+  <meta property="og:description" content="Profil profesional, karya akademik, proyek mandiri, dan layanan pengembangan web.">
   <meta property="og:image" content="assets/images/portrait.webp">
   <title>lamberthrumpaidus | Creative Digital Portfolio</title>
   <link rel="icon" type="image/png" href="assets/images/lr-credit-logo-v2.png">
@@ -30,8 +30,9 @@
   <link rel="stylesheet" href="assets/css/final-clean.css">
   <link rel="stylesheet" href="assets/css/creative.css">
   <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
-  <script src="assets/js/data.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
+  <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
+  <script src="assets/js/data.js?v=20261125" defer></script>
+  <script src="assets/js/app.js?v=20261125" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261124-studio"></script>
   <script type="module" src="assets/js/vault-final.js"></script>
   <script src="assets/js/experience.js?v=20261124-lr-studio" defer></script>
@@ -81,6 +82,7 @@
       <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama">
         <a href="#about" data-i18n="nav.about">Tentang</a>
         <a href="#work" data-i18n="nav.work">Karya</a>
+        <a href="#services" data-i18n="nav.services">Layanan</a>
         <a href="#documentation" class="nav-docs">Dokumentasi</a>
         <a href="#expertise" data-i18n="nav.expertise">Keahlian</a>
         <a href="#contact" data-i18n="nav.contact">Kontak</a>
@@ -120,10 +122,10 @@
       </div>
       <div class="hero-grid wrap">
         <div class="hero-copy">
-          <div class="hero-eyebrow"><span class="hero-superscript">01 / YOUR PORTAL TO MY WORK</span><span class="hero-hairline"></span></div>
-          <p class="hero-intro">HELLO, I'M <strong>LAMBERTH RUMPAIDUS</strong></p>
-          <h1 id="heroHeading"><span data-i18n="hero.line1">Menciptakan</span><br><span class="headline-gradient" data-i18n="hero.line2">dunia digital</span><br><em data-i18n="hero.line3">bermakna.</em></h1>
-          <p class="hero-lede" data-i18n="hero.desc">Portofolio interaktif Lamberth Paulinus Rumpaidus. Saya menggabungkan desain, engineering, dan eksperimen 3D menjadi pengalaman web yang hidup.</p>
+          <div class="hero-eyebrow"><span class="hero-superscript">PENGEMBANG WEB & KOMPUTASI INTERAKTIF</span><span class="hero-hairline"></span></div>
+          <p class="hero-intro"><strong>LAMBERTH PAULINUS RUMPAIDUS</strong></p>
+          <h1 id="heroHeading"><span data-i18n="hero.line1">Merancang</span><br><span class="headline-gradient" data-i18n="hero.line2">solusi digital</span><br><em data-i18n="hero.line3">yang bermakna.</em></h1>
+          <p class="hero-lede" data-i18n="hero.desc">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika dengan fokus pada pengembangan web, antarmuka interaktif, dan komputasi. Saya terbuka untuk kolaborasi proyek digital.</p>
           <div class="hero-actions">
             <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Lihat karya saya</span><span aria-hidden="true">↗</span></a>
             
@@ -171,7 +173,7 @@
         <div class="lock-copy">
           <span class="micro-label">01 / INTERAKSI 3D</span>
           <h2 id="vaultHeading">Satu kunci.<br><em>Banyak karya.</em></h2>
-          <p class="lock-intro">Dari sebuah ide menuju karya nyata. Lihat cara kunci masuk, berputar, dan membuka gembok sebelum menjelajahi portofolio.</p>
+          <p class="lock-intro">Eksplorasi mekanisme kunci tiga dimensi sebagai bagian dari pengalaman interaktif portofolio.</p>
           <span class="lock-status" id="vaultStatus" role="status">Siap dibuka</span>
           <button class="button lock-action" type="button" id="vaultAdvance">Buka kunci <span aria-hidden="true">↗</span></button>
         </div>
@@ -192,18 +194,12 @@
             class="section-label-rule"></span><span>PROFILE & DIRECTION</span></div>
         <div class="about-layout">
           <div class="about-main reveal">
-            <h2 class="section-title about-title" id="aboutTitle" data-i18n="about.title">Sebuah proses. <span
-                class="muted-title">Bukan sekadar hasil.</span></h2>
-            <p class="about-intro" data-i18n="about.intro">Bagi saya, website yang baik tidak hanya indah ketika
-              dilihat. Ia harus mudah digunakan, memiliki fondasi yang dapat dipahami, dan memberi manfaat bagi orang
-              yang menggunakannya.</p>
-            <p class="subtle-paragraph" data-i18n="about.desc">Saya mendalami pengembangan antarmuka, logika aplikasi,
-              komputasi interaktif, dan pendekatan keamanan web. Setiap proyek menjadi ruang eksperimen untuk merancang,
-              membangun, menguji, lalu memperbaiki ide menjadi karya nyata.</p>
+            <h2 class="section-title about-title" id="aboutTitle" data-i18n="about.title">Profil profesional</h2>
+            <p class="about-intro" data-i18n="about.intro">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika di Universitas Amikom Yogyakarta, berasal dari Mimika, Papua Tengah. Saya mengembangkan aplikasi web, permainan berbasis browser, dan perangkat komputasi melalui proyek akademik serta proyek mandiri.</p>
+            <p class="subtle-paragraph" data-i18n="about.desc">Saya menekuni pengembangan perangkat lunak dengan perhatian pada kebutuhan pengguna, struktur kode, aksesibilitas, dan dokumentasi. Sebagai pengembang yang merintis karier freelance, saya ingin membantu individu, komunitas, dan usaha kecil memperoleh solusi digital yang relevan dan mudah digunakan.</p>
             <div class="about-metadata">
-              <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik Informatika</strong></div>
-              <div><span data-i18n="about.focusLabel">AREA MINAT</span><strong data-i18n="about.focus">Web Development /
-                  UI / Cybersecurity</strong></div>
+              <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik Informatika · Universitas Amikom Yogyakarta</strong></div>
+              <div><span data-i18n="about.focusLabel">AREA MINAT</span><strong data-i18n="about.focus">Pengembangan web, UI/UX, dan komputasi interaktif</strong></div>
               <div><span data-i18n="about.basedLabel">ASAL DAERAH</span><strong data-i18n="about.based">Mimika · Papua Tengah</strong></div>
             </div>
           </div>
@@ -216,23 +212,30 @@
       </div>
     </section>
 
+    <section class="section lr-prof-section" id="services" aria-labelledby="servicesTitle"><div class="wrap">
+<div class="section-label"><span><span data-i18n="services.label">LAYANAN &amp; KOLABORASI</span></span><span class="section-label-rule"></span></div>
+<h2 class="section-title" id="servicesTitle" data-i18n="services.title">Solusi digital untuk kebutuhan nyata.</h2>
+<p class="lr-prof-intro" data-i18n="services.intro">Fokus saya adalah pengembangan web dan prototipe digital bagi individu, komunitas, dan usaha kecil. Setiap penawaran disesuaikan dengan kebutuhan, ruang lingkup, dan kompleksitas proyek.</p>
+<div class="lr-prof-grid three"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="services.web.title">Pengembangan website</h3><p data-i18n="services.web.desc">Website profil, landing page, dan situs informatif bagi individu, komunitas, serta usaha kecil.</p><small>HTML · CSS · JavaScript</small></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="services.ui.title">Prototipe UI/UX</h3><p data-i18n="services.ui.desc">Perancangan alur pengguna, struktur informasi, dan prototipe antarmuka untuk memvalidasi gagasan sebelum implementasi.</p><small>Figma · Responsive UI</small></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="services.interaktif.title">Pengalaman web interaktif</h3><p data-i18n="services.interaktif.desc">Prototipe visual, permainan browser, dan alat komputasi sederhana untuk kebutuhan edukasi atau demonstrasi produk.</p><small>Canvas · Three.js · WebGL</small></article></div>
+<div class="lr-prof-callout"><div><h3 data-i18n="services.quote">Penawaran dan ruang lingkup</h3><p data-i18n="services.terms">Biaya ditentukan berdasarkan kebutuhan dan estimasi pekerjaan. Tahapan, tenggat, hasil yang diserahkan, ketentuan revisi, dan dukungan lanjutan dibahas sebelum kesepakatan.</p></div><a class="button button-primary" href="#contact" data-i18n="services.cta">Ajukan kebutuhan proyek ↗</a></div>
+<div class="lr-prof-subhead"><span class="micro-label" data-i18n="goals.label">ARAH PENGEMBANGAN</span><h2 class="section-title" data-i18n="goals.title">Bertumbuh melalui karya.</h2><p data-i18n="goals.intro">Saya menargetkan perkembangan yang berkelanjutan, baik dalam kemandirian profesional maupun kualitas karya kreatif.</p></div>
+<div class="lr-prof-grid two"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="goals.mandiri.title">Kemandirian profesional</h3><p data-i18n="goals.mandiri.desc">Membangun sumber penghasilan mandiri melalui proyek freelance secara bertahap, sejalan dengan studi dan tanggung jawab akademik.</p></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="goals.reputasi.title">Pertumbuhan karier</h3><p data-i18n="goals.reputasi.desc">Memperluas jaringan profesional, mengembangkan kompetensi, dan membangun reputasi melalui komunikasi yang baik serta penyelesaian proyek yang bertanggung jawab.</p></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="goals.kreasi.title">Produk digital yang bermanfaat</h3><p data-i18n="goals.kreasi.desc">Mengembangkan website yang responsif, antarmuka yang mudah dipahami, dan visual interaktif yang mendukung fungsi produk, bukan sekadar dekorasi.</p></article><article class="lr-prof-card"><span class="lr-prof-index">04</span><h3 data-i18n="goals.iterasi.title">Eksperimen dan kualitas</h3><p data-i18n="goals.iterasi.desc">Memperdalam animasi, WebGL, dan komputasi untuk menghasilkan karya yang orisinal, teruji, serta dapat ditingkatkan melalui evaluasi.</p></article></div>
+</div></section>
     <section class="section work-section" id="work" aria-labelledby="workTitle">
       <div class="wrap">
         <div class="section-label reveal"><span>02 / <span data-i18n="work.label">KARYA PILIHAN</span></span><span
             class="section-label-rule"></span><span>FEATURED CASE STUDIES</span></div>
         <div class="section-heading-row reveal">
           <div>
-            <h2 class="section-title" id="workTitle" data-i18n="work.title">Dari tantangan <span class="muted-title">ke
-                solusi.</span></h2>
-            <p class="section-description" data-i18n="work.desc">Setiap proyek memiliki latar masalah, pendekatan
-              teknis, dan luaran yang dapat ditelusuri. Buka studi kasus untuk melihat prosesnya.</p>
+            <h2 class="section-title" id="workTitle" data-i18n="work.title">Karya dan studi kasus</h2>
+            <p class="section-description" data-i18n="work.desc">Jelajahi proyek mandiri, prototipe, dan karya akademik melalui dokumentasi proses, teknologi, hasil, serta kode sumber yang tersedia.</p>
           </div>
-          <div class="section-index"><span>9</span><small data-i18n="work.count">PROYEK TERDOKUMENTASI</small></div>
+          <div class="section-index"><span id="portfolioProjectCount">11</span><small data-i18n="work.count">PROYEK MANDIRI & PROTOTIPE</small></div>
         </div>
         <div id="featuredProjects" class="featured-stack" aria-label="Studi kasus utama"></div>
         <div class="work-browser-head reveal">
           <div><span class="eyebrow" data-i18n="work.archive">ARSIP KARYA / 2026</span>
-            <h3 data-i18n="work.browse">Jelajahi eksplorasi lainnya</h3>
+            <h3 data-i18n="work.browse">Proyek lainnya</h3>
           </div><span class="work-total" id="workTotal">06 PROJECTS</span>
         </div>
         <div class="work-controls reveal">
@@ -255,20 +258,52 @@
 
 
     <!-- ALL Create by LamberthRumpaidus — Integrated interactive project documentation system. -->
+    <section class="section lr-prof-section" id="academic" aria-labelledby="academicTitle"><div class="wrap">
+<div class="section-label"><span><span data-i18n="academic.label">KARYA AKADEMIK</span></span><span class="section-label-rule"></span></div>
+<h2 class="section-title" id="academicTitle" data-i18n="academic.title">Penerapan konsep dalam praktik.</h2>
+<p class="lr-prof-intro" data-i18n="academic.intro">Dua karya perkuliahan yang mendokumentasikan penerapan algoritma dan pemrograman berorientasi objek, beserta bukti implementasinya.</p>
+<div class="lr-prof-grid two">
+<article class="lr-prof-card lr-academic-card"><figure class="lr-evidence"><img src="https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot.png" alt="Tangkapan layar asli menu Average Score App" loading="lazy" decoding="async"><figcaption><span data-i18n="academic.avg.evidence">Tangkapan layar aplikasi konsol</span></figcaption></figure>
+<h3 data-i18n="academic.avg.title">Average Score App</h3>
+<p class="lr-role" data-i18n="academic.avg.role">Proyek kelompok · Ketua tim dan kontributor pengembangan</p>
+<p data-i18n="academic.avg.problem">Tantangan: menyederhanakan penghitungan rata-rata dari sekumpulan nilai numerik.</p>
+<p data-i18n="academic.avg.solution">Pendekatan: merancang menu konsol, masukan nilai, perhitungan rata-rata, pengaturan nama ruang, dan pengulangan program menggunakan C++.</p>
+<p data-i18n="academic.avg.result">Hasil: aplikasi konsol dengan menu dan alur penghitungan yang terdokumentasi. Proyek melatih koordinasi tim dan penerapan algoritma dasar.</p>
+<small>C++ · Algoritma · Console application</small><div class="lr-prof-links"><a href="https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA" target="_blank" rel="noopener noreferrer" data-i18n="academic.avg.source">Kode sumber ↗</a><a href="https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot1.png" target="_blank" rel="noopener noreferrer" data-i18n="academic.avg.screen">Tampilan program ↗</a></div></article>
+<article class="lr-prof-card lr-academic-card"><figure class="lr-evidence lr-code-evidence"><pre><code>internal class Mahasiswa
+{
+    public string Nim { get; set; }
+    public string Nama { get; set; }
+    public float Ipk { get; set; }
+
+    public void Isikrs()
+    {
+        Console.WriteLine(
+            "{0} sedang melakukan proses Krs\n",
+            Nama);
+    }
+}</code></pre><figcaption><span data-i18n="academic.oop.evidence">Cuplikan kode sumber Mahasiswa.cs</span></figcaption></figure>
+<h3 data-i18n="academic.oop.title">Pemodelan kelas dan objek mahasiswa</h3>
+<p class="lr-role" data-i18n="academic.oop.role">Tugas praktikum · Pemrograman berorientasi objek</p>
+<p data-i18n="academic.oop.problem">Tantangan: merepresentasikan data dan perilaku mahasiswa dalam struktur program yang dapat digunakan kembali.</p>
+<p data-i18n="academic.oop.solution">Pendekatan: mendefinisikan kelas Mahasiswa, properti NIM, nama, dan IPK, serta metode Registrasi dan Isikrs menggunakan C#.</p>
+<p data-i18n="academic.oop.result">Hasil: contoh program konsol yang membuat dua objek mahasiswa dan memanggil metode masing-masing. Data di dalam kode merupakan contoh simulasi, bukan catatan akademik aktual.</p>
+<small>C# · OOP · .NET</small><div class="lr-prof-links"><a href="https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/Pemrograman_Praktikum/TUGAS%20CLASS%20OBJECT%20MAHASISWA%205826" target="_blank" rel="noopener noreferrer" data-i18n="academic.oop.source">Kode sumber ↗</a></div></article>
+</div></div></section>
     <section id="documentation" class="documentation-section" aria-labelledby="documentationTitle">
       <div class="wrap documentation-layout">
         <div class="documentation-copy reveal">
           <span class="micro-label"><span class="index-dot"></span> 03 / DOKUMENTASI PROYEK</span>
-          <h2 id="documentationTitle">Dokumentasi<br>yang <em>hidup.</em></h2>
-          <p>Pilih karya untuk melihat ringkasan, tantangan, pendekatan, dan hasilnya terbentuk bagian demi bagian. Dokumen dapat dibaca setelah proses selesai.</p>
+          <h2 id="documentationTitle">Dokumentasi<br><em>proyek.</em></h2>
+          <p>Telusuri latar belakang, pendekatan teknis, hasil, dan refleksi pengembangan setiap karya.</p>
           <div class="documentation-select"><label for="documentationProject">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
-          <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> LIHAT PROSES DOKUMENTASI <span>↗</span></button>
-          <p class="documentation-explain">Dokumen disusun dari data proyek yang tersedia, bukan pembuatan AI atau deployment sungguhan.</p>
+          <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> BUKA DOKUMENTASI <span>↗</span></button>
+          
         </div>
         <div class="documentation-machine documentation-showcase reveal" id="documentationMachine">
           <div class="doc-showcase-header"><span>PROJECT / DOCUMENTATION</span><span><i></i> SIAP</span></div>
           <div class="doc-showcase-image"><img id="machinePreviewImage" src="assets/images/rubaka.webp" alt="Pratinjau proyek terpilih"></div>
-          <div class="doc-showcase-details"><span>PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p>Tujuan → Pendekatan → Hasil → Refleksi</p><strong>LIHAT PROSES PENYUSUNAN ↗</strong></div>
+          <div class="doc-showcase-details"><span>PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p>Tujuan → Pendekatan → Hasil → Refleksi</p><strong>BUKA DOKUMENTASI ↗</strong></div>
         </div>
       </div>
     </section>
@@ -279,10 +314,8 @@
             class="section-label-rule"></span><span>TOOLS & TECHNOLOGIES</span></div>
         <div class="section-heading-row reveal">
           <div>
-            <h2 class="section-title" id="expertiseTitle" data-i18n="skills.title">Fondasi yang <span
-                class="muted-title">terus berkembang.</span></h2>
-            <p class="section-description" data-i18n="skills.desc">Keterampilan disusun berdasarkan bidang praktik dan
-              perangkat yang digunakan dalam proyek, bukan angka persentase yang sulit diverifikasi.</p>
+            <h2 class="section-title" id="expertiseTitle" data-i18n="skills.title">Keahlian dan perangkat kerja</h2>
+            <p class="section-description" data-i18n="skills.desc">Bidang keahlian yang saya kembangkan melalui praktik pemrograman, perancangan antarmuka, dan eksperimen komputasi.</p>
           </div>
         </div>
         <div class="expertise-grid" id="expertiseGrid"></div>
@@ -296,17 +329,14 @@
         <div class="section-label reveal"><span>05 / <span data-i18n="process.label">CARA BERPIKIR</span></span><span
             class="section-label-rule"></span><span>FROM CONCEPT TO DELIVERY</span></div>
         <div class="process-heading reveal">
-          <h2 class="section-title" id="processTitle" data-i18n="process.title">Proses di balik <span
-              class="muted-title">setiap pixel.</span></h2>
-          <p data-i18n="process.desc">Pendekatan sederhana agar solusi tidak berhenti pada tampilan, tetapi tetap masuk
-            akal ketika digunakan.</p>
+          <h2 class="section-title" id="processTitle" data-i18n="process.title">Pendekatan pengembangan</h2>
+          <p data-i18n="process.desc">Setiap proyek dimulai dari kebutuhan yang jelas, dilanjutkan dengan perancangan, implementasi, pengujian, dan evaluasi.</p>
         </div>
         <div class="process-grid" id="processGrid"></div>
         <div class="process-note reveal">
           <div class="note-icon">↗</div>
-          <p data-i18n="process.note">Kualitas produk adalah hasil dari iterasi. Dokumentasi proyek memuat masalah,
-            pendekatan, implementasi, dan evaluasi yang masih dapat dikembangkan.</p><a href="#work"
-            data-i18n="process.noteCta">Lihat penerapannya <span>↗</span></a>
+          <p data-i18n="process.note">Dokumentasi dan evaluasi membantu menjaga kualitas hasil serta memudahkan pengembangan pada tahap berikutnya.</p><a href="#work"
+            data-i18n="process.noteCta">Lihat studi kasus ↗</a>
         </div>
       </div>
     </section>
@@ -317,8 +347,7 @@
             class="section-label-rule"></span><span>EXPERIMENTAL SPACE</span></div>
         <div class="lab-layout">
           <div class="lab-copy reveal">
-            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Coba lihat <span class="muted-title">di balik
-                layar.</span></h2>
+            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Laboratorium interaktif</h2>
             <p data-i18n="lab.desc">Terminal mini ini benar-benar dapat digunakan untuk menelusuri portofolio. Ketik
               <code>help</code>, <code>projects</code>, <code>skills</code>, <code>contact</code>, atau
               <code>theme</code>.
@@ -355,9 +384,8 @@
         <div class="contact-layout">
           <div class="contact-title-col reveal"><span class="eyebrow"><span class="status-light"></span><span
                 data-i18n="contact.available">TERBUKA UNTUK KOLABORASI</span></span>
-            <h2 id="contactTitle" data-i18n="contact.title">Punya ide?<br><em>Wujudkan bersama.</em></h2>
-            <p data-i18n="contact.desc">Kolaborasi, proyek, diskusi teknologi, atau sekadar menyapa. Saya senang
-              bertukar perspektif tentang produk digital.</p><a class="big-email"
+            <h2 id="contactTitle" data-i18n="contact.title">Mari diskusikan proyek Anda.</h2>
+            <p data-i18n="contact.desc">Saya terbuka untuk diskusi kebutuhan website, prototipe antarmuka, pengembangan fitur interaktif, dan kolaborasi teknologi. Ruang lingkup, jadwal, biaya, dan revisi disepakati sebelum pengerjaan.</p><a class="big-email"
               href="mailto:lamberthrumpaidus@gmail.com">lamberthrumpaidus@gmail.com <svg class="ico">
                 <use href="#ico-arrow"></use>
               </svg></a><button class="copy-email" type="button" id="copyEmail"><svg class="ico">
@@ -377,7 +405,7 @@
                   <option value="Diskusi teknologi" data-i18n="contact.opt2">Diskusi teknologi</option>
                   <option value="Pertanyaan lain" data-i18n="contact.opt3">Pertanyaan lain</option>
                 </select></label><label><span data-i18n="contact.message">Pesan</span><textarea name="message" rows="4"
-                  minlength="10" maxlength="3000" required placeholder="Ceritakan idemu..."></textarea></label><button
+                  minlength="10" maxlength="3000" required placeholder="Jelaskan kebutuhan proyek Anda..."></textarea></label><button
                 type="submit" class="button button-primary form-send"><span data-i18n="contact.send">Buka aplikasi
                   email</span><svg class="ico">
                   <use href="#ico-arrow"></use>
@@ -398,9 +426,8 @@
   </main>
   <footer class="footer">
     <div class="wrap footer-grid"><a class="footer-logo" href="#top" aria-label="Kembali ke atas"><img class="footer-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"></a>
-      <div><strong data-i18n="footer.head">Dibuat dengan rasa ingin tahu.</strong>
-        <p data-i18n="footer.body">Dirancang dan dikembangkan sebagai portofolio digital. © 2026 Lamberth Paulinus
-          Rumpaidus.</p>
+      <div><strong data-i18n="footer.head">Pengembangan web dan pengalaman digital</strong>
+        <p data-i18n="footer.body">© 2026 Lamberth Paulinus Rumpaidus. Seluruh karya ditampilkan sesuai konteks pengembangannya.</p>
       </div>
     </div>
   </footer>
@@ -417,7 +444,7 @@
           <div class="doc-build-paper"><div class="doc-build-paper-header"><span>PROJECT / CASE STUDY</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><div class="doc-build-collection" id="docBuildCollection" aria-label="Isi dokumen yang sedang disusun"></div><footer>PORTFOLIO · LAMBERTH RUMPAIDUS</footer></div>
         </div>
         <div class="deploy-caption"><span id="deployPhase">Memulai dokumentasi proyek...</span><span id="deployPercent">0%</span></div>
-        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Proses disusun bertahap agar dapat diikuti.</small><button type="button" id="deploySkip">Lihat hasil ↗</button></div>
+        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Dokumentasi proyek</small><button type="button" id="deploySkip">Lihat hasil ↗</button></div>
         <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>SUMBER PROYEK</span></div><div data-deploy-step="1"><b>02</b><span>ANALISIS MASALAH</span></div><div data-deploy-step="2"><b>03</b><span>METODE & HASIL</span></div><div data-deploy-step="3"><b>04</b><span>DOKUMEN SIAP</span></div></div>
       </div>
       <div class="deploy-document" id="deployDocument" hidden>
@@ -547,10 +574,10 @@
     <button type="button" class="assistant-trigger" id="assistantTrigger" aria-expanded="false" aria-controls="assistantPanel"><span class="assistant-glyph">✳</span><span>ASK LAM AI</span><span class="assistant-online"></span></button>
     <section class="assistant-panel" id="assistantPanel" aria-labelledby="assistantTitle" hidden>
       <header class="assistant-heading"><div><small>PORTFOLIO INTELLIGENCE</small><h2 id="assistantTitle">Meet Lam AI <span>✳</span></h2></div><button type="button" id="assistantClose" aria-label="Tutup asisten">×</button></header>
-      <div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message assistant-bot">Halo! Saya asisten portofolio Lamberth. Mau tahu proyek, keahlian, pengalaman 3D, atau cara menghubungi Lamberth?</div></div>
+      <div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message assistant-bot">Selamat datang. Saya dapat membantu Anda menemukan informasi tentang proyek, keahlian, dan kanal kontak Lamberth.</div></div>
       <div class="assistant-chips" id="assistantChips"><button type="button" data-ask="Proyek apa saja yang dibuat?">Lihat proyek</button><button type="button" data-ask="Keahlian Lamberth apa?">Keahlian</button><button type="button" data-ask="Bagaimana cara menghubungi Lamberth?">Kontak</button></div>
       <form class="assistant-form" id="assistantForm"><label for="assistantInput" class="sr-only">Tanya portofolio</label><input id="assistantInput" name="question" maxlength="700" autocomplete="off" placeholder="Tanyakan tentang karya..." required><button type="submit" aria-label="Kirim pertanyaan">↗</button></form>
-      <p class="assistant-disclosure" id="assistantDisclosure">Gratis. Mode lokal menjawab berdasarkan isi portofolio; jawaban generatif tersedia jika API server dikonfigurasi.</p>
+      <p class="assistant-disclosure" id="assistantDisclosure">Asisten memberikan informasi berdasarkan portofolio. Untuk penawaran proyek, hubungi saya secara langsung.</p>
     </section>
   </aside>
 </body>
