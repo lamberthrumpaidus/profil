@@ -33,11 +33,8 @@
 <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
   <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-torii">
   <link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell">
-  <link rel="stylesheet" href="assets/css/terminal.css?v=20261125-shell">
   <script src="assets/js/data.js?v=20261125-github" defer></script>
-  <script src="assets/js/app.js?v=20261125-terminal" defer></script>
-  <script src="assets/js/terminal-engine.js?v=20261125-terminal" defer></script>
-  <script src="assets/js/terminal-ui.js?v=20261125-terminal" defer></script>
+  <script src="assets/js/app.js?v=20261125-layout" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261125-torii"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
 
@@ -336,39 +333,13 @@
       </div>
     </section>
 
-    <section class="section lab" id="playground" aria-labelledby="labTitle">
-      <div class="wrap">
-        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">TERMINAL</span></span><span
-            class="section-label-rule"></span><span data-i18n="lab.subtitle">ANTARMUKA BARIS PERINTAH</span></div>
-        <div class="lab-layout">
-          <div class="lab-copy reveal">
-            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Terminal</h2>
-            <p data-i18n="lab.desc">Antarmuka baris perintah untuk penelusuran proyek, pengolahan teks, dan perhitungan. Perintah dijalankan dalam lingkungan virtual dengan akses baca saja.</p>
-            <div class="lab-small-tags"><span data-i18n="lab.vfs">SISTEM BERKAS VIRTUAL</span><span data-i18n="lab.cli">BARIS PERINTAH</span><span>GITHUB</span></div>
-            <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
-                data-i18n="lab.try">Panduan perintah ↗</button></div>
-          </div>
-          <div class="terminal reveal" aria-label="Terminal">
-            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>Terminal</strong></div></div>
-            <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Keluaran terminal">
-              <div class="shell-line shell-muted">Sesi terminal</div><div class="shell-line" data-i18n="lab.hello">Jalankan perintah help untuk menampilkan panduan.</div>
-            </div>
-            <form id="terminalForm" class="terminal-input"><span class="term-prompt" id="terminalPrompt" aria-hidden="true">guest@portfolio:~$</span><label
-                for="terminalCommand" class="sr-only">Masukkan perintah terminal</label><input id="terminalCommand"
-                autocomplete="off" spellcheck="false" autocapitalize="off" enterkeyhint="go" maxlength="1000" aria-label="Perintah terminal" placeholder="help"><button
-                type="submit" aria-label="Jalankan perintah"><svg class="ico">
-                  <use href="#ico-arrow"></use>
-                </svg></button></form><div class="shell-footer"><span data-i18n="lab.sandbox">Lingkungan virtual dengan akses baca saja</span><span data-i18n="lab.keys">↑ ↓ Riwayat perintah · Tab Lengkapi otomatis</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <section id="documentation" class="section documentation-section lr-doc-preview" aria-labelledby="documentationTitle"><div class="wrap lr-doc-entry"><div><span class="micro-label" data-i18n="docs.entryLabel">ARSIP PENGEMBANGAN</span><h2 class="section-title" id="documentationTitle" data-i18n="docs.entryTitle">Dokumentasi proyek</h2><p data-i18n="docs.entryDesc">Telusuri studi kasus lengkap, pendekatan teknis, hasil implementasi, dan bukti karya dalam satu ruang dokumentasi.</p><a class="button button-primary" href="documentation.html"><span data-i18n="docs.entryAction">Buka halaman dokumentasi</span><span aria-hidden="true">↗</span></a></div><div class="lr-doc-preview-visual" aria-hidden="true"><div class="lr-doc-preview-paper"><span>01 / CASE STUDY</span><strong>PROJECT<br>DOCUMENTATION</strong><div></div><div></div><div></div><small>RESEARCH · DESIGN · ENGINEERING</small></div><div class="lr-doc-preview-paper second"><span>02 / PROJECT ARCHIVE</span><strong>13</strong><small>SELECTED PROJECTS &amp; ACADEMIC WORK</small></div></div></div></section>
     <section class="section contact" id="contact" aria-labelledby="contactTitle">
       <div class="contact-glow"></div>
       <div class="wrap">
-        <div class="section-label reveal"><span>07 / <span data-i18n="contact.label">KONTAK PROFESIONAL</span></span><span
+        <div class="section-label reveal"><span>06 / <span data-i18n="contact.label">KONTAK PROFESIONAL</span></span><span
             class="section-label-rule"></span><span data-i18n="contact.subtitle">DISKUSI &amp; KOLABORASI</span></div>
         <div class="contact-layout">
           <div class="contact-title-col reveal"><span class="eyebrow"><span class="status-light"></span><span
