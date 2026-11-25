@@ -1,13 +1,13 @@
 /* ALL Create by LamberthRumpaidus — Canvas atmospheric effects and motion feedback. */
 (()=>{'use strict';
- const canvas=document.getElementById('atmosphereCanvas'),hero=document.querySelector('.immersive-hero'),toggle=document.getElementById('worldMotionBtn');
+ const canvas=document.getElementById('atmosphereCanvas'),hero=document.querySelector('.immersive-hero');
  if(!canvas||!hero)return;
  const ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  let w=1,h=1,dpr=1,raf=0,visible=true,last=0,elapsed=0,particles=[],bursts=[];
  let pointer={x:.68,y:.5,tx:.68,ty:.5};
  const r=(a,b)=>a+Math.random()*(b-a);
- const active=()=>visible&&!document.hidden&&!reduce.matches&&(toggle?.getAttribute('aria-pressed')!=='false'||toggle?.disabled);
+ const active=()=>visible&&!document.hidden&&!reduce.matches;
  const mobile=()=>innerWidth<700;
  function setup(){
    w=Math.max(1,hero.clientWidth);h=Math.max(1,hero.clientHeight);
@@ -44,7 +44,6 @@
  if('IntersectionObserver'in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting;visible?start():stop();},{threshold:0.01}).observe(hero);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  reduce.addEventListener?.('change',()=>active()?start():stop());
- if(toggle)new MutationObserver(()=>active()?start():stop()).observe(toggle,{attributes:true,attributeFilter:['aria-pressed']});
  // One short compositor-friendly reaction on controls; no delay or navigation blocking.
  document.addEventListener('pointerdown',e=>{const el=e.target.closest('button,.button,.project-source-link');if(!el||reduce.matches||el.disabled||!el.animate)return;el.animate([{scale:'1'},{scale:'.97'},{scale:'1'}],{duration:210,easing:'cubic-bezier(.2,.65,.2,1)'});},{passive:true});
  setup();

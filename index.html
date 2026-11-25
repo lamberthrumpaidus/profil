@@ -31,10 +31,10 @@
   <link rel="stylesheet" href="assets/css/creative.css">
 
 <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
-  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-navigation">
+  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-torii">
   <script src="assets/js/data.js?v=20261125-navigation" defer></script>
   <script src="assets/js/app.js?v=20261125-navigation2" defer></script>
-  <script type="module" src="assets/js/scene.js?v=20261125-navigation2"></script>
+  <script type="module" src="assets/js/scene.js?v=20261125-torii"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
 
 <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
@@ -42,7 +42,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
   <script defer src="assets/js/creative.js?v=20261125-navigation"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
-  <script src="assets/js/atelier-motion.js?v=20261125-canvas" defer></script>
+  <script src="assets/js/atelier-motion.js?v=20261125-torii" defer></script>
 
   <style>
     /* Logo update */
@@ -134,11 +134,6 @@
           </div>
         </div>
       </div>
-      <div class="world-controller" id="worldController" aria-label="Pengaturan tampilan 3D">
-<div class="scene-views" role="group" aria-label="Sudut kamera"><button type="button" data-world-view="arrival" aria-pressed="true"><span data-i18n="scene.arrival">Gerbang</span></button><button type="button" data-world-view="gate" aria-pressed="false"><span data-i18n="scene.gate">Torii</span></button><button type="button" data-world-view="water" aria-pressed="false"><span data-i18n="scene.water">Danau</span></button><button type="button" data-world-view="bamboo" aria-pressed="false"><span data-i18n="scene.bamboo">Bambu</span></button></div>
-<div class="scene-actions" role="group" aria-label="Pengaturan visual"><button type="button" id="worldThemeBtn" aria-pressed="false" aria-label="Ubah suasana 3D">☀ <span>Senja</span></button><button type="button" id="worldQualityBtn" aria-pressed="true" title="Ubah kualitas grafik">HD</button><button type="button" id="worldMotionBtn" aria-pressed="true">Animasi aktif</button><button type="button" id="worldPhotoBtn" title="Simpan gambar" aria-label="Simpan gambar"><span aria-hidden="true">⌗</span></button></div>
-</div>
-      <button type="button" id="worldExitBtn" class="world-exit" hidden>KELUAR DARI DUNIA 3D <span>×</span></button>
       <span id="worldError" class="world-error" role="status" aria-live="polite"></span>
 
       <div class="world-side-name" aria-hidden="true">L / R — CREATIVE DEVELOPMENT</div>
