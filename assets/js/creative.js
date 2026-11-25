@@ -105,6 +105,6 @@ function shell(){
    }requestAnimationFrame(update);
  });
 }
-scrollMotion();transitions();shell();
+scrollMotion();shell();
 window.addEventListener('beforeunload',()=>lenis?.destroy());
 })();

@@ -29,18 +29,18 @@
   <link rel="stylesheet" href="assets/css/experience.css">
   <link rel="stylesheet" href="assets/css/final-clean.css">
   <link rel="stylesheet" href="assets/css/creative.css">
-  <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
-  <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
-  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-editorial">
+
+<link rel="stylesheet" href="assets/css/professional.css?v=20261125">
+  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-navigation">
   <script src="assets/js/data.js?v=20261125-editorial" defer></script>
-  <script src="assets/js/app.js?v=20261125-editorial" defer></script>
-  <script type="module" src="assets/js/scene.js?v=20261125-canvas"></script>
+  <script src="assets/js/app.js?v=20261125-navigation" defer></script>
+  <script type="module" src="assets/js/scene.js?v=20261125-navigation"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
-  <script src="assets/js/experience.js?v=20261125-editorial" defer></script>
-  <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
+
+<!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/creative.js?v=20261125-canvas"></script>
+  <script defer src="assets/js/creative.js?v=20261125-navigation"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
   <script src="assets/js/atelier-motion.js?v=20261125-canvas" defer></script>
 
@@ -84,7 +84,7 @@
         <a href="#about" data-i18n="nav.about">Tentang</a>
         <a href="#work" data-i18n="nav.work">Karya</a>
         <a href="#services" data-i18n="nav.services">Layanan</a>
-        <a href="#documentation" class="nav-docs" data-i18n="nav.documentation">Dokumentasi</a>
+        <a href="documentation.html" class="nav-docs" data-i18n="nav.documentation">Dokumentasi</a>
         <a href="#expertise" data-i18n="nav.expertise">Keahlian</a>
         <a href="#contact" data-i18n="nav.contact">Kontak</a>
         <button class="language-switch" type="button" id="languageBtn" aria-label="Ganti bahasa"><span
@@ -134,21 +134,10 @@
           </div>
         </div>
       </div>
-      <div class="world-controller" id="worldController" aria-label="Kontrol pengalaman 3D">
-        <div class="scene-views" role="group" aria-label="Pilih sudut kamera">
-          <button type="button" data-world-view="arrival" aria-pressed="true">01 <span>GERBANG</span></button>
-          <button type="button" data-world-view="gate" aria-pressed="false">02 <span>TORII</span></button>
-          <button type="button" data-world-view="water" aria-pressed="false">03 <span>DANAU</span></button>
-          <button type="button" data-world-view="bamboo" aria-pressed="false">04 <span>BAMBU</span></button>
-        </div>
-        <div class="scene-actions" role="group" aria-label="Tampilan dan kualitas">
-          <button type="button" id="worldDayBtn" aria-pressed="true" title="Senja" aria-label="Suasana senja">☀</button>
-          <button type="button" id="worldNightBtn" aria-pressed="false" title="Malam" aria-label="Suasana malam">☾</button>
-          <button type="button" id="worldQualityBtn" title="Ubah kualitas grafik" aria-label="Ubah kualitas grafik">HD</button>
-          <button type="button" id="worldMotionBtn" aria-pressed="true" title="Gerakan" aria-label="Aktifkan atau matikan animasi">Animasi aktif</button>
-          <button type="button" id="worldPhotoBtn" title="Simpan gambar dunia" aria-label="Simpan gambar dunia">⌗</button>
-        </div>
-      </div>
+      <div class="world-controller" id="worldController" aria-label="Pengaturan tampilan 3D">
+<div class="scene-views" role="group" aria-label="Sudut kamera"><button type="button" data-world-view="arrival" aria-pressed="true"><span data-i18n="scene.arrival">Gerbang</span></button><button type="button" data-world-view="gate" aria-pressed="false"><span data-i18n="scene.gate">Torii</span></button><button type="button" data-world-view="water" aria-pressed="false"><span data-i18n="scene.water">Danau</span></button><button type="button" data-world-view="bamboo" aria-pressed="false"><span data-i18n="scene.bamboo">Bambu</span></button></div>
+<div class="scene-actions" role="group" aria-label="Pengaturan visual"><button type="button" id="worldThemeBtn" aria-pressed="false" aria-label="Ubah suasana 3D">☀ <span>Senja</span></button><button type="button" id="worldQualityBtn" aria-pressed="true" title="Ubah kualitas grafik">HD</button><button type="button" id="worldMotionBtn" aria-pressed="true">Animasi aktif</button><button type="button" id="worldPhotoBtn" title="Simpan gambar" aria-label="Simpan gambar"><span aria-hidden="true">⌗</span></button></div>
+</div>
       <button type="button" id="worldExitBtn" class="world-exit" hidden>KELUAR DARI DUNIA 3D <span>×</span></button>
       <span id="worldError" class="world-error" role="status" aria-live="polite"></span>
 
@@ -226,15 +215,15 @@
     <section class="section work-section" id="work" aria-labelledby="workTitle">
       <div class="wrap">
         <div class="section-label reveal"><span>02 / <span data-i18n="work.label">KARYA PILIHAN</span></span><span
-            class="section-label-rule"></span><span data-i18n="work.subtitle">STUDI KASUS UNGGULAN</span></div>
+            class="section-label-rule"></span><span data-i18n="work.subtitle">PORTOFOLIO PROYEK</span></div>
         <div class="section-heading-row reveal">
           <div>
-            <h2 class="section-title" id="workTitle" data-i18n="work.title">Karya dan studi kasus</h2>
-            <p class="section-description" data-i18n="work.desc">Jelajahi proyek mandiri, prototipe, dan karya akademik melalui dokumentasi proses, teknologi, hasil, serta kode sumber yang tersedia.</p>
+            <h2 class="section-title" id="workTitle" data-i18n="work.title">Karya pilihan</h2>
+            <p class="section-description" data-i18n="work.desc">Koleksi proyek mandiri dan prototipe yang menampilkan penerapan teknologi, desain, serta pengembangan perangkat lunak.</p>
           </div>
           <div class="section-index"><span id="portfolioProjectCount">11</span><small data-i18n="work.count">PROYEK MANDIRI & PROTOTIPE</small></div>
         </div>
-        <div id="featuredProjects" class="featured-stack" aria-label="Studi kasus utama"></div>
+        <div id="featuredProjects" class="featured-stack" aria-label="Karya unggulan"></div>
         <div class="work-browser-head reveal">
           <div><span class="eyebrow" data-i18n="work.archive">ARSIP KARYA / 2026</span>
             <h3 data-i18n="work.browse">Proyek lainnya</h3>
@@ -262,15 +251,15 @@
     <section class="section lr-prof-section" id="academic" aria-labelledby="academicTitle"><div class="wrap">
 <div class="section-label"><span><span data-i18n="academic.label">KARYA AKADEMIK</span></span><span class="section-label-rule"></span></div>
 <h2 class="section-title" id="academicTitle" data-i18n="academic.title">Penerapan konsep dalam praktik.</h2>
-<p class="lr-prof-intro" data-i18n="academic.intro">Dua karya perkuliahan yang mendokumentasikan penerapan algoritma dan pemrograman berorientasi objek, beserta bukti implementasinya.</p>
+<p class="lr-prof-intro" data-i18n="academic.intro">Dua karya perkuliahan dalam bidang algoritma dan pemrograman berorientasi objek.</p>
 <div class="lr-prof-grid two">
 <article class="lr-prof-card lr-academic-card"><figure class="lr-evidence"><img src="https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot.png" alt="Tangkapan layar asli menu Average Score App" loading="lazy" decoding="async"><figcaption><span data-i18n="academic.avg.evidence">Tangkapan layar aplikasi konsol</span></figcaption></figure>
 <h3 data-i18n="academic.avg.title">Average Score App</h3>
 <p class="lr-role" data-i18n="academic.avg.role">Proyek kelompok · Ketua tim dan kontributor pengembangan</p>
 <p data-i18n="academic.avg.problem">Tantangan: menyederhanakan penghitungan rata-rata dari sekumpulan nilai numerik.</p>
-<p data-i18n="academic.avg.solution">Pendekatan: merancang menu konsol, masukan nilai, perhitungan rata-rata, pengaturan nama ruang, dan pengulangan program menggunakan C++.</p>
-<p data-i18n="academic.avg.result">Hasil: aplikasi konsol dengan menu dan alur penghitungan yang terdokumentasi. Proyek melatih koordinasi tim dan penerapan algoritma dasar.</p>
-<small>C++ · Algoritma · Console application</small><div class="lr-prof-links"><a href="https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA" target="_blank" rel="noopener noreferrer" data-i18n="academic.avg.source">Kode sumber ↗</a><a href="https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot1.png" target="_blank" rel="noopener noreferrer" data-i18n="academic.avg.screen">Tampilan program ↗</a></div></article>
+
+
+<small>C++ · Algoritma · Console application</small></article>
 <article class="lr-prof-card lr-academic-card"><figure class="lr-evidence lr-code-evidence"><pre><code>internal class Mahasiswa
 {
     public string Nim { get; set; }
@@ -287,27 +276,11 @@
 <h3 data-i18n="academic.oop.title">Pemodelan kelas dan objek mahasiswa</h3>
 <p class="lr-role" data-i18n="academic.oop.role">Tugas praktikum · Pemrograman berorientasi objek</p>
 <p data-i18n="academic.oop.problem">Tantangan: merepresentasikan data dan perilaku mahasiswa dalam struktur program yang dapat digunakan kembali.</p>
-<p data-i18n="academic.oop.solution">Pendekatan: mendefinisikan kelas Mahasiswa, properti NIM, nama, dan IPK, serta metode Registrasi dan Isikrs menggunakan C#.</p>
-<p data-i18n="academic.oop.result">Hasil: contoh program konsol yang membuat dua objek mahasiswa dan memanggil metode masing-masing. Data di dalam kode merupakan contoh simulasi, bukan catatan akademik aktual.</p>
-<small>C# · OOP · .NET</small><div class="lr-prof-links"><a href="https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/Pemrograman_Praktikum/TUGAS%20CLASS%20OBJECT%20MAHASISWA%205826" target="_blank" rel="noopener noreferrer" data-i18n="academic.oop.source">Kode sumber ↗</a></div></article>
+
+
+<small>C# · OOP · .NET</small></article>
 </div></div></section>
-    <section id="documentation" class="documentation-section" aria-labelledby="documentationTitle">
-      <div class="wrap documentation-layout">
-        <div class="documentation-copy reveal">
-          <span class="micro-label"><span class="index-dot"></span> 03 / DOKUMENTASI PROYEK</span>
-          <h2 id="documentationTitle">Dokumentasi<br><em>proyek.</em></h2>
-          <p data-i18n="docs.desc">Telusuri latar belakang, pendekatan teknis, hasil, dan refleksi pengembangan setiap karya.</p>
-          <div class="documentation-select"><label for="documentationProject" data-i18n="docs.select">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
-          <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> BUKA DOKUMENTASI <span>↗</span></button>
-          
-        </div>
-        <div class="documentation-machine documentation-showcase reveal" id="documentationMachine">
-          <div class="doc-showcase-header"><span>PROYEK / DOKUMENTASI</span><span><i></i> SIAP</span></div>
-          <div class="doc-showcase-image"><img id="machinePreviewImage" src="assets/images/rubaka.webp" alt="Pratinjau proyek terpilih"></div>
-          <div class="doc-showcase-details"><span data-i18n="docs.preview">PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p data-i18n="docs.sequence">Tujuan → Pendekatan → Hasil → Refleksi</p><strong data-i18n="docs.open">BUKA DOKUMENTASI ↗</strong></div>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="section expertise" id="expertise" aria-labelledby="expertiseTitle">
       <div class="wrap">
@@ -373,6 +346,7 @@
       </div>
     </section>
 
+    <section id="documentation" class="section documentation-section lr-doc-preview" aria-labelledby="documentationTitle"><div class="wrap lr-doc-entry"><div><span class="micro-label" data-i18n="docs.entryLabel">ARSIP PENGEMBANGAN</span><h2 class="section-title" id="documentationTitle" data-i18n="docs.entryTitle">Dokumentasi proyek</h2><p data-i18n="docs.entryDesc">Telusuri studi kasus lengkap, pendekatan teknis, hasil implementasi, dan bukti karya dalam satu ruang dokumentasi.</p><a class="button button-primary" href="documentation.html"><span data-i18n="docs.entryAction">Buka halaman dokumentasi</span><span aria-hidden="true">↗</span></a></div><div class="lr-doc-preview-visual" aria-hidden="true"><div class="lr-doc-preview-paper"><span>01 / CASE STUDY</span><strong>PROJECT<br>DOCUMENTATION</strong><div></div><div></div><div></div><small>RESEARCH · DESIGN · ENGINEERING</small></div><div class="lr-doc-preview-paper second"><span>02 / PROJECT ARCHIVE</span><strong>13</strong><small>SELECTED PROJECTS &amp; ACADEMIC WORK</small></div></div></div></section>
     <section class="section contact" id="contact" aria-labelledby="contactTitle">
       <div class="contact-glow"></div>
       <div class="wrap">
@@ -427,45 +401,6 @@
     </div>
   </footer>
 
-
-  <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployDialogTitle">
-    <div class="deploy-shell">
-      <span class="sr-only" id="deployDialogTitle">Dokumentasi proyek</span>
-      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-brand-logo-shell"><img class="deploy-brand-logo" src="assets/images/logo-lr-web.png?v=20261124-lr-studio" alt="Logo resmi L/R Lamberth Rumpaidus" width="78" height="52"></span><div><strong>lamberthrumpaidus</strong><small data-i18n="docs.header">DOKUMENTASI PROYEK</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
-      <div class="deploy-workspace" id="deployWorkspace" role="region" aria-label="Proses penyusunan dokumentasi">
-        <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOKUMENTASI / TAHAP <span id="deployStageNumber">01</span></strong><small id="deployClock">PERSIAPAN</small></div>
-        <div class="deploy-visual doc-build-area" id="deployVisual">
-          <div class="doc-build-terminal"><div class="doc-build-top"><span class="live-dot"></span><strong data-i18n="docs.workspace">RUANG KERJA PROYEK</strong><small data-i18n="docs.build">TAHAP DOKUMENTASI</small></div><div id="docBuildLines" class="doc-build-lines"><p>→ Memuat informasi proyek.</p></div><div class="doc-build-asset"><span data-i18n="docs.source">SUMBER</span><strong id="docBuildSource">—</strong></div></div>
-          <div class="doc-build-paper"><div class="doc-build-paper-header"><span data-i18n="docs.paper">PROYEK / STUDI KASUS</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><div class="doc-build-collection" id="docBuildCollection" aria-label="Isi dokumen yang sedang disusun"></div><footer>PORTOFOLIO · LAMBERTH RUMPAIDUS</footer></div>
-        </div>
-        <div class="deploy-caption"><span id="deployPhase">Memuat dokumentasi proyek.</span><span id="deployPercent">0%</span></div>
-        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Dokumentasi proyek</small><button type="button" id="deploySkip" data-i18n="docs.skip">Lihat hasil ↗</button></div>
-        <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>SUMBER PROYEK</span></div><div data-deploy-step="1"><b>02</b><span>ANALISIS MASALAH</span></div><div data-deploy-step="2"><b>03</b><span>METODE & HASIL</span></div><div data-deploy-step="3"><b>04</b><span>DOKUMEN SIAP</span></div></div>
-      </div>
-      <div class="deploy-document" id="deployDocument" hidden>
-        <div class="deploy-complete"><span>DOKUMENTASI SELESAI <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay" data-i18n="docs.replay">↺ Putar ulang</button></div>
-        <div id="deployResult"></div>
-        <div class="deploy-foot"><button id="deployPrev" type="button" data-i18n="docs.previous">← Proyek sebelumnya</button><button id="deployNext" type="button" data-i18n="docs.next">Proyek berikutnya →</button></div>
-      </div>
-    </div>
-  </dialog>
-
-  <dialog class="case-dialog" id="projectDialog" aria-labelledby="dialogTitle">
-    <div class="dialog-inner">
-      <div class="dialog-top"><span class="dialog-logo"><img class="dialog-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"><small data-i18n="case.label">STUDI KASUS</small></span><button
-          class="dialog-close icon-button" type="button" id="dialogClose" aria-label="Tutup detail proyek"><svg
-            class="ico">
-            <use href="#ico-x"></use>
-          </svg></button></div>
-      <div id="dialogContent"></div>
-      <div class="dialog-footer"><button class="text-button" type="button" id="prevProject"><svg class="ico">
-            <use href="#ico-arrow-left"></use>
-          </svg><span data-i18n="modal.prev">Proyek sebelumnya</span></button><button class="text-button" type="button"
-          id="nextProject"><span data-i18n="modal.next">Proyek berikutnya</span><svg class="ico">
-            <use href="#ico-arrow"></use>
-          </svg></button></div>
-    </div>
-  </dialog>
 
   <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
     <div class="command-wrap">

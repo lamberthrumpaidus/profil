@@ -5,17 +5,26 @@ const frame = document.getElementById('worldFrame');
 const canvas = document.getElementById('gardenCanvas');
 const fallback = document.getElementById('worldFallback');
 const state = { active: true, immersive: false, motion: !matchMedia('(prefers-reduced-motion: reduce)').matches, detail: 'high', theme: 'dusk', preset: 'arrival', drag: false, wanted: null };
+const motionPref=matchMedia('(prefers-reduced-motion: reduce)');
+let saved={};try{saved=JSON.parse(localStorage.getItem('portfolio-scene-settings')||'{}')||{}}catch{}
+function saveSettings(){try{localStorage.setItem('portfolio-scene-settings',JSON.stringify({preset:state.preset,theme:state.theme,detail:state.detail,motion:state.motion}))}catch{}}
+const tr=(id,en)=>document.documentElement.lang==='en'?en:id;
+function updateControls(){const themeBtn=document.getElementById('worldThemeBtn'),qualityBtn=document.getElementById('worldQualityBtn'),motionBtn=document.getElementById('worldMotionBtn');themeBtn.textContent=state.theme==='night'?'☾ '+tr('Malam','Night'):'☀ '+tr('Senja','Dusk');themeBtn.setAttribute('aria-pressed',String(state.theme==='night'));qualityBtn.textContent=state.detail==='high'?'HD':'ECO';qualityBtn.setAttribute('aria-pressed',String(state.detail==='high'));motionBtn.textContent=state.motion?tr('Animasi aktif','Motion on'):tr('Animasi nonaktif','Motion off');motionBtn.setAttribute('aria-pressed',String(state.motion));document.querySelectorAll('[data-world-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.worldView===state.preset)));}
 const cameras = {
   arrival: { position: [5.0, 3.15, 14.5], target: [-0.4, 2.12, -9.5] },
   gate: { position: [-0.8, 2.9, 4.2], target: [0, 2.55, -16] },
   water: { position: [9.5, 4.5, 3.2], target: [3.3, 0.8, -15] },
   bamboo: { position: [-8.8, 4.6, 3], target: [-4.1, 2.8, -17] }
 };
+if(Object.prototype.hasOwnProperty.call(cameras,saved.preset))state.preset=saved.preset;
+if(['dusk','night'].includes(saved.theme))state.theme=saved.theme;else state.theme=document.documentElement.dataset.theme==='light'?'dusk':'night';
+if(['high','low'].includes(saved.detail))state.detail=saved.detail;
+if(typeof saved.motion==='boolean')state.motion=saved.motion&&!motionPref.matches;
 let renderer, scene, camera, clock, keyLight, hemi, water, fireflies, petals, glow, heroSpot, bloomTrees=[];
 let qualityScale=1,slowFrameCount=0;
 let riverUniforms, foliageUniform={value:0}, flyBase, petBase, fishSchool=[], lanterns=[], surfaceTime=0;
 const pointerTarget={x:0,y:0}, smoothPointer={x:0,y:0};
-let pose = new THREE.Vector3(...cameras.arrival.position), look = new THREE.Vector3(...cameras.arrival.target);
+let pose = new THREE.Vector3(...cameras[state.preset].position), look = new THREE.Vector3(...cameras[state.preset].target);
 const mouse = {x:0,y:0}; const targets = {x:0,y:0};
 let raf = null; let visible = true;
 const colors = { dusk: {fog:0x465958, sky:0x465958, floor:0x33483e, water:0x416b69, light:0xffe1b8, lamp:0xe7c18c}, night:{fog:0x263740,sky:0x263740,floor:0x253b37,water:0x294e5b,light:0x9eb8cb,lamp:0xe7c18c}};
@@ -229,8 +238,7 @@ function changeSceneTheme(next){
   state.theme=next;const c=colors[next];
   frame.dataset.scene=next;document.getElementById('worldTime').textContent=next==='night'?'MOONLIT / 02':'GOLDEN HOUR / 01';
   if(scene){scene.background.set(c.sky);scene.fog.color.set(c.fog);keyLight.color.set(c.light);keyLight.intensity=next==='night'?1.3:2.9;hemi.intensity=next==='night'?.94:1.8;riverUniforms.uWater.value.set(c.water);riverUniforms.uFog.value.set(c.fog);riverUniforms.uNight.value=next==='night'?1:0;startLoop();}
-  document.getElementById('worldDayBtn').setAttribute('aria-pressed',String(next==='dusk'));
-  document.getElementById('worldNightBtn').setAttribute('aria-pressed',String(next==='night'));
+  updateControls();
 }
 function resize(){if(!renderer)return;const w=Math.max(1,frame.clientWidth),h=Math.max(1,frame.clientHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,state.detail==='low'?1:(innerWidth<700?1.25:1.65)*qualityScale));renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<700?67:w<1100?62:54;camera.updateProjectionMatrix();startLoop()}
 function startLoop(){if(!raf&&renderer&&!document.hidden&&(visible||state.immersive)){clock?.getDelta();raf=requestAnimationFrame(tick)}}
@@ -252,9 +260,9 @@ function tick(){
   camera.position.copy(pose);camera.lookAt(look);
   if(heroSpot){heroSpot.position.x+=(mouse.x*5-heroSpot.position.x)*.08;heroSpot.position.y+=(4+mouse.y*2-heroSpot.position.y)*.08;heroSpot.intensity=state.motion?1.12+Math.abs(mouse.x)*.25:.6}
   renderer.render(scene,camera);
-  if(state.motion)raf=requestAnimationFrame(tick);
+  if(state.motion&&!raf)raf=requestAnimationFrame(tick);
 }
-function setPreset(id){if(!cameras[id])return;state.preset=id;startLoop();document.querySelectorAll('[data-world-view]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.worldView===id)))}
+function setPreset(id){if(!Object.prototype.hasOwnProperty.call(cameras,id))return;state.preset=id;updateControls();saveSettings();startLoop()}
 function saveFrame(){if(!renderer)return;try{renderer.render(scene,camera);const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='lamberthrumpaidus-immersive-garden.png';a.click()}catch{document.getElementById('worldError').textContent='Gambar tidak dapat disimpan di browser ini.'}}
 function init(){
   try{
@@ -273,20 +281,15 @@ if('IntersectionObserver'in window)new IntersectionObserver(e=>{visible=!!e[0]?.
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&raf){cancelAnimationFrame(raf);raf=null}else startLoop()});
 canvas?.addEventListener('webglcontextlost',e=>{e.preventDefault();if(raf)cancelAnimationFrame(raf);raf=null;renderer=null;canvas.hidden=true;fallback.hidden=false});
 document.querySelectorAll('[data-world-view]').forEach(btn=>btn.addEventListener('click',()=>setPreset(btn.dataset.worldView)));
-document.getElementById('worldDayBtn').addEventListener('click',()=>changeSceneTheme('dusk'));
-document.getElementById('worldNightBtn').addEventListener('click',()=>changeSceneTheme('night'));
+document.getElementById('worldThemeBtn').addEventListener('click',()=>{changeSceneTheme(state.theme==='night'?'dusk':'night');saveSettings()});
 document.getElementById('worldPhotoBtn').addEventListener('click',saveFrame);
-document.getElementById('worldQualityBtn').addEventListener('click',()=>{state.detail=state.detail==='high'?'low':'high';document.getElementById('worldQualityBtn').textContent=state.detail==='high'?'HD':'ECO';resize()});
-document.getElementById('worldMotionBtn').addEventListener('click',()=>{state.motion=!state.motion;document.getElementById('worldMotionBtn').setAttribute('aria-pressed',String(state.motion));document.getElementById('worldMotionBtn').textContent=state.motion?'Animasi aktif':'Animasi nonaktif';startLoop()});
+document.getElementById('worldQualityBtn').addEventListener('click',()=>{state.detail=state.detail==='high'?'low':'high';qualityScale=1;slowFrameCount=0;updateControls();saveSettings();resize()});
+document.getElementById('worldMotionBtn').addEventListener('click',()=>{state.motion=!state.motion;updateControls();saveSettings();startLoop()});
 const expBtn=document.getElementById('worldExploreBtn'),exitBtn=document.getElementById('worldExitBtn');
 function setImmersive(enabled){state.immersive=enabled;document.body.classList.toggle('world-immersive',enabled);expBtn?.setAttribute('aria-expanded',String(enabled));exitBtn.hidden=!enabled; if(enabled){frame.scrollIntoView({block:'start'});setPreset('gate')}else{setPreset('arrival');mouse.x=0;mouse.y=0}resize()}
 exitBtn.addEventListener('click',()=>setImmersive(false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.immersive)setImmersive(false);if(state.immersive&&['1','2','3','4'].includes(e.key))setPreset(['arrival','gate','water','bamboo'][+e.key-1])});
 window.addEventListener('resize',resize,{passive:true});
-init();
-const motionPref=matchMedia('(prefers-reduced-motion: reduce)');
-function syncMotion(){state.motion=!motionPref.matches;const b=document.getElementById('worldMotionBtn');b.setAttribute('aria-pressed',String(state.motion));b.textContent=state.motion?'Animasi aktif':'Animasi nonaktif';startLoop()}
-motionPref.addEventListener?.('change',syncMotion);syncMotion();
-function synchronizeSceneWithPage(){const light=document.documentElement.dataset.theme==='light';changeSceneTheme(light?'dusk':'night')}
-new MutationObserver(synchronizeSceneWithPage).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-synchronizeSceneWithPage();
+init();changeSceneTheme(state.theme);updateControls();
+motionPref.addEventListener?.('change',()=>{if(motionPref.matches){state.motion=false;updateControls();saveSettings();startLoop()}});
+new MutationObserver(updateControls).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});

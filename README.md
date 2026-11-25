@@ -34,7 +34,7 @@ Portofolio ini dirancang agar pengunjung dapat mengenal pemiliknya, menelusuri p
 
 - **Profil** — pengenalan diri, latar belakang, minat, dan arah pengembangan.
 - **Proyek & Karya** — koleksi proyek digital, mulai dari aplikasi web dan pengalaman interaktif hingga eksplorasi game serta teknologi.
-- **Dokumentasi Proyek** — informasi mengenai konsep, tujuan, proses pengerjaan, dan hasil dari karya yang ditampilkan.
+- **[Dokumentasi Proyek](https://lamberthrumpaidusprofile.netlify.app/documentation.html)** — halaman khusus yang memuat studi kasus, pendekatan teknis, hasil, dan bukti karya.
 - **Keahlian** — teknologi, perangkat, dan pendekatan yang digunakan dalam pengembangan proyek.
 - **Pengalaman Interaktif** — elemen 3D, animasi, dan interaksi visual yang menjadi bagian dari identitas portofolio.
 - **Kontak** — jalur komunikasi untuk diskusi, kolaborasi, dan pengembangan ide.

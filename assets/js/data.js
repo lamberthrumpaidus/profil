@@ -416,3 +416,62 @@ window.PORTFOLIO_PROJECTS.push(...[
   }
 ]);
 window.PORTFOLIO_PROJECTS.forEach((p,i)=>{p.number=String(i+1).padStart(2,'0');if(p.id==='rubaka')p.demo='https://rubaka.netlify.app/';if(p.id==='omni')p.demo='https://omn1sc1ence.netlify.app/';if(p.id==='landlord')delete p.imageFallback;});
+
+window.PORTFOLIO_ACADEMIC = [
+  {
+    "id": "average-score",
+    "title": "Average Score App",
+    "type": "ACADEMIC PROJECT · C++",
+    "category": "academic",
+    "image": "https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot.png",
+    "repository": "https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA",
+    "evidence": "https://raw.githubusercontent.com/lamberthrumpaidus/sandbox_projects/main/collections/01-programming-languages/FINAL_PROJECT_ALGORITMA/Screenshot1.png",
+    "summary": "Aplikasi konsol untuk menghitung nilai rata-rata, dikembangkan sebagai proyek kelompok.",
+    "role": "Ketua tim dan kontributor pengembangan",
+    "problem": "Menyederhanakan penghitungan rata-rata dari sekumpulan nilai numerik.",
+    "approach": "Merancang menu konsol, masukan nilai, perhitungan rata-rata, pengaturan nama ruang, dan pengulangan program menggunakan C++.",
+    "outcome": "Aplikasi konsol dengan menu dan alur penghitungan yang terdokumentasi.",
+    "reflection": "Proyek melatih koordinasi tim, penerapan algoritma dasar, dan pengujian alur masukan.",
+    "stack": [
+      "C++",
+      "Algoritma",
+      "Console application"
+    ],
+    "en": {
+      "summary": "A console application for calculating average scores, developed as a team project.",
+      "role": "Team lead and development contributor",
+      "problem": "Simplify the calculation of averages from numerical scores.",
+      "approach": "Design console menus, numeric input, average calculations, room naming, and repeat execution in C++.",
+      "outcome": "A console application with documented menu and calculation flow.",
+      "reflection": "The project developed teamwork, fundamental algorithm skills, and input-flow testing."
+    }
+  },
+  {
+    "id": "student-oop",
+    "title": "Pemodelan kelas dan objek mahasiswa",
+    "type": "ACADEMIC PROJECT · C#",
+    "category": "academic",
+    "repository": "https://github.com/lamberthrumpaidus/sandbox_projects/tree/main/collections/01-programming-languages/Pemrograman_Praktikum/TUGAS%20CLASS%20OBJECT%20MAHASISWA%205826",
+    "code": "internal class Mahasiswa\n{\n    public string Nim { get; set; }\n    public string Nama { get; set; }\n    public float Ipk { get; set; }\n\n    public void Isikrs()\n    {\n        Console.WriteLine(\n            \"{0} sedang melakukan proses Krs\\n\",\n            Nama);\n    }\n}",
+    "summary": "Tugas praktikum pemrograman berorientasi objek untuk memodelkan data dan perilaku mahasiswa.",
+    "role": "Tugas praktikum pemrograman berorientasi objek",
+    "problem": "Merepresentasikan data dan perilaku mahasiswa dalam struktur program yang dapat digunakan kembali.",
+    "approach": "Mendefinisikan kelas Mahasiswa, properti NIM, nama, dan IPK, serta metode Registrasi dan Isikrs menggunakan C#.",
+    "outcome": "Program konsol membuat dua objek mahasiswa dan memanggil metode masing-masing. Data dalam kode adalah contoh simulasi, bukan catatan akademik aktual.",
+    "reflection": "Pemisahan properti dan metode membantu memahami enkapsulasi serta penggunaan objek dalam program.",
+    "stack": [
+      "C#",
+      "OOP",
+      ".NET"
+    ],
+    "en": {
+      "title": "Student class and object modeling",
+      "summary": "An object-oriented programming lab assignment modeling student data and behavior.",
+      "role": "Object-oriented programming lab assignment",
+      "problem": "Represent student data and behavior in a reusable program structure.",
+      "approach": "Define a Mahasiswa class, student ID, name and GPA properties, and Registrasi and Isikrs methods in C#.",
+      "outcome": "A console program creates two student objects and invokes their methods. The data is illustrative, not actual academic records.",
+      "reflection": "Separating properties and methods helps explain encapsulation and object usage."
+    }
+  }
+];
