@@ -39,6 +39,10 @@ Portofolio ini dirancang agar pengunjung dapat mengenal pemiliknya, menelusuri p
 - **Pengalaman Interaktif** — elemen 3D, animasi, dan interaksi visual yang menjadi bagian dari identitas portofolio.
 - **Kontak** — jalur komunikasi untuk diskusi, kolaborasi, dan pengembangan ide.
 
+## Identitas Visual
+
+[Design System & Visual Identity](https://lamberthrumpaidusprofile.netlify.app/design-system.html) mendokumentasikan arah visual, palet warna, tipografi, komponen, dan pendekatan interaksi yang digunakan pada portofolio.
+
 ## Pendekatan
 
 Portofolio ini mengutamakan perpaduan antara **desain yang berkarakter, navigasi yang mudah dipahami, interaksi yang bermakna, dan dokumentasi yang jelas**. Pengalaman dirancang agar tetap nyaman diakses melalui desktop maupun perangkat mobile.

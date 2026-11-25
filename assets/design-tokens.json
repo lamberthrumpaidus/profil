@@ -1,0 +1,37 @@
+{
+  "name": "Quiet Harmony",
+  "version": "1.0",
+  "source": "assets/css/atelier.css",
+  "dark": {
+    "background": "#202D32",
+    "secondaryBackground": "#26363A",
+    "surface": "#2C3B3E",
+    "surfaceRaised": "#35454A",
+    "text": "#E8E7DF",
+    "muted": "#B9C6C3",
+    "accent": "#B7CBB5",
+    "warm": "#DDC5A4",
+    "onAccent": "#233631"
+  },
+  "light": {
+    "background": "#F2F1EB",
+    "secondaryBackground": "#E8EAE3",
+    "surface": "#FAF8F2",
+    "surfaceRaised": "#E1E7DF",
+    "text": "#283834",
+    "muted": "#4E625B",
+    "accent": "#466A56",
+    "warm": "#795F40",
+    "onAccent": "#F9F7F0"
+  },
+  "typography": {
+    "display": "Space Grotesk",
+    "body": "DM Sans"
+  },
+  "recommendedSpacing": [
+    8,
+    16,
+    24,
+    32
+  ]
+}
