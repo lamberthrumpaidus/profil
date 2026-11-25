@@ -1,5 +1,28 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#202d32"><meta name="description" content="Dokumentasi proyek Lamberth Rumpaidus: studi kasus, metode pengembangan, hasil, refleksi, dan kode sumber."><title>Dokumentasi Proyek | Lamberth Rumpaidus</title><link rel="canonical" href="https://lamberthrumpaidusprofile.netlify.app/documentation.html"><link rel="icon" href="assets/images/lr-credit-logo-v2.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/design-system.css?v=20261125-editorial"><link rel="stylesheet" href="assets/css/documentation-page.css?v=20261125"><link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell"><script defer src="assets/js/data.js?v=20261125-github"></script><script defer src="assets/js/documentation-page.js?v=20261125-github"></script></head>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#202d32"><meta name="description" content="Dokumentasi proyek Lamberth Rumpaidus: studi kasus, metode pengembangan, hasil, refleksi, dan kode sumber."><title>Dokumentasi Proyek | Lamberth Rumpaidus</title><link rel="canonical" href="https://lamberthrumpaidusprofile.netlify.app/documentation.html"><link rel="icon" href="assets/images/lr-credit-logo-v2.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/design-system.css?v=20261125-editorial"><link rel="stylesheet" href="assets/css/documentation-page.css?v=20261125"><link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell"><script defer src="assets/js/data.js?v=20261125-github"></script><script defer src="assets/js/documentation-page.js?v=20261125-github"></script>
+<!-- ALL Create by LamberthRumpaidus | Inspection deterrent (not a security boundary) -->
+<script id="lr-inspection-guard">
+(()=>{'use strict';
+  if(window.__lrInspectionGuard)return;
+  window.__lrInspectionGuard=true;
+  const interactive='a,button,input,textarea,select,option,[contenteditable]:not([contenteditable="false"]),canvas,video,audio,pre,code,[role="application"],[role="log"],[role="button"]';
+  document.addEventListener('contextmenu',event=>{
+    if(event.target instanceof Element&&event.target.closest(interactive))return;
+    if(event.cancelable)event.preventDefault();
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.isComposing)return;
+    const key=String(event.key||'').toLowerCase();
+    const command=event.ctrlKey||event.metaKey;
+    const developerShortcut=key==='f12'||
+      (command&&event.shiftKey&&['i','j','c','k'].includes(key))||
+      (event.metaKey&&event.altKey&&['i','j','c','u'].includes(key))||
+      (command&&!event.shiftKey&&!event.altKey&&key==='u');
+    if(developerShortcut&&event.cancelable)event.preventDefault();
+  },true);
+})();
+</script>
+</head>
 <body><a class="skip" href="#main">Langsung ke konten</a><header class="top"><div class="wrap top-inner"><a class="brand" href="index.html"><img src="assets/images/lr-credit-logo-v2.png" width="48" height="48" alt="Logo Lamberth Rumpaidus"><span><strong>lamberthrumpaidus</strong><small data-doc-i18n="brand">DOKUMENTASI PROYEK</small></span></a><div class="top-actions"><a href="index.html" data-doc-i18n="home">← Portofolio</a><button id="docLang" type="button" aria-label="Ganti bahasa">ID</button><button id="docTheme" type="button">Tema terang</button></div></div></header>
 <main class="wrap" id="main"><section class="doc-intro"><span class="number" data-doc-i18n="eyebrow">ARSIP PENGEMBANGAN / 2026</span><h1 data-doc-i18n="heading">Dokumentasi proyek.</h1><p class="lede" data-doc-i18n="lede">Koleksi studi kasus proyek mandiri dan karya akademik. Setiap dokumentasi menyajikan konteks, metode, hasil implementasi, dan refleksi pengembangan.</p><div class="doc-meta"><span id="docTotal">13</span><span data-doc-i18n="count">karya terdokumentasi</span></div></section>
 <div class="doc-layout"><aside class="doc-catalog" aria-labelledby="catalogTitle"><h2 id="catalogTitle" data-doc-i18n="catalog">Daftar karya</h2><label class="doc-search"><span data-doc-i18n="searchLabel">Cari proyek</span><input id="docSearch" type="search" placeholder="Nama atau teknologi" autocomplete="off"></label><label class="doc-search"><span data-doc-i18n="category">Kategori</span><select id="docFilter"><option value="all" data-doc-i18n="all">Semua karya</option><option value="creative" data-doc-i18n="creative">Karya interaktif</option><option value="web" data-doc-i18n="web">Web dan aplikasi</option><option value="science" data-doc-i18n="science">Sains dan riset</option><option value="academic" data-doc-i18n="academic">Karya akademik</option></select></label><p id="docCount" class="note" aria-live="polite"></p><nav id="docList" class="doc-list" aria-label="Daftar proyek"></nav></aside>
