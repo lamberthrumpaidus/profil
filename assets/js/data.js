@@ -1,5 +1,5 @@
 window.PORTFOLIO_PROJECTS = [
-  {"id":"landlord","number":"01","title":"LANDLORD","type":"3D BROWSER GAME","category":"creative","image":"https://raw.githubusercontent.com/lamberthrumpaidus/LANDLORD/main/docs/preview-desktop-ingame.png","imageFallback":"assets/images/cyberpunk.webp","repository":"https://github.com/lamberthrumpaidus/LANDLORD","summary":"Game petualangan 3D berbasis browser dengan dunia eksplorasi, navigasi, dan interaksi pemain.","problem":"Mengembangkan eksplorasi tiga dimensi yang dapat dimainkan lewat browser.","approach":"Menggunakan Three.js, sistem kontrol lintas perangkat, dan lingkungan permainan interaktif.","outcome":"Game 3D dengan dokumentasi tampilan gameplay, menu, dan kontrol mobile maupun desktop.","reflection":"Optimalisasi performa dan kontrol lintas perangkat penting untuk pengembangan 3D web.","stack":["JavaScript","Three.js","WebGL","Game Design"],"accent":"#a9cbb4","badge":"Interactive 3D Game"},
+  {"id":"landlord","number":"01","title":"LANDLORD","type":"3D BROWSER GAME","category":"creative","image":"https://raw.githubusercontent.com/lamberthrumpaidus/LANDLORD/main/docs/preview-desktop-ingame.png","imageFallback":"assets/images/cyberpunk.webp","repository":"https://github.com/lamberthrumpaidus/LANDLORD","summary":"Permainan petualangan tiga dimensi berbasis peramban dengan dunia eksplorasi, navigasi, dan interaksi pemain.","problem":"Mengembangkan eksplorasi tiga dimensi yang dapat dimainkan melalui peramban.","approach":"Menggunakan Three.js, sistem kontrol lintas perangkat, dan lingkungan permainan interaktif.","outcome":"Game 3D dengan dokumentasi tampilan gameplay, menu, dan kontrol perangkat seluler maupun komputer.","reflection":"Optimalisasi performa dan kontrol lintas perangkat penting untuk pengembangan 3D web.","stack":["JavaScript","Three.js","WebGL","Game Design"],"accent":"#a9cbb4","badge":"Interactive 3D Game"},
 
   {
     "id": "rubaka",
@@ -10,11 +10,11 @@ window.PORTFOLIO_PROJECTS = [
     "image": "https://raw.githubusercontent.com/lamberthrumpaidus/Rubaka/main/Screenshot.png",
     "imageFallback": "assets/images/rubaka.webp",
     "repository": "https://github.com/lamberthrumpaidus/Rubaka",
-    "summary": "Game platformer 2D berbasis HTML5 Canvas dengan mekanisme tabrakan, fisika sederhana, dan audio sintetis.",
-    "problem": "Membangun permainan interaktif yang ringan, tanpa bergantung pada game engine pihak ketiga.",
+    "summary": "Permainan platformer dua dimensi berbasis HTML5 Canvas dengan mekanisme tabrakan, fisika sederhana, dan audio sintetis.",
+    "problem": "Membangun permainan interaktif yang ringan, tanpa bergantung pada mesin permainan pihak ketiga.",
     "approach": "Memisahkan state permainan, pembaruan fisika, dan proses menggambar ke dalam loop Canvas. Efek audio dirancang melalui Web Audio API.",
-    "outcome": "Prototipe game yang dapat dimainkan melalui browser, dengan kontrol, interaksi antarkarakter, dan elemen audio yang terhubung.",
-    "reflection": "Mengasah cara menyusun sistem animasi, mendeteksi tabrakan, dan mengelola pengalaman pengguna real-time.",
+    "outcome": "Prototipe game yang dapat dimainkan melalui peramban, dengan kontrol, interaksi antarkarakter, dan elemen audio yang terhubung.",
+    "reflection": "Mengasah cara menyusun sistem animasi, mendeteksi tabrakan, dan mengelola pengalaman pengguna waktu nyata.",
     "stack": [
       "HTML5 Canvas",
       "JavaScript",

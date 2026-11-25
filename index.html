@@ -31,12 +31,12 @@
   <link rel="stylesheet" href="assets/css/creative.css">
   <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
   <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
-  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-identity">
-  <script src="assets/js/data.js?v=20261125" defer></script>
-  <script src="assets/js/app.js?v=20261125-noaudio" defer></script>
+  <link rel="stylesheet" href="assets/css/atelier.css?v=20261125-editorial">
+  <script src="assets/js/data.js?v=20261125-editorial" defer></script>
+  <script src="assets/js/app.js?v=20261125-editorial" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261125-canvas"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
-  <script src="assets/js/experience.js?v=20261124-lr-studio" defer></script>
+  <script src="assets/js/experience.js?v=20261125-editorial" defer></script>
   <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
@@ -78,13 +78,13 @@
     <div class="nav-shell wrap">
       <a class="brand" href="#top" aria-label="Lamberth — Beranda">
         <span class="brand-mark" aria-hidden="true"><img class="brand-logo-img" src="assets/images/lr-credit-logo-v2.png" alt=""></span>
-        <span class="brand-copy"><strong>lamberthrumpaidus</strong><small>PORTFOLIO & DIGITAL EXPERIENCES</small></span>
+        <span class="brand-copy"><strong>lamberthrumpaidus</strong><small data-i18n="brand.subtitle">PORTOFOLIO &amp; PENGALAMAN DIGITAL</small></span>
       </a>
       <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama">
         <a href="#about" data-i18n="nav.about">Tentang</a>
         <a href="#work" data-i18n="nav.work">Karya</a>
         <a href="#services" data-i18n="nav.services">Layanan</a>
-        <a href="#documentation" class="nav-docs">Dokumentasi</a>
+        <a href="#documentation" class="nav-docs" data-i18n="nav.documentation">Dokumentasi</a>
         <a href="#expertise" data-i18n="nav.expertise">Keahlian</a>
         <a href="#contact" data-i18n="nav.contact">Kontak</a>
         <button class="language-switch" type="button" id="languageBtn" aria-label="Ganti bahasa"><span
@@ -124,12 +124,12 @@
       </div>
       <div class="hero-grid wrap">
         <div class="hero-copy">
-          <div class="hero-eyebrow"><span class="hero-superscript">PENGEMBANG WEB & KOMPUTASI INTERAKTIF</span><span class="hero-hairline"></span></div>
+          <div class="hero-eyebrow"><span class="hero-superscript" data-i18n="hero.eyebrow">PENGEMBANG WEB &amp; KOMPUTASI INTERAKTIF</span><span class="hero-hairline"></span></div>
           <p class="hero-intro"><strong>LAMBERTH PAULINUS RUMPAIDUS</strong></p>
           <h1 id="heroHeading"><span data-i18n="hero.line1">Merancang</span><br><span class="headline-gradient" data-i18n="hero.line2">solusi digital</span><br><em data-i18n="hero.line3">yang bermakna.</em></h1>
           <p class="hero-lede" data-i18n="hero.desc">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika dengan fokus pada pengembangan web, antarmuka interaktif, dan komputasi. Saya terbuka untuk kolaborasi proyek digital.</p>
           <div class="hero-actions">
-            <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Lihat karya saya</span><span aria-hidden="true">↗</span></a>
+            <a href="#work" class="button button-primary hero-primary"><span data-i18n="hero.view">Jelajahi karya</span><span aria-hidden="true">↗</span></a>
             
           </div>
         </div>
@@ -174,8 +174,8 @@
         </div>
         <div class="lock-copy">
           <span class="micro-label">01 / INTERAKSI 3D</span>
-          <h2 id="vaultHeading">Satu kunci.<br><em>Banyak karya.</em></h2>
-          <p class="lock-intro">Eksplorasi mekanisme kunci tiga dimensi sebagai bagian dari pengalaman interaktif portofolio.</p>
+          <h2 id="vaultHeading"><span data-i18n="lock.title">Mekanisme</span><br><em data-i18n="lock.title2">interaktif.</em></h2>
+          <p class="lock-intro" data-i18n="lock.intro">Demonstrasi mekanisme kunci tiga dimensi melalui animasi berbasis WebGL.</p>
           <span class="lock-status" id="vaultStatus" role="status">Siap dibuka</span>
           <button class="button lock-action" type="button" id="vaultAdvance">Buka kunci <span aria-hidden="true">↗</span></button>
         </div>
@@ -193,15 +193,15 @@
     <section class="section about" id="about" aria-labelledby="aboutTitle">
       <div class="wrap">
         <div class="section-label reveal"><span>01 / <span data-i18n="about.label">TENTANG SAYA</span></span><span
-            class="section-label-rule"></span><span>PROFILE & DIRECTION</span></div>
+            class="section-label-rule"></span><span data-i18n="about.subtitle">PROFIL &amp; ARAH KARIER</span></div>
         <div class="about-layout">
           <div class="about-main reveal">
             <h2 class="section-title about-title" id="aboutTitle" data-i18n="about.title">Profil profesional</h2>
-            <p class="about-intro" data-i18n="about.intro">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika, berasal dari Mimika, Papua Tengah. Saya mengembangkan aplikasi web, permainan berbasis browser, dan perangkat komputasi melalui proyek akademik serta proyek mandiri.</p>
-            <p class="subtle-paragraph" data-i18n="about.desc">Saya menekuni pengembangan perangkat lunak dengan perhatian pada kebutuhan pengguna, struktur kode, aksesibilitas, dan dokumentasi. Sebagai pengembang yang merintis karier freelance, saya ingin membantu individu, komunitas, dan usaha kecil memperoleh solusi digital yang relevan dan mudah digunakan.</p>
+            <p class="about-intro" data-i18n="about.intro">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika asal Mimika, Papua Tengah. Fokus pengembangan saya mencakup aplikasi web, permainan berbasis peramban, serta perangkat komputasi melalui proyek akademik dan mandiri.</p>
+            <p class="subtle-paragraph" data-i18n="about.desc">Saya mengembangkan perangkat lunak dengan memperhatikan kebutuhan pengguna, struktur kode, aksesibilitas, dan dokumentasi. Dalam merintis karier sebagai pengembang independen, saya berfokus pada solusi digital yang relevan dan mudah digunakan bagi individu, komunitas, serta usaha kecil.</p>
             <div class="about-metadata">
               <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik Informatika</strong></div>
-              <div><span data-i18n="about.focusLabel">AREA MINAT</span><strong data-i18n="about.focus">Pengembangan web, UI/UX, dan komputasi interaktif</strong></div>
+              <div><span data-i18n="about.focusLabel">FOKUS KEAHLIAN</span><strong data-i18n="about.focus">Pengembangan web, UI/UX, dan komputasi interaktif</strong></div>
               <div><span data-i18n="about.basedLabel">ASAL DAERAH</span><strong data-i18n="about.based">Mimika · Papua Tengah</strong></div>
             </div>
           </div>
@@ -218,15 +218,15 @@
 <div class="section-label"><span><span data-i18n="services.label">LAYANAN &amp; KOLABORASI</span></span><span class="section-label-rule"></span></div>
 <h2 class="section-title" id="servicesTitle" data-i18n="services.title">Solusi digital untuk kebutuhan nyata.</h2>
 <p class="lr-prof-intro" data-i18n="services.intro">Fokus saya adalah pengembangan web dan prototipe digital bagi individu, komunitas, dan usaha kecil. Setiap penawaran disesuaikan dengan kebutuhan, ruang lingkup, dan kompleksitas proyek.</p>
-<div class="lr-prof-grid three"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="services.web.title">Pengembangan website</h3><p data-i18n="services.web.desc">Website profil, landing page, dan situs informatif bagi individu, komunitas, serta usaha kecil.</p><small>HTML · CSS · JavaScript</small></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="services.ui.title">Prototipe UI/UX</h3><p data-i18n="services.ui.desc">Perancangan alur pengguna, struktur informasi, dan prototipe antarmuka untuk memvalidasi gagasan sebelum implementasi.</p><small>Figma · Responsive UI</small></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="services.interaktif.title">Pengalaman web interaktif</h3><p data-i18n="services.interaktif.desc">Prototipe visual, permainan browser, dan alat komputasi sederhana untuk kebutuhan edukasi atau demonstrasi produk.</p><small>Canvas · Three.js · WebGL</small></article></div>
+<div class="lr-prof-grid three"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="services.web.title">Pengembangan situs web</h3><p data-i18n="services.web.desc">Situs profil, halaman landas, dan situs informatif untuk individu, komunitas, serta usaha kecil.</p><small>HTML · CSS · JavaScript</small></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="services.ui.title">Prototipe UI/UX</h3><p data-i18n="services.ui.desc">Perancangan alur pengguna, struktur informasi, dan prototipe antarmuka untuk memvalidasi gagasan sebelum implementasi.</p><small>Figma · Responsive UI</small></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="services.interaktif.title">Pengalaman web interaktif</h3><p data-i18n="services.interaktif.desc">Prototipe visual, permainan berbasis peramban, dan perangkat komputasi untuk kebutuhan edukasi atau demonstrasi produk.</p><small>Canvas · Three.js · WebGL</small></article></div>
 <div class="lr-prof-callout"><div><h3 data-i18n="services.quote">Penawaran dan ruang lingkup</h3><p data-i18n="services.terms">Biaya ditentukan berdasarkan kebutuhan dan estimasi pekerjaan. Tahapan, tenggat, hasil yang diserahkan, ketentuan revisi, dan dukungan lanjutan dibahas sebelum kesepakatan.</p></div><a class="button button-primary" href="#contact" data-i18n="services.cta">Ajukan kebutuhan proyek ↗</a></div>
-<div class="lr-prof-subhead"><span class="micro-label" data-i18n="goals.label">ARAH PENGEMBANGAN</span><h2 class="section-title" data-i18n="goals.title">Bertumbuh melalui karya.</h2><p data-i18n="goals.intro">Saya menargetkan perkembangan yang berkelanjutan, baik dalam kemandirian profesional maupun kualitas karya kreatif.</p></div>
-<div class="lr-prof-grid two"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="goals.mandiri.title">Kemandirian profesional</h3><p data-i18n="goals.mandiri.desc">Membangun sumber penghasilan mandiri melalui proyek freelance secara bertahap, sejalan dengan studi dan tanggung jawab akademik.</p></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="goals.reputasi.title">Pertumbuhan karier</h3><p data-i18n="goals.reputasi.desc">Memperluas jaringan profesional, mengembangkan kompetensi, dan membangun reputasi melalui komunikasi yang baik serta penyelesaian proyek yang bertanggung jawab.</p></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="goals.kreasi.title">Produk digital yang bermanfaat</h3><p data-i18n="goals.kreasi.desc">Mengembangkan website yang responsif, antarmuka yang mudah dipahami, dan visual interaktif yang mendukung fungsi produk, bukan sekadar dekorasi.</p></article><article class="lr-prof-card"><span class="lr-prof-index">04</span><h3 data-i18n="goals.iterasi.title">Eksperimen dan kualitas</h3><p data-i18n="goals.iterasi.desc">Memperdalam animasi, WebGL, dan komputasi untuk menghasilkan karya yang orisinal, teruji, serta dapat ditingkatkan melalui evaluasi.</p></article></div>
+<div class="lr-prof-subhead"><span class="micro-label" data-i18n="goals.label">ARAH PENGEMBANGAN</span><h2 class="section-title" data-i18n="goals.title">Arah pengembangan profesional</h2><p data-i18n="goals.intro">Saya menargetkan perkembangan yang berkelanjutan, baik dalam kemandirian profesional maupun kualitas karya kreatif.</p></div>
+<div class="lr-prof-grid two"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="goals.mandiri.title">Kemandirian profesional</h3><p data-i18n="goals.mandiri.desc">Membangun sumber penghasilan mandiri melalui proyek freelance secara bertahap, sejalan dengan studi dan tanggung jawab akademik.</p></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="goals.reputasi.title">Pertumbuhan karier</h3><p data-i18n="goals.reputasi.desc">Memperluas jaringan profesional, mengembangkan kompetensi, dan membangun reputasi melalui komunikasi yang baik serta penyelesaian proyek yang bertanggung jawab.</p></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="goals.kreasi.title">Produk digital yang bermanfaat</h3><p data-i18n="goals.kreasi.desc">Mengembangkan situs web responsif, antarmuka yang mudah digunakan, serta visual interaktif yang mendukung fungsi produk.</p></article><article class="lr-prof-card"><span class="lr-prof-index">04</span><h3 data-i18n="goals.iterasi.title">Eksperimen dan kualitas</h3><p data-i18n="goals.iterasi.desc">Memperdalam animasi, WebGL, dan komputasi untuk menghasilkan karya orisinal yang dapat diuji serta dikembangkan melalui evaluasi.</p></article></div>
 </div></section>
     <section class="section work-section" id="work" aria-labelledby="workTitle">
       <div class="wrap">
         <div class="section-label reveal"><span>02 / <span data-i18n="work.label">KARYA PILIHAN</span></span><span
-            class="section-label-rule"></span><span>FEATURED CASE STUDIES</span></div>
+            class="section-label-rule"></span><span data-i18n="work.subtitle">STUDI KASUS UNGGULAN</span></div>
         <div class="section-heading-row reveal">
           <div>
             <h2 class="section-title" id="workTitle" data-i18n="work.title">Karya dan studi kasus</h2>
@@ -243,9 +243,9 @@
         <div class="work-controls reveal">
           <div class="filter-chips" aria-label="Kategori proyek"><button class="filter active" data-filter="all"
               type="button" data-i18n="work.filterAll">Semua</button><button class="filter" data-filter="web"
-              type="button" data-i18n="work.filterWeb">Web & Tools</button><button class="filter" data-filter="science"
-              type="button" data-i18n="work.filterScience">Sains & Riset</button><button class="filter"
-              data-filter="creative" type="button" data-i18n="work.filterCreative">Kreatif & Interaktif</button></div>
+              type="button" data-i18n="work.filterWeb">Web dan Aplikasi</button><button class="filter" data-filter="science"
+              type="button" data-i18n="work.filterScience">Sains dan Riset</button><button class="filter"
+              data-filter="creative" type="button" data-i18n="work.filterCreative">Karya Interaktif</button></div>
           <label class="project-search"><svg class="ico">
               <use href="#ico-search"></use>
             </svg><span class="sr-only">Cari proyek</span><input id="projectSearch" type="search" autocomplete="off"
@@ -253,8 +253,7 @@
               data-placeholder-en="Search projects / technology..."></label>
         </div>
         <div id="projectGrid" class="project-grid" aria-live="polite"></div>
-        <p id="noResults" class="no-results" hidden data-i18n="work.empty">Tidak ada proyek yang cocok. Coba kata kunci
-          lain.</p>
+        <p id="noResults" class="no-results" hidden data-i18n="work.empty">Tidak ada proyek yang sesuai. Gunakan kata kunci atau kategori lain.</p>
       </div>
     </section>
 
@@ -297,15 +296,15 @@
         <div class="documentation-copy reveal">
           <span class="micro-label"><span class="index-dot"></span> 03 / DOKUMENTASI PROYEK</span>
           <h2 id="documentationTitle">Dokumentasi<br><em>proyek.</em></h2>
-          <p>Telusuri latar belakang, pendekatan teknis, hasil, dan refleksi pengembangan setiap karya.</p>
-          <div class="documentation-select"><label for="documentationProject">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
+          <p data-i18n="docs.desc">Telusuri latar belakang, pendekatan teknis, hasil, dan refleksi pengembangan setiap karya.</p>
+          <div class="documentation-select"><label for="documentationProject" data-i18n="docs.select">PILIH PROYEK</label><select id="documentationProject" aria-label="Pilih proyek untuk dokumentasi"></select></div>
           <button class="button doc-launch" id="documentationLaunch" type="button"><span class="doc-play-icon">▶</span> BUKA DOKUMENTASI <span>↗</span></button>
           
         </div>
         <div class="documentation-machine documentation-showcase reveal" id="documentationMachine">
-          <div class="doc-showcase-header"><span>PROJECT / DOCUMENTATION</span><span><i></i> SIAP</span></div>
+          <div class="doc-showcase-header"><span>PROYEK / DOKUMENTASI</span><span><i></i> SIAP</span></div>
           <div class="doc-showcase-image"><img id="machinePreviewImage" src="assets/images/rubaka.webp" alt="Pratinjau proyek terpilih"></div>
-          <div class="doc-showcase-details"><span>PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p>Tujuan → Pendekatan → Hasil → Refleksi</p><strong>BUKA DOKUMENTASI ↗</strong></div>
+          <div class="doc-showcase-details"><span data-i18n="docs.preview">PROYEK TERPILIH</span><h3 id="machineProjectTitle">Rubaka Action Platformer</h3><p data-i18n="docs.sequence">Tujuan → Pendekatan → Hasil → Refleksi</p><strong data-i18n="docs.open">BUKA DOKUMENTASI ↗</strong></div>
         </div>
       </div>
     </section>
@@ -313,7 +312,7 @@
     <section class="section expertise" id="expertise" aria-labelledby="expertiseTitle">
       <div class="wrap">
         <div class="section-label reveal"><span>04 / <span data-i18n="skills.label">PETA KEAHLIAN</span></span><span
-            class="section-label-rule"></span><span>TOOLS & TECHNOLOGIES</span></div>
+            class="section-label-rule"></span><span data-i18n="skills.subtitle">PERANGKAT &amp; TEKNOLOGI</span></div>
         <div class="section-heading-row reveal">
           <div>
             <h2 class="section-title" id="expertiseTitle" data-i18n="skills.title">Keahlian dan perangkat kerja</h2>
@@ -321,15 +320,14 @@
           </div>
         </div>
         <div class="expertise-grid" id="expertiseGrid"></div>
-        <div class="tech-marquee"><span data-i18n="skills.bottom">BELAJAR · MEMBANGUN · MENGUJI · MEMPERBAIKI ·
-            MENGULANGI</span><span class="tech-pulse">✳</span></div>
+        <div class="tech-marquee"><span data-i18n="skills.bottom">PEMBELAJARAN · IMPLEMENTASI · PENGUJIAN · EVALUASI</span><span class="tech-pulse">✳</span></div>
       </div>
     </section>
 
     <section class="section methodology" id="process" aria-labelledby="processTitle">
       <div class="wrap">
-        <div class="section-label reveal"><span>05 / <span data-i18n="process.label">CARA BERPIKIR</span></span><span
-            class="section-label-rule"></span><span>FROM CONCEPT TO DELIVERY</span></div>
+        <div class="section-label reveal"><span>05 / <span data-i18n="process.label">METODE PENGEMBANGAN</span></span><span
+            class="section-label-rule"></span><span data-i18n="process.subtitle">DARI KONSEP HINGGA IMPLEMENTASI</span></div>
         <div class="process-heading reveal">
           <h2 class="section-title" id="processTitle" data-i18n="process.title">Pendekatan pengembangan</h2>
           <p data-i18n="process.desc">Setiap proyek dimulai dari kebutuhan yang jelas, dilanjutkan dengan perancangan, implementasi, pengujian, dan evaluasi.</p>
@@ -345,18 +343,15 @@
 
     <section class="section lab" id="playground" aria-labelledby="labTitle">
       <div class="wrap">
-        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">LAB INTERAKTIF</span></span><span
-            class="section-label-rule"></span><span>EXPERIMENTAL SPACE</span></div>
+        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">LABORATORIUM INTERAKTIF</span></span><span
+            class="section-label-rule"></span><span data-i18n="lab.subtitle">RUANG EKSPERIMEN</span></div>
         <div class="lab-layout">
           <div class="lab-copy reveal">
             <h2 class="section-title" id="labTitle" data-i18n="lab.title">Laboratorium interaktif</h2>
-            <p data-i18n="lab.desc">Terminal mini ini benar-benar dapat digunakan untuk menelusuri portofolio. Ketik
-              <code>help</code>, <code>projects</code>, <code>skills</code>, <code>contact</code>, atau
-              <code>theme</code>.
-            </p>
-            <div class="lab-small-tags"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>KEYBOARD FIRST</span></div>
+            <p data-i18n="lab.desc">Terminal interaktif menyediakan akses ke daftar karya, keahlian, profil, dan informasi kontak. Gunakan perintah help untuk melihat seluruh pilihan.</p>
+            <div class="lab-small-tags"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>NAVIGASI PAPAN KETIK</span></div>
             <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
-                data-i18n="lab.try">Jalankan perintah contoh <span>↗</span></button></div>
+                data-i18n="lab.try">Lihat daftar perintah ↗</button></div>
           </div>
           <div class="terminal reveal" aria-label="Terminal portofolio interaktif">
             <div class="terminal-top">
@@ -365,7 +360,7 @@
             </div>
             <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions">
               <div><span class="term-accent">●</span> portfolio.shell <span class="term-muted">— ready</span></div>
-              <div class="term-muted" data-i18n="lab.hello">Ketik 'help' untuk daftar perintah yang tersedia.</div>
+              <div class="term-muted" data-i18n="lab.hello">Masukkan help untuk menampilkan daftar perintah.</div>
             </div>
             <form id="terminalForm" class="terminal-input"><span class="term-prompt">guest@portfolio:~$</span><label
                 for="terminalCommand" class="sr-only">Ketik perintah terminal</label><input id="terminalCommand"
@@ -381,43 +376,40 @@
     <section class="section contact" id="contact" aria-labelledby="contactTitle">
       <div class="contact-glow"></div>
       <div class="wrap">
-        <div class="section-label reveal"><span>07 / <span data-i18n="contact.label">HUBUNGI SAYA</span></span><span
-            class="section-label-rule"></span><span>LET'S CONNECT</span></div>
+        <div class="section-label reveal"><span>07 / <span data-i18n="contact.label">KONTAK PROFESIONAL</span></span><span
+            class="section-label-rule"></span><span data-i18n="contact.subtitle">DISKUSI &amp; KOLABORASI</span></div>
         <div class="contact-layout">
           <div class="contact-title-col reveal"><span class="eyebrow"><span class="status-light"></span><span
                 data-i18n="contact.available">TERBUKA UNTUK KOLABORASI</span></span>
-            <h2 id="contactTitle" data-i18n="contact.title">Mari diskusikan proyek Anda.</h2>
-            <p data-i18n="contact.desc">Saya terbuka untuk diskusi kebutuhan website, prototipe antarmuka, pengembangan fitur interaktif, dan kolaborasi teknologi. Ruang lingkup, jadwal, biaya, dan revisi disepakati sebelum pengerjaan.</p><a class="big-email"
+            <h2 id="contactTitle" data-i18n="contact.title">Diskusikan kebutuhan proyek Anda.</h2>
+            <p data-i18n="contact.desc">Saya terbuka untuk kolaborasi pengembangan situs web, prototipe antarmuka, dan fitur interaktif. Ruang lingkup, jadwal, biaya, serta ketentuan revisi disepakati sebelum pengerjaan.</p><a class="big-email"
               href="mailto:lamberthrumpaidus@gmail.com">lamberthrumpaidus@gmail.com <svg class="ico">
                 <use href="#ico-arrow"></use>
               </svg></a><button class="copy-email" type="button" id="copyEmail"><svg class="ico">
                 <use href="#ico-copy"></use>
-              </svg><span data-i18n="contact.copy">Salin alamat email</span></button>
+              </svg><span data-i18n="contact.copy">Salin alamat surel</span></button>
           </div>
           <div class="contact-form-wrap reveal">
             <form id="contactForm" class="contact-form">
-              <div class="form-top"><span class="form-number">MESSAGE_01</span><span data-i18n="contact.formTitle">Tulis
-                  pesan</span></div>
-              <div class="field-two"><label><span data-i18n="contact.name">Nama</span><input name="name" type="text"
+              <div class="form-top"><span class="form-number">FORMULIR / 01</span><span data-i18n="contact.formTitle">Informasi kebutuhan proyek</span></div>
+              <div class="field-two"><label><span data-i18n="contact.name">Nama lengkap</span><input name="name" type="text"
                     autocomplete="name" required maxlength="90" placeholder="Nama lengkap"></label><label><span
-                    data-i18n="contact.email">Email</span><input name="email" type="email" autocomplete="email" required
+                    data-i18n="contact.email">Alamat surel</span><input name="email" type="email" autocomplete="email" required
                     maxlength="140" placeholder="nama@email.com"></label></div><label><span
                   data-i18n="contact.subject">Keperluan</span><select name="subject">
                   <option value="Kolaborasi proyek" data-i18n="contact.opt1">Kolaborasi proyek</option>
                   <option value="Diskusi teknologi" data-i18n="contact.opt2">Diskusi teknologi</option>
-                  <option value="Pertanyaan lain" data-i18n="contact.opt3">Pertanyaan lain</option>
+                  <option value="Pertanyaan lain" data-i18n="contact.opt3">Pertanyaan lainnya</option>
                 </select></label><label><span data-i18n="contact.message">Pesan</span><textarea name="message" rows="4"
                   minlength="10" maxlength="3000" required placeholder="Jelaskan kebutuhan proyek Anda..."></textarea></label><button
-                type="submit" class="button button-primary form-send"><span data-i18n="contact.send">Buka aplikasi
-                  email</span><svg class="ico">
+                type="submit" class="button button-primary form-send"><span data-i18n="contact.send">Buka aplikasi surel</span><svg class="ico">
                   <use href="#ico-arrow"></use>
                 </svg></button>
-              <p class="form-disclaimer" data-i18n="contact.notice">Formulir membuka aplikasi email Anda untuk mengirim
-                pesan. Tidak ada pesan yang disimpan oleh situs ini.</p>
+              <p class="form-disclaimer" data-i18n="contact.notice">Formulir ini membuka aplikasi surel pada perangkat Anda. Data pesan tidak disimpan oleh situs.</p>
             </form>
           </div>
         </div>
-        <div class="social-bar reveal"><span data-i18n="contact.find">TEMUKAN SAYA</span>
+        <div class="social-bar reveal"><span data-i18n="contact.find">KANAL PROFESIONAL</span>
           <div><a href="https://github.com/LamberthRumpaidus" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a
               href="https://www.linkedin.com/in/lamberth-paulinus-rumpaidus-b60a2b298/" target="_blank"
               rel="noopener noreferrer">LinkedIn ↗</a><a href="https://www.instagram.com/tech_vigilante/"
@@ -431,7 +423,7 @@
       <div><strong data-i18n="footer.head">Pengembangan web dan pengalaman digital</strong>
         <p data-i18n="footer.body">© 2026 Lamberth Paulinus Rumpaidus. Seluruh karya ditampilkan sesuai konteks pengembangannya.</p>
       </div>
-      <div class="footer-design"><a href="design-system.html" class="footer-design-link">Design System &amp; Visual Identity <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-design"><a href="design-system.html" class="footer-design-link"><span data-i18n="footer.identity">Sistem Desain &amp; Identitas Visual</span> <span aria-hidden="true">↗</span></a></div>
     </div>
   </footer>
 
@@ -439,28 +431,28 @@
   <dialog id="deployDialog" class="deploy-dialog" aria-labelledby="deployDialogTitle">
     <div class="deploy-shell">
       <span class="sr-only" id="deployDialogTitle">Dokumentasi proyek</span>
-      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-brand-logo-shell"><img class="deploy-brand-logo" src="assets/images/logo-lr-web.png?v=20261124-lr-studio" alt="Logo resmi L/R Lamberth Rumpaidus" width="78" height="52"></span><div><strong>lamberthrumpaidus</strong><small>DOKUMENTASI PROYEK</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
+      <header class="deploy-header"><div class="deploy-brand"><span class="deploy-brand-logo-shell"><img class="deploy-brand-logo" src="assets/images/logo-lr-web.png?v=20261124-lr-studio" alt="Logo resmi L/R Lamberth Rumpaidus" width="78" height="52"></span><div><strong>lamberthrumpaidus</strong><small data-i18n="docs.header">DOKUMENTASI PROYEK</small></div></div><button type="button" class="deploy-close" id="deployClose" aria-label="Tutup dokumentasi">×</button></header>
       <div class="deploy-workspace" id="deployWorkspace" role="region" aria-label="Proses penyusunan dokumentasi">
-        <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOCUMENT_PIPELINE / STAGE <span id="deployStageNumber">01</span></strong><small id="deployClock">INIT</small></div>
+        <div class="deploy-terminal-bar"><span><i></i><i></i><i></i></span><strong>DOKUMENTASI / TAHAP <span id="deployStageNumber">01</span></strong><small id="deployClock">PERSIAPAN</small></div>
         <div class="deploy-visual doc-build-area" id="deployVisual">
-          <div class="doc-build-terminal"><div class="doc-build-top"><span class="live-dot"></span><strong>PROJECT WORKSPACE</strong><small>BUILD SEQUENCE</small></div><div id="docBuildLines" class="doc-build-lines"><p>→ Menyiapkan proyek...</p></div><div class="doc-build-asset"><span>SUMBER</span><strong id="docBuildSource">—</strong></div></div>
-          <div class="doc-build-paper"><div class="doc-build-paper-header"><span>PROJECT / CASE STUDY</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><div class="doc-build-collection" id="docBuildCollection" aria-label="Isi dokumen yang sedang disusun"></div><footer>PORTFOLIO · LAMBERTH RUMPAIDUS</footer></div>
+          <div class="doc-build-terminal"><div class="doc-build-top"><span class="live-dot"></span><strong data-i18n="docs.workspace">RUANG KERJA PROYEK</strong><small data-i18n="docs.build">TAHAP DOKUMENTASI</small></div><div id="docBuildLines" class="doc-build-lines"><p>→ Memuat informasi proyek.</p></div><div class="doc-build-asset"><span data-i18n="docs.source">SUMBER</span><strong id="docBuildSource">—</strong></div></div>
+          <div class="doc-build-paper"><div class="doc-build-paper-header"><span data-i18n="docs.paper">PROYEK / STUDI KASUS</span><span id="docBuildPaperNum">01</span></div><h3 id="docBuildTitle">Dokumentasi proyek</h3><div class="doc-build-collection" id="docBuildCollection" aria-label="Isi dokumen yang sedang disusun"></div><footer>PORTOFOLIO · LAMBERTH RUMPAIDUS</footer></div>
         </div>
-        <div class="deploy-caption"><span id="deployPhase">Memulai dokumentasi proyek...</span><span id="deployPercent">0%</span></div>
-        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Dokumentasi proyek</small><button type="button" id="deploySkip">Lihat hasil ↗</button></div>
+        <div class="deploy-caption"><span id="deployPhase">Memuat dokumentasi proyek.</span><span id="deployPercent">0%</span></div>
+        <div class="deploy-progress"><div id="deployProgressBar"></div></div><span id="deployAnnounce" class="sr-only" role="status" aria-live="polite"></span><div class="doc-build-controls"><small>Dokumentasi proyek</small><button type="button" id="deploySkip" data-i18n="docs.skip">Lihat hasil ↗</button></div>
         <div class="deploy-steps" aria-label="Proses animasi dokumentasi"><div data-deploy-step="0"><b>01</b><span>SUMBER PROYEK</span></div><div data-deploy-step="1"><b>02</b><span>ANALISIS MASALAH</span></div><div data-deploy-step="2"><b>03</b><span>METODE & HASIL</span></div><div data-deploy-step="3"><b>04</b><span>DOKUMEN SIAP</span></div></div>
       </div>
       <div class="deploy-document" id="deployDocument" hidden>
-        <div class="deploy-complete"><span>DOKUMENTASI SELESAI <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay">↺ Putar ulang</button></div>
+        <div class="deploy-complete"><span>DOKUMENTASI SELESAI <i>✓</i></span><button type="button" id="deployReplay" class="deploy-replay" data-i18n="docs.replay">↺ Putar ulang</button></div>
         <div id="deployResult"></div>
-        <div class="deploy-foot"><button id="deployPrev" type="button">← Proyek sebelumnya</button><button id="deployNext" type="button">Proyek berikutnya →</button></div>
+        <div class="deploy-foot"><button id="deployPrev" type="button" data-i18n="docs.previous">← Proyek sebelumnya</button><button id="deployNext" type="button" data-i18n="docs.next">Proyek berikutnya →</button></div>
       </div>
     </div>
   </dialog>
 
   <dialog class="case-dialog" id="projectDialog" aria-labelledby="dialogTitle">
     <div class="dialog-inner">
-      <div class="dialog-top"><span class="dialog-logo"><img class="dialog-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"><small>CASE STUDY</small></span><button
+      <div class="dialog-top"><span class="dialog-logo"><img class="dialog-logo-img" src="assets/images/lr-credit-logo-v2.png" alt="Logo Lamberth Rumpaidus"><small data-i18n="case.label">STUDI KASUS</small></span><button
           class="dialog-close icon-button" type="button" id="dialogClose" aria-label="Tutup detail proyek"><svg
             class="ico">
             <use href="#ico-x"></use>
@@ -468,8 +460,8 @@
       <div id="dialogContent"></div>
       <div class="dialog-footer"><button class="text-button" type="button" id="prevProject"><svg class="ico">
             <use href="#ico-arrow-left"></use>
-          </svg><span data-i18n="modal.prev">Sebelumnya</span></button><button class="text-button" type="button"
-          id="nextProject"><span data-i18n="modal.next">Berikutnya</span><svg class="ico">
+          </svg><span data-i18n="modal.prev">Proyek sebelumnya</span></button><button class="text-button" type="button"
+          id="nextProject"><span data-i18n="modal.next">Proyek berikutnya</span><svg class="ico">
             <use href="#ico-arrow"></use>
           </svg></button></div>
     </div>
@@ -484,8 +476,7 @@
           aria-describedby="commandHelp"><kbd>ESC</kbd></div>
       <h2 id="commandTitle" class="sr-only">Pencarian cepat</h2>
       <div id="commandResults" class="command-results"></div>
-      <div class="command-bottom" id="commandHelp"><span>↵ <span data-i18n="command.open">Buka
-            pilihan</span></span><span>ESC <span data-i18n="command.close">Tutup</span></span><span>↑↓ <span
+      <div class="command-bottom" id="commandHelp"><span>↵ <span data-i18n="command.open">Buka pilihan</span></span><span>ESC <span data-i18n="command.close">Tutup</span></span><span>↑↓ <span
             data-i18n="command.navigate">Navigasi</span></span></div>
     </div>
   </dialog>

@@ -1,6 +1,6 @@
 {
   "name": "Quiet Harmony",
-  "version": "1.0",
+  "version": "1.1",
   "source": "assets/css/atelier.css",
   "dark": {
     "background": "#202D32",
@@ -26,7 +26,75 @@
   },
   "typography": {
     "display": "Space Grotesk",
-    "body": "DM Sans"
+    "body": "DM Sans",
+    "editorial": "Georgia",
+    "monospace": "Consolas, ui-monospace, monospace",
+    "roles": [
+      {
+        "element": "Judul utama",
+        "family": "Space Grotesk",
+        "weight": "SemiBold · 600",
+        "size": "40–112 px",
+        "lineHeight": "1,02",
+        "usage": "Judul pembuka dan identitas utama."
+      },
+      {
+        "element": "Aksen judul",
+        "family": "Georgia",
+        "weight": "Italic · 400",
+        "size": "88% ukuran judul",
+        "lineHeight": "1,05",
+        "usage": "Penekanan editorial dengan karakter serif."
+      },
+      {
+        "element": "Judul bagian",
+        "family": "Space Grotesk",
+        "weight": "Bold · 700",
+        "size": "32–72 px",
+        "lineHeight": "1,12",
+        "usage": "Membedakan bagian konten utama."
+      },
+      {
+        "element": "Judul kartu",
+        "family": "Space Grotesk",
+        "weight": "Bold · 700",
+        "size": "20–28 px",
+        "lineHeight": "1,25",
+        "usage": "Nama karya, layanan, dan keahlian."
+      },
+      {
+        "element": "Teks isi",
+        "family": "DM Sans",
+        "weight": "Regular · 400",
+        "size": "16 px",
+        "lineHeight": "1,65",
+        "usage": "Narasi profil, layanan, dan dokumentasi."
+      },
+      {
+        "element": "Navigasi & tombol",
+        "family": "DM Sans",
+        "weight": "SemiBold · 600",
+        "size": "14 px",
+        "lineHeight": "1,4",
+        "usage": "Label interaksi yang ringkas dan terbaca."
+      },
+      {
+        "element": "Label & metadata",
+        "family": "DM Sans",
+        "weight": "Bold · 700",
+        "size": "12 px",
+        "lineHeight": "1,4",
+        "usage": "Kategori, penanda bagian, dan keterangan."
+      },
+      {
+        "element": "Terminal & kode",
+        "family": "Consolas / ui-monospace",
+        "weight": "Regular · 400",
+        "size": "13 px",
+        "lineHeight": "1,6",
+        "usage": "Cuplikan kode dan perintah terminal."
+      }
+    ]
   },
   "recommendedSpacing": [
     8,

@@ -11,6 +11,7 @@ const result=$('#deployResult'),out=$('#deployDocument'),select=$('#documentatio
 if(!dialog||!work||!paper||!result||!out||!select||!projects.length)return;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tr=(id,en)=>document.documentElement.lang==='en'?en:id;
 const value=(p,k)=>document.documentElement.lang==='en'&&p.en?.[k]?p.en[k]:p[k];
 const times=[3100,4300,4700,5600],duration=times.reduce((a,b)=>a+b,0);
 const descriptions=[
@@ -26,18 +27,18 @@ let active=0,elapsed=0,last=0,frame=0,timeout=0,runId=0,lastFocus=null,done=fals
 let chapters=[],htmlParts=[];
 const text=(p,k)=>String(value(p,k)||'Tidak ada informasi yang tercatat pada proyek ini.');
 function chaptersFor(p){return [
- {label:descriptions[0][0],console:descriptions[0][1],text:String(value(p,'summary')||'')+'\n\nTeknologi: '+(p.stack||[]).join(' · ')},
- {label:descriptions[1][0],console:descriptions[1][1],text:text(p,'problem')},
- {label:descriptions[2][0],console:descriptions[2][1],text:text(p,'approach')},
- {label:descriptions[3][0],console:descriptions[3][1],text:text(p,'outcome')+'\n\nRefleksi: '+text(p,'reflection')}
+ {label:tr(...descriptions[0]),console:tr(...descriptions[0]),text:String(value(p,'summary')||'')+'\n\n'+tr('Teknologi: ','Technologies: ')+(p.stack||[]).join(' · ')},
+ {label:tr(...descriptions[1]),console:tr(...descriptions[1]),text:text(p,'problem')},
+ {label:tr(...descriptions[2]),console:tr(...descriptions[2]),text:text(p,'approach')},
+ {label:tr(...descriptions[3]),console:tr(...descriptions[3]),text:text(p,'outcome')+'\n\n'+tr('Refleksi: ','Reflection: ')+text(p,'reflection')}
 ]}
 function clearRun(){runId++;cancelAnimationFrame(frame);clearTimeout(timeout);frame=0;timeout=0;last=0}
 function fillResult(p){
- const labels=[['01','Tantangan','problem'],['02','Pendekatan','approach'],['03','Hasil','outcome'],['04','Refleksi','reflection']];
+ const labels=[['01',tr('Tantangan','Challenge'),'problem'],['02',tr('Pendekatan','Approach'),'approach'],['03',tr('Hasil','Outcome'),'outcome'],['04',tr('Refleksi','Reflection'),'reflection']];
  const tags=(p.stack||[]).map(s=>'<span>'+safe(s)+'</span>').join('');
- const link=p.repository?'<a class="doc-repo-link" href="'+safe(p.repository)+'" target="_blank" rel="noopener noreferrer">Lihat sumber proyek ↗</a>':'';
+ const link=p.repository?'<a class="doc-repo-link" href="'+safe(p.repository)+'" target="_blank" rel="noopener noreferrer">'+tr('Kode sumber ↗','Source code ↗')+'</a>':'';
  const pic='<img class="deploy-result-img" src="'+safe(p.image||'')+'" '+(p.imageFallback?'data-image-fallback="'+safe(p.imageFallback)+'" ':'')+'alt="Pratinjau '+safe(p.title)+'" loading="lazy">';
- result.innerHTML='<article class="deploy-result-hero">'+pic+'<div class="deploy-result-intro"><small>'+safe(p.type||'PROJECT')+' / CASE STUDY '+safe(p.number||'')+'</small><h2 id="deployTitle">'+safe(p.title)+'</h2><p>'+safe(value(p,'summary')||'')+'</p><div class="deploy-tech">'+tags+'</div>'+link+'</div></article><div class="deploy-dossier">'+labels.map(([num,title,k])=>'<section><span>'+num+' / STUDI KASUS</span><h3>'+title+'</h3><p>'+safe(text(p,k))+'</p></section>').join('')+'</div>';
+ result.innerHTML='<article class="deploy-result-hero">'+pic+'<div class="deploy-result-intro"><small>'+safe(p.type||'PROJECT')+' / '+tr('STUDI KASUS','CASE STUDY')+' '+safe(p.number||'')+'</small><h2 id="deployTitle">'+safe(p.title)+'</h2><p>'+safe(value(p,'summary')||'')+'</p><div class="deploy-tech">'+tags+'</div>'+link+'</div></article><div class="deploy-dossier">'+labels.map(([num,title,k])=>'<section><span>'+num+' / '+tr('STUDI KASUS','CASE STUDY')+'</span><h3>'+title+'</h3><p>'+safe(text(p,k))+'</p></section>').join('')+'</div>';
 }
 function showPreview(){const p=projects.find(x=>x.id===select.value)||projects[0];if(!p)return;
  const img=$('#machinePreviewImage'),title=$('#machineProjectTitle');
@@ -77,7 +78,7 @@ function progress(time){
    currentStage=phase;work.dataset.phase=String(phase);
    $stage.textContent=String(phase+1).padStart(2,'0');
    $clock.textContent=chapters[phase].console;
-   const statement=(phase===0?'Memuat proyek':phase===1?'Menyusun tantangan':phase===2?'Membangun pendekatan':'Merangkum hasil')+' — '+projects[active].title;
+   const statement=(phase===0?tr('Memuat ringkasan','Loading overview'):phase===1?tr('Memuat latar belakang','Loading challenge'):phase===2?tr('Memuat metode pengembangan','Loading approach'):tr('Memuat hasil dan refleksi','Loading outcomes and reflection'))+' — '+projects[active].title;
    $status.textContent=statement;if($announce)$announce.textContent=statement;
    $log.replaceChildren();
    chapters.forEach((ch,i)=>{
@@ -103,8 +104,8 @@ function progress(time){
 function complete(){
  if(done)return;done=true;
  cancelAnimationFrame(frame);frame=0;last=0;
- progress(duration);$status.textContent='Dokumentasi selesai disusun';
- if($announce)$announce.textContent='Dokumentasi selesai. Studi kasus siap dibaca.';
+ progress(duration);$status.textContent=tr('Dokumentasi siap dibaca','Documentation ready');
+ if($announce)$announce.textContent=tr('Dokumentasi siap dibaca.','Documentation ready to read.');
  // The result is revealed during the outgoing paper transition, never after a blank gap.
  work.classList.add('is-done');
  out.hidden=false;out.classList.remove('doc-result-enter');
