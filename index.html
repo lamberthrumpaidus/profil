@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="assets/css/documentation-studio.css?v=20261124-lr-studio">
   <link rel="stylesheet" href="assets/css/professional.css?v=20261125">
   <script src="assets/js/data.js?v=20261125" defer></script>
-  <script src="assets/js/app.js?v=20261125" defer></script>
+  <script src="assets/js/app.js?v=20261125-noaudio" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261124-studio"></script>
   <script type="module" src="assets/js/vault-final.js"></script>
   <script src="assets/js/experience.js?v=20261124-lr-studio" defer></script>
@@ -40,7 +40,7 @@
   <!-- Optional, version-pinned GSAP + Lenis; native CSS/scroll fallback when offline. -->
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/creative.js?v=20261124-lr-studio"></script>
+  <script defer src="assets/js/creative.js?v=20261125-noaudio"></script>
   <script type="module" src="assets/js/shader-cards.js"></script>
 
   <style>
@@ -195,10 +195,10 @@
         <div class="about-layout">
           <div class="about-main reveal">
             <h2 class="section-title about-title" id="aboutTitle" data-i18n="about.title">Profil profesional</h2>
-            <p class="about-intro" data-i18n="about.intro">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika di Universitas Amikom Yogyakarta, berasal dari Mimika, Papua Tengah. Saya mengembangkan aplikasi web, permainan berbasis browser, dan perangkat komputasi melalui proyek akademik serta proyek mandiri.</p>
+            <p class="about-intro" data-i18n="about.intro">Saya Lamberth Paulinus Rumpaidus, mahasiswa Teknik Informatika, berasal dari Mimika, Papua Tengah. Saya mengembangkan aplikasi web, permainan berbasis browser, dan perangkat komputasi melalui proyek akademik serta proyek mandiri.</p>
             <p class="subtle-paragraph" data-i18n="about.desc">Saya menekuni pengembangan perangkat lunak dengan perhatian pada kebutuhan pengguna, struktur kode, aksesibilitas, dan dokumentasi. Sebagai pengembang yang merintis karier freelance, saya ingin membantu individu, komunitas, dan usaha kecil memperoleh solusi digital yang relevan dan mudah digunakan.</p>
             <div class="about-metadata">
-              <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik Informatika · Universitas Amikom Yogyakarta</strong></div>
+              <div><span data-i18n="about.studyLabel">LATAR AKADEMIK</span><strong data-i18n="about.study">Teknik Informatika</strong></div>
               <div><span data-i18n="about.focusLabel">AREA MINAT</span><strong data-i18n="about.focus">Pengembangan web, UI/UX, dan komputasi interaktif</strong></div>
               <div><span data-i18n="about.basedLabel">ASAL DAERAH</span><strong data-i18n="about.based">Mimika · Papua Tengah</strong></div>
             </div>
@@ -487,35 +487,6 @@
     </div>
   </dialog>
 
-  <aside class="music-widget" id="musicPanel" aria-label="Pemutar musik: Tanya Rasa &amp; Balik Arah dan Menepi">
-    <button class="music-toggle" id="musicToggle" type="button" aria-expanded="false" aria-controls="musicDetails"
-      title="Buka pemutar musik"><span class="music-equalizer">♫</span><span class="music-toggle-label">AUDIO</span></button>
-    <div class="music-details" id="musicDetails">
-      <div class="music-heading"><span class="music-vinyl">♫</span>
-        <div>
-          <small id="musicTrackNumber">TRACK 01</small>
-          <strong id="musicTrackTitle">Tanya Rasa</strong>
-          <span id="musicTrackSub" style="font-size:11px;color:#a5b7c5;">TANYA.mp3</span>
-        </div>
-      </div>
-      <div class="music-playlist" style="display:flex;gap:6px;margin:12px 0 6px;">
-        <button type="button" class="track-btn active" data-track="0" title="1. Tanya Rasa" style="flex:1;background:rgba(255,255,255,.12);border:1px solid #c2f87d;border-radius:8px;padding:6px 8px;font-size:10px;color:#fff;cursor:pointer;font-family:inherit;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1. Tanya Rasa</button>
-        <button type="button" class="track-btn" data-track="1" title="2. Balik Arah dan Menepi" style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:6px 8px;font-size:10px;color:#9db2bf;cursor:pointer;font-family:inherit;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">2. Balik Arah dan Menepi</button>
-      </div>
-      <p class="music-status" id="musicStatus" style="font-size:11px;color:#9db2bf;margin:6px 0 10px;line-height:1.4;">Klik putar untuk mendengarkan.</p>
-      <audio id="musicAudio" preload="metadata" src="TANYA.mp3"></audio>
-      <div class="music-controls">
-        <button type="button" id="musicPrev" aria-label="Lagu sebelumnya" title="Lagu sebelumnya" style="width:34px;height:34px;font-size:12px;">⏮</button>
-        <button type="button" id="musicPlay" aria-label="Putar lagu">▶</button>
-        <button type="button" id="musicNext" aria-label="Lagu berikutnya" title="Lagu berikutnya" style="width:34px;height:34px;font-size:12px;">⏭</button>
-        <div class="music-timeline"><input type="range" id="musicSeek" min="0" max="100" value="0"
-            aria-label="Posisi lagu"><span id="musicTime">0:00 / 0:00</span></div>
-      </div>
-      <div class="music-bottom"><label class="music-upload">+ Pilih audio<input type="file" id="musicFile"
-            accept="audio/*" hidden></label><label class="music-volume">Volume <input type="range" id="musicVolume"
-            min="0" max="1" step="0.05" value="0.65"></label></div>
-    </div>
-  </aside>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="symbol-sprite">

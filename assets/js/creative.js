@@ -105,40 +105,11 @@ function shell(){
    }requestAnimationFrame(update);
  });
 }
-function music(){
- const player=$('#musicPanel'),footer=$('.footer .wrap'),audio=$('#musicAudio'),play=$('#musicPlay'),toggle=$('#musicToggle');
- if(!player||!footer||!audio||!play)return;
- footer.append(player);player.classList.add('creative-audio');audio.preload='none';
- toggle.setAttribute('title','Buka pemutar audio');
- const label=$('.music-toggle-label',toggle);if(label)label.textContent='TANYA RASA';
- const viz=document.createElement('span');viz.className='audio-bars';viz.setAttribute('aria-hidden','true');
- for(let i=0;i<11;i++)viz.append(document.createElement('i'));toggle.prepend(viz);
- const bars=[...viz.children];let context=null,analyser=null,source=null,values=null,raf=0,inView=true;
- function initAudio(){
-   if(context||!window.AudioContext&&!window.webkitAudioContext)return;
-   try{
-     const C=window.AudioContext||window.webkitAudioContext;context=new C();
-     analyser=context.createAnalyser();analyser.fftSize=64;values=new Uint8Array(analyser.frequencyBinCount);
-     source=context.createMediaElementSource(audio);source.connect(analyser);analyser.connect(context.destination);
-     context.resume();
-   }catch(e){console.warn('Audio visualizer unavailable',e);context=null}
- }
- function barsTick(){
-   raf=0;if(!analyser||audio.paused||document.hidden||!inView||reduce.matches)return;
-   analyser.getByteFrequencyData(values);
-   bars.forEach((bar,i)=>{const power=values[Math.min(values.length-1,1+i*2)]||0;bar.style.height=(3+power/255*19).toFixed(1)+'px'});
-   raf=requestAnimationFrame(barsTick);
- }
- function refresh(){if(!audio.paused && !raf)raf=requestAnimationFrame(barsTick);if(audio.paused){cancelAnimationFrame(raf);raf=0;bars.forEach(b=>b.style.height='4px')}}
- play.addEventListener('click',initAudio,{capture:true});audio.addEventListener('play',()=>{context?.resume();refresh()});audio.addEventListener('pause',refresh);audio.addEventListener('ended',refresh);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else refresh()});
- if('IntersectionObserver'in window)new IntersectionObserver(es=>{inView=!!es[0]?.isIntersecting;refresh()}).observe(player);
-}
 function assistant(){
  const shell=$('#assistantShell'),panel=$('#assistantPanel');if(!shell||!panel)return;
  panel.classList.add('ai-glass');
  const avatar=$('.assistant-glyph',shell);avatar?.setAttribute('aria-hidden','true');
 }
-scrollMotion();transitions();shell();music();assistant();
+scrollMotion();transitions();shell();assistant();
 window.addEventListener('beforeunload',()=>lenis?.destroy());
 })();
