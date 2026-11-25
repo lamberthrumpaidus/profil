@@ -35,9 +35,9 @@
   <link rel="stylesheet" href="assets/css/scrollbars.css?v=20261125-shell">
   <link rel="stylesheet" href="assets/css/terminal.css?v=20261125-shell">
   <script src="assets/js/data.js?v=20261125-github" defer></script>
-  <script src="assets/js/app.js?v=20261125-shell100" defer></script>
-  <script src="assets/js/terminal-engine.js?v=20261125-shell100" defer></script>
-  <script src="assets/js/terminal-ui.js?v=20261125-shell100" defer></script>
+  <script src="assets/js/app.js?v=20261125-formal-shell" defer></script>
+  <script src="assets/js/terminal-engine.js?v=20261125-formal-shell" defer></script>
+  <script src="assets/js/terminal-ui.js?v=20261125-formal-shell" defer></script>
   <script type="module" src="assets/js/scene.js?v=20261125-torii"></script>
   <script type="module" src="assets/js/vault-final.js?v=20261125-canvas"></script>
 
@@ -70,6 +70,29 @@
   
 /* 2026 L/R design refinement */
 .lr-monogram{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 16px rgba(3,224,178,.25))}.lr-brand-badge{display:inline-flex;align-items:center;justify-content:center;max-width:180px;min-width:90px;min-height:48px;padding:7px 12px;border:1px solid rgba(36,222,193,.24);border-radius:16px;background:linear-gradient(130deg,rgba(6,34,42,.77),rgba(6,16,28,.68));backdrop-filter:blur(10px);box-shadow:0 12px 30px #0005;transition:transform .2s,border-color .2s}.lr-brand-badge:hover{transform:translateY(-2px);border-color:#0fe5c8}.lr-brand-badge:focus-visible{outline:2px solid #30eac9;outline-offset:3px}@media(prefers-reduced-motion:reduce){.lr-brand-badge{transition:none!important}}.brand-mark,.footer-logo,.art-core{background:linear-gradient(145deg,rgba(24,57,62,.34),rgba(8,23,36,.28));border-color:rgba(33,224,189,.13)}.brand-logo-img,.footer-logo-img,.art-core-logo{filter:drop-shadow(0 0 18px rgba(0,213,182,.28))}.nav-shell{backdrop-filter:blur(18px)}.brand-mark{border-radius:13px}.hero-art{filter:drop-shadow(0 25px 65px rgba(0,194,170,.12))}a:focus-visible,button:focus-visible{outline:2px solid #16dfc5;outline-offset:3px}.work-card,.process-card{transition:transform .2s,box-shadow .2s}.work-card:hover,.process-card:hover{transform:translateY(-4px);box-shadow:0 20px 55px #0002}@media(prefers-reduced-motion:reduce){.work-card,.process-card{transition:none!important}} </style>
+
+<!-- ALL Create by LamberthRumpaidus | Inspection deterrent (not a security boundary) -->
+<script id="lr-inspection-guard">
+(()=>{'use strict';
+  if(window.__lrInspectionGuard)return;
+  window.__lrInspectionGuard=true;
+  const interactive='a,button,input,textarea,select,option,[contenteditable]:not([contenteditable="false"]),canvas,video,audio,pre,code,[role="application"],[role="log"],[role="button"]';
+  document.addEventListener('contextmenu',event=>{
+    if(event.target instanceof Element&&event.target.closest(interactive))return;
+    if(event.cancelable)event.preventDefault();
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.isComposing)return;
+    const key=String(event.key||'').toLowerCase();
+    const command=event.ctrlKey||event.metaKey;
+    const developerShortcut=key==='f12'||
+      (command&&event.shiftKey&&['i','j','c','k'].includes(key))||
+      (event.metaKey&&event.altKey&&['i','j','c','u'].includes(key))||
+      (command&&!event.shiftKey&&!event.altKey&&key==='u');
+    if(developerShortcut&&event.cancelable)event.preventDefault();
+  },true);
+})();
+</script>
 </head>
 
 <body>
@@ -209,7 +232,7 @@
 <div class="lr-prof-grid three"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="services.web.title">Pengembangan situs web</h3><p data-i18n="services.web.desc">Situs profil, halaman landas, dan situs informatif untuk individu, komunitas, serta usaha kecil.</p><small>HTML · CSS · JavaScript</small></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="services.ui.title">Prototipe UI/UX</h3><p data-i18n="services.ui.desc">Perancangan alur pengguna, struktur informasi, dan prototipe antarmuka untuk memvalidasi gagasan sebelum implementasi.</p><small>Figma · Responsive UI</small></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="services.interaktif.title">Pengalaman web interaktif</h3><p data-i18n="services.interaktif.desc">Prototipe visual, permainan berbasis peramban, dan perangkat komputasi untuk kebutuhan edukasi atau demonstrasi produk.</p><small>Canvas · Three.js · WebGL</small></article></div>
 <div class="lr-prof-callout"><div><h3 data-i18n="services.quote">Penawaran dan ruang lingkup</h3><p data-i18n="services.terms">Biaya ditentukan berdasarkan kebutuhan dan estimasi pekerjaan. Tahapan, tenggat, hasil yang diserahkan, ketentuan revisi, dan dukungan lanjutan dibahas sebelum kesepakatan.</p></div><a class="button button-primary" href="#contact" data-i18n="services.cta">Ajukan kebutuhan proyek ↗</a></div>
 <div class="lr-prof-subhead"><span class="micro-label" data-i18n="goals.label">ARAH PENGEMBANGAN</span><h2 class="section-title" data-i18n="goals.title">Arah pengembangan profesional</h2><p data-i18n="goals.intro">Saya menargetkan perkembangan yang berkelanjutan, baik dalam kemandirian profesional maupun kualitas karya kreatif.</p></div>
-<div class="lr-prof-grid two"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="goals.mandiri.title">Kemandirian profesional</h3><p data-i18n="goals.mandiri.desc">Membangun sumber penghasilan mandiri melalui proyek freelance secara bertahap, sejalan dengan studi dan tanggung jawab akademik.</p></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="goals.reputasi.title">Pertumbuhan karier</h3><p data-i18n="goals.reputasi.desc">Memperluas jaringan profesional, mengembangkan kompetensi, dan membangun reputasi melalui komunikasi yang baik serta penyelesaian proyek yang bertanggung jawab.</p></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="goals.kreasi.title">Produk digital yang bermanfaat</h3><p data-i18n="goals.kreasi.desc">Mengembangkan situs web responsif, antarmuka yang mudah digunakan, serta visual interaktif yang mendukung fungsi produk.</p></article><article class="lr-prof-card"><span class="lr-prof-index">04</span><h3 data-i18n="goals.iterasi.title">Eksperimen dan kualitas</h3><p data-i18n="goals.iterasi.desc">Memperdalam animasi, WebGL, dan komputasi untuk menghasilkan karya orisinal yang dapat diuji serta dikembangkan melalui evaluasi.</p></article></div>
+<div class="lr-prof-grid two"><article class="lr-prof-card"><span class="lr-prof-index">01</span><h3 data-i18n="goals.mandiri.title">Kemandirian profesional</h3><p data-i18n="goals.mandiri.desc">Membangun sumber penghasilan mandiri melalui proyek lepas secara bertahap, sejalan dengan studi dan tanggung jawab akademik.</p></article><article class="lr-prof-card"><span class="lr-prof-index">02</span><h3 data-i18n="goals.reputasi.title">Pertumbuhan karier</h3><p data-i18n="goals.reputasi.desc">Memperluas jaringan profesional, mengembangkan kompetensi, dan membangun reputasi melalui komunikasi yang baik serta penyelesaian proyek yang bertanggung jawab.</p></article><article class="lr-prof-card"><span class="lr-prof-index">03</span><h3 data-i18n="goals.kreasi.title">Produk digital yang bermanfaat</h3><p data-i18n="goals.kreasi.desc">Mengembangkan situs web responsif, antarmuka yang mudah digunakan, serta visual interaktif yang mendukung fungsi produk.</p></article><article class="lr-prof-card"><span class="lr-prof-index">04</span><h3 data-i18n="goals.iterasi.title">Eksperimen dan kualitas</h3><p data-i18n="goals.iterasi.desc">Memperdalam animasi, WebGL, dan komputasi untuk menghasilkan karya orisinal yang dapat diuji serta dikembangkan melalui evaluasi.</p></article></div>
 </div></section>
     <section class="section work-section" id="work" aria-labelledby="workTitle">
       <div class="wrap">
@@ -315,27 +338,27 @@
 
     <section class="section lab" id="playground" aria-labelledby="labTitle">
       <div class="wrap">
-        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">LABORATORIUM INTERAKTIF</span></span><span
-            class="section-label-rule"></span><span data-i18n="lab.subtitle">RUANG EKSPERIMEN</span></div>
+        <div class="section-label reveal"><span>06 / <span data-i18n="lab.label">TERMINAL INTERAKTIF</span></span><span
+            class="section-label-rule"></span><span data-i18n="lab.subtitle">ANTARMUKA BARIS PERINTAH</span></div>
         <div class="lab-layout">
           <div class="lab-copy reveal">
-            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Laboratorium interaktif</h2>
-            <p data-i18n="lab.desc">Terminal berbasis peramban dengan 100 perintah untuk navigasi direktori virtual, pengolahan teks, perhitungan, analisis katalog, serta akses ke repositori GitHub. Masukkan help untuk melihat panduan.</p>
-            <div class="lab-small-tags"><span>VIRTUAL FILE SYSTEM</span><span>COMMAND LINE</span><span>GITHUB</span></div>
+            <h2 class="section-title" id="labTitle" data-i18n="lab.title">Terminal interaktif</h2>
+            <p data-i18n="lab.desc">Terminal interaktif menyediakan 100 perintah untuk penelusuran direktori virtual, pengolahan teks, komputasi numerik, dan akses ke repositori proyek. Seluruh perintah dijalankan secara lokal di peramban tanpa akses ke sistem operasi atau server.</p>
+            <div class="lab-small-tags"><span data-i18n="lab.vfs">SISTEM BERKAS VIRTUAL</span><span data-i18n="lab.cli">BARIS PERINTAH</span><span>GITHUB</span></div>
             <div class="lab-link-row"><button type="button" class="text-button" id="terminalHint"
-                data-i18n="lab.try">Lihat daftar perintah ↗</button></div>
+                data-i18n="lab.try">Panduan perintah ↗</button></div>
           </div>
           <div class="terminal reveal" aria-label="Terminal portofolio interaktif">
-            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>lamberth / portfolio-shell</strong></div><span class="shell-mode">100 COMMANDS</span></div>
+            <div class="terminal-top"><div class="terminal-brand"><div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div><strong>Portfolio Shell</strong></div><span class="shell-mode" data-i18n="lab.count">100 PERINTAH</span></div>
             <div class="terminal-display" id="terminalDisplay" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" aria-label="Keluaran terminal">
-              <div class="shell-line shell-muted">Portfolio Shell · Web sandbox</div><div class="shell-line" data-i18n="lab.hello">Masukkan help untuk menampilkan daftar perintah.</div>
+              <div class="shell-line shell-muted">Portfolio Shell · Lingkungan virtual</div><div class="shell-line" data-i18n="lab.hello">Jalankan perintah help untuk menampilkan panduan.</div>
             </div>
             <form id="terminalForm" class="terminal-input"><span class="term-prompt" id="terminalPrompt" aria-hidden="true">guest@portfolio:~$</span><label
-                for="terminalCommand" class="sr-only">Ketik perintah terminal</label><input id="terminalCommand"
+                for="terminalCommand" class="sr-only">Masukkan perintah terminal</label><input id="terminalCommand"
                 autocomplete="off" spellcheck="false" autocapitalize="off" enterkeyhint="go" maxlength="1000" aria-label="Perintah terminal" placeholder="help"><button
                 type="submit" aria-label="Jalankan perintah"><svg class="ico">
                   <use href="#ico-arrow"></use>
-                </svg></button></form><div class="shell-footer"><span data-i18n="lab.sandbox">Lingkungan virtual hanya-baca</span><span data-i18n="lab.keys">↑ ↓ Riwayat · Tab Pelengkapan</span></div>
+                </svg></button></form><div class="shell-footer"><span data-i18n="lab.sandbox">Lingkungan virtual dengan akses baca saja</span><span data-i18n="lab.keys">↑ ↓ Riwayat perintah · Tab Lengkapi otomatis</span></div>
           </div>
         </div>
       </div>
