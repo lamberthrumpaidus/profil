@@ -19,7 +19,7 @@ function createShell(options={}){
  const skillText=()=>skills.map(s=>s.title[language()==='en'?1:0]+'\n  '+(s.tags||[]).join(' · ')).join('\n');
  const projectText=p=>[title(p),val(p,'summary'),tr('Tantangan: ','Challenge: ')+val(p,'problem'),tr('Pendekatan: ','Approach: ')+val(p,'approach'),tr('Hasil: ','Outcome: ')+val(p,'outcome'),tr('Refleksi: ','Reflection: ')+val(p,'reflection'),tr('Teknologi: ','Technology: ')+(p.stack||[]).join(', '),p.repositoryKind==='archive'?tr('Arsip GitHub: ','GitHub archive: ')+p.repository:'GitHub: '+p.repository].filter(Boolean).join('\n\n');
  dir('/');dir('/projects');dir('/profile');dir('/skills');dir('/docs');
- file('/README.md',()=>tr('Portfolio Shell\nSistem berkas virtual hanya-baca. Tidak ada akses ke sistem operasi atau server.\nMulai dengan ls, cd projects, ls, dan cat <id>/README.md.','Portfolio Shell\nRead-only virtual filesystem. No operating system or server access.\nStart with ls, cd projects, ls, and cat <id>/README.md.'));
+ file('/README.md',()=>tr('Portfolio Shell\nSistem berkas virtual dengan akses baca saja. Terminal tidak memiliki akses ke sistem operasi atau server.\nContoh perintah: ls, cd projects, ls, dan cat <id>/README.md.','Portfolio Shell\nRead-only virtual filesystem. No operating system or server access.\nStart with ls, cd projects, ls, and cat <id>/README.md.'));
  file('/profile/about.txt',profile);file('/profile/contact.txt',contact);file('/skills/technology.txt',skillText);
  file('/docs/index.txt',()=>tr('Dokumentasi: ','Documentation: ')+'documentation.html\n'+tr('Sistem desain: ','Design system: ')+'design-system.html');
  projects.forEach(p=>{const path='/projects/'+p.id;dir(path);file(path+'/README.md',()=>projectText(p));file(path+'/github.txt',()=>p.repository||'');file(path+'/technology.txt',()=> (p.stack||[]).join('\n'));if(p.code)file(path+'/example.cs',()=>p.code)});
@@ -35,7 +35,7 @@ function createShell(options={}){
 
  const extra=Object.create(null);
  const add=(name,syntax,id,en,fn)=>{commands[name]=name+(syntax?' '+syntax:'');explanations[name]=[id,en];extra[name]=fn};
- const bad=()=>err(tr('Argumen tidak valid. Lihat help.','Invalid arguments. See help.'));
+ const bad=()=>err(tr('Argumen tidak valid. Jalankan help untuk menampilkan panduan.','Invalid arguments. See help.'));
  const txt=(a,f)=>a.length?ok(String(f(a.join(' ')))):bad();
  const fileOp=(a,f)=>{if(!a.length)return bad();const s=readFile(a[0]);return s===null?err(tr('Berkas tidak ditemukan: ','File not found: ')+a[0]):ok(String(f(s)))};
  const row=s=>s.split('\n'),num=(x,l,h)=>/^-?\d+$/.test(String(x))&&Number(x)>=l&&Number(x)<=h?Number(x):null;
@@ -143,7 +143,7 @@ function createShell(options={}){
  case 'date':return ok(new Date().toLocaleString(language()==='en'?'en-US':'id-ID',{dateStyle:'full',timeStyle:'long'}));
  case 'uname':return ok('Portfolio Shell / Browser JavaScript / Read-only VFS');
  case 'echo':return ok(rest);
- default:return err(tr('Perintah tidak dikenal: ','Command not found: ')+cmd+'\n'+tr('Masukkan help untuk panduan.','Enter help for guidance.'));
+ default:return err(tr('Perintah tidak tersedia: ','Command not found: ')+cmd+'\n'+tr('Jalankan help untuk menampilkan panduan.','Enter help for guidance.'));
  }}
  function complete(input){const raw=String(input),parts=raw.trimStart().split(/\s+/),command=parts[0]||'';if(parts.length===1&&!/\s$/.test(raw))return Object.keys(commands).filter(x=>x.startsWith(command));const last=/\s$/.test(raw)?'':parts.at(-1);if(['github','docs','open','search','json','related','info','role','challenge','approach','outcome','reflection'].includes(command)){return [...projects.map(p=>p.id),...(command==='open'?['github','docs','about','work','contact','design']:[])].filter(x=>x.startsWith(last))}if(!['cd','ls','cat','tree','find','grep','head','tail','wc','sort','uniq','nl','diff','stat','file','realpath','basename','dirname','du','files','dirs','extensions','size','exists','preview','checksum'].includes(command))return [];const slash=last.lastIndexOf('/'),prefix=slash>=0?last.slice(0,slash+1):'',stem=slash>=0?last.slice(slash+1):last,parent=pathOf(prefix||'.');return children(parent).filter(p=>basename(p).startsWith(stem)&&(!['cd','tree'].includes(command)||nodes.get(p).kind==='dir')).map(p=>prefix+basename(p)+(nodes.get(p).kind==='dir'?'/':''))}
  return {run,complete,tokenize,get commands(){return Object.keys(commands)},get cwd(){return cwd},get history(){return history.slice()},get prompt(){return 'guest@portfolio:'+(cwd==='/'?'~':cwd)+'$'}};
