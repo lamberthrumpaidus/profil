@@ -1,64 +1,49 @@
-# Lamberth Rumpaidus
-
-<p align="center">
-  <strong>Personal Portfolio · Creative Development · Interactive Experiences</strong>
-</p>
-
-<p align="center">
-  Portofolio digital Lamberth Paulinus Rumpaidus yang menggabungkan profil profesional, eksplorasi karya, dan pengalaman visual interaktif dalam satu ruang.
-</p>
-
-<p align="center">
-  <a href="https://lamberthrumpaidusprofile.netlify.app/"><strong>Website Portofolio</strong></a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/lamberthrumpaidus"><strong>GitHub Profile</strong></a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/lamberthrumpaidus/profil"><strong>Portfolio Repository</strong></a>
-</p>
+<!-- ALL Create by LamberthRumpaidus -->
+<div align="center">
+  <img src="./assets/images/logo-lr-web.png" alt="Identitas visual Lamberth Rumpaidus — Portofolio" width="140" />
+  <h1>Lamberth Rumpaidus — Portofolio</h1>
+  <p>Portofolio digital · Pengembangan kreatif · Pengalaman interaktif</p>
+  <p><a href="https://lamberthrumpaidusprofile.netlify.app/">Website</a> · <a href="https://lamberthrumpaidusprofile.netlify.app/documentation.html">Dokumentasi</a> · <a href="https://github.com/lamberthrumpaidus/lamberthrumpaidus">Profil pengembang</a></p>
+</div>
 
 ---
 
-## Website Resmi
+## Gambaran umum
 
-Portofolio ini tersedia secara online dan dapat dikunjungi melalui:
+Portofolio pribadi Lamberth Paulinus Rumpaidus menyajikan profil, karya, dokumentasi, serta pengalaman visual interaktif. Website menjadi pusat navigasi untuk mengenal pengembang dan menelusuri kode sumber proyek melalui GitHub.
 
-**[lamberthrumpaidusprofile.netlify.app](https://lamberthrumpaidusprofile.netlify.app/)**
+## Bagian utama
 
-## Tentang Portofolio
+| Halaman | Keterangan |
+|---|---|
+| [Beranda](https://lamberthrumpaidusprofile.netlify.app/) | Profil, proyek, keahlian dan kontak |
+| [Dokumentasi proyek](https://lamberthrumpaidusprofile.netlify.app/documentation.html) | Studi kasus dan dokumentasi teknis |
+| [Sistem desain](https://lamberthrumpaidusprofile.netlify.app/design-system.html) | Identitas visual, tipografi, warna, dan komponen |
 
-**Lamberth Rumpaidus** adalah portofolio personal untuk memperkenalkan identitas, minat, keahlian, dan hasil karya di bidang teknologi serta pengembangan digital. Setiap proyek ditampilkan sebagai bagian dari perjalanan belajar, bereksperimen, dan membangun solusi yang fungsional dengan perhatian pada pengalaman pengguna.
+Terminal interaktif menyediakan 100 perintah untuk navigasi sistem berkas virtual hanya-baca, pengolahan teks, perhitungan, dan akses dokumentasi. Terminal berjalan di browser dan tidak mengeksekusi perintah sistem operasi maupun server.
 
-Portofolio ini dirancang agar pengunjung dapat mengenal pemiliknya, menelusuri proyek, dan memahami gagasan di balik setiap karya melalui penyajian yang informatif dan interaktif.
+## Struktur
 
-## Isi Portofolio
+| Lokasi | Fungsi |
+|---|---|
+| `index.html` | Halaman portofolio |
+| `documentation.html` | Dokumentasi proyek |
+| `design-system.html` | Sistem desain |
+| `assets/` | Tipografi, identitas visual, kode interaksi dan gaya |
+| `server.cjs` | Server lokal tanpa dependensi eksternal |
 
-- **Profil** — pengenalan diri, latar belakang, minat, dan arah pengembangan.
-- **Proyek & Karya** — koleksi proyek digital, mulai dari aplikasi web dan pengalaman interaktif hingga eksplorasi game serta teknologi.
-- **[Dokumentasi Proyek](https://lamberthrumpaidusprofile.netlify.app/documentation.html)** — halaman khusus yang memuat studi kasus, pendekatan teknis, hasil, dan bukti karya.
-- **Keahlian** — teknologi, perangkat, dan pendekatan yang digunakan dalam pengembangan proyek.
-- **Pengalaman Interaktif** — elemen 3D, animasi, dan interaksi visual yang menjadi bagian dari identitas portofolio.
-- **Kontak** — jalur komunikasi untuk diskusi, kolaborasi, dan pengembangan ide.
+## Menjalankan secara lokal
 
-## Identitas Visual
+```bash
+git clone https://github.com/lamberthrumpaidus/profil.git
+cd profil
+node server.cjs
+```
 
-[Design System & Visual Identity](https://lamberthrumpaidusprofile.netlify.app/design-system.html) mendokumentasikan arah visual, palet warna, tipografi, komponen, dan pendekatan interaksi yang digunakan pada portofolio.
-
-## Pendekatan
-
-Portofolio ini mengutamakan perpaduan antara **desain yang berkarakter, navigasi yang mudah dipahami, interaksi yang bermakna, dan dokumentasi yang jelas**. Pengalaman dirancang agar tetap nyaman diakses melalui desktop maupun perangkat mobile.
-
-## Terhubung
-
-Temukan profil, repositori, dan proyek lainnya melalui akun GitHub resmi:
-
-**[github.com/lamberthrumpaidus](https://github.com/lamberthrumpaidus)**
+Buka `http://127.0.0.1:8000/`. Node.js diperlukan untuk server lokal; website daring dapat digunakan tanpa instalasi.
 
 ---
 
-<p align="center">
-  <sub>Created by <a href="https://github.com/lamberthrumpaidus">Lamberth Rumpaidus</a></sub>
-</p>
-
-## Terminal portofolio
-
-Terminal menyediakan 100 perintah untuk sistem berkas virtual hanya-baca, pengolahan teks, perhitungan numerik, analisis katalog, riwayat, pelengkapan otomatis, serta akses ke repositori dan dokumentasi proyek. Terminal berjalan sepenuhnya di browser dan tidak menjalankan perintah sistem operasi atau server.
+<div align="center">
+  <sub>Dikembangkan oleh <a href="https://github.com/lamberthrumpaidus/lamberthrumpaidus">Lamberth Rumpaidus</a></sub>
+</div>
